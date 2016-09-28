@@ -1,0 +1,38 @@
+<div class="sidebar" id="sidebar">
+    <div id="split-bar"></div>
+    <div class="list">
+        <h1>Filters</h1>
+        <h1>{{title}}</h1>
+        <ul class="filters">
+            <li *ngFor="let filter of filters"
+                [class.selected]="filter === selectedFilter"
+                (click)="onSelect(filter)">
+                <span class="badge">{{filter.id}}</span> {{filter.name}}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="dashboard-container" id="main">
+    <div class="container-fluid">
+        <div class="row">
+            <b>Dashboard</b>
+            <table>
+                <tr>
+                    <td>
+                        <map-area [filter]="selectedFilter"></map-area>
+                    </td>
+                    <td>
+                        <chart-pie-area [filter]="selectedFilter"></chart-pie-area>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <chart-column-area [filter]="selectedFilter"></chart-column-area>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+</div>

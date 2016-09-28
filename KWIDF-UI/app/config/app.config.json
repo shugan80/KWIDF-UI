@@ -1,0 +1,30 @@
+﻿{
+  "title": "ABC",
+  "leftNavItems": [
+    {
+      "navText": "Dashboard",
+      "navUrl": "/dashboard",
+      "imgStyle": "fa fa-tachometer"
+    },
+    {
+      "navText": "SPS",
+      "navUrl": "/sps",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "navText": "ESP",
+      "navUrl": "/esp",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "navText": "WPE",
+      "navUrl": "/wpe",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "navText": "OS",
+      "navUrl": "/os",
+      "imgStyle": "fa fa-sitemap"
+    }
+  ]
+}

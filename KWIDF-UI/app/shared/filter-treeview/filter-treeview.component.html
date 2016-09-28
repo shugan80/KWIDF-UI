@@ -1,0 +1,10 @@
+﻿<h1>{{title}}</h1>
+<h2>Filters</h2>
+<ul class="filters">
+    <li *ngFor="let filter of filters"
+        [class.selected]="filter === selectedFilter"
+        (click)="onSelect(filter)">
+        <span class="badge">{{filter.id}}</span> {{filter.name}}
+    </li>
+</ul>
+

@@ -1,0 +1,10 @@
+﻿<ul class="main" *ngIf="appConfigItems">
+    <nav>
+        <li *ngFor="let config of appConfigItems.leftNavItems" [ngClass]="{'active': last}">
+            <a [routerLink]=config.navUrl routerlinkactive="active"><i class={{config.imgStyle}}></i><span class="text">{{config.navText}}</span></a>
+        </li>
+    </nav>
+
+</ul>
+
+

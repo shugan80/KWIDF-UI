@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-family: 'Roboto', sans-serif;}
+.main-header{top:0;position:fixed;  width:100% ;padding:10px 20px 10px 20px;background:#e7e5e5;border-bottom:4px solid #c4c1c1; max-height:85px; box-sizing:border-box}
+.lt-90{ margin-left:90px;}
+.header::after {clear: both;content: "";display: table;}
+.main-header h1{ font-weight:normal; font-size:24px; margin:0; color:#000;}
+.breadcrumb-nav ul {padding: 0;}
+.breadcrumb-nav li {color: #555555;display: inline-block;font-size: 17px;font-weight: normal;margin-top: -5px}
+.breadcrumb-nav li.home::before { content: "\f015";padding-right: 5px;}
+.breadcrumb-nav ul {padding: 0px; margin:0;}
+.breadcrumb-nav li+li:before {display: inline-block;font-family:FontAwesome;font-size:16px;text-rendering: auto;-webkit-font-smoothing: antialiased;padding:8px 6px 8px 4px;content: "\f105";}
+
+
+
+.top-search .form-control{height:30px;}
+.last-visited{ text-align:right}
+.last-visited .fa-user,.last-visited .fa-bell{ margin-left:5px; }
+.last-visited span:first-child{ padding-right:4px;}
+.last-visited span:nth-child(2){ padding-left:4px;}
+
+.top-search{ text-align:right}
+.top-search .navbar-form { padding:0;}
+.top-search .input-group-btn  .btn {-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);height:30px;background:#666666;color:white;width:30px;border:0;outline:none;border-radius: 1px;padding:0;}
+
+/*Body Sec Divider */
+.body-container{ position:relative; float:left;margin-top:84px;padding:0 0 0 90px; width:100%}
+.sidebar{position:fixed;height:100%;width:246px;-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-ms-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
+.dashboard-container{margin:0 0 0 266px;padding:0 20px 20px 0 ;-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-ms-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
+#menu {float: left;background-color: pink;width:90px;height: 100%;}
+#main {margin-left: 246px; padding:20px;}
+#sidebar {float:left; padding:6px;background:#ededed; border-right:6px solid #dad8d8}
+#split-bar {height:100%;float:right;width:6px; margin-right:-5px;cursor: col-resize;}
+#split-bar:after{content:url(../images/scroller.png);position:relative; z-index:100000; right:0px; top:50%;}
+
+
+
+
+/*Left Menu navigation */
+.lt-menu-navigation-container{ position:fixed; left:0; top:0; height:100%; width:90px; background:#4f4f4f; z-index:1;}
+.lt-menu-navigation-container ul.main {display: block;list-style: outside none none;margin:10px 0 0 0;min-height: 100%;padding: 0;position: relative;width:90px;z-index: 10;}
+.lt-menu-navigation-container ul.main {lt-menu-navigation-container-style: outside none none;}
+.lt-menu-navigation-container ul.main li a:hover, .lt-menu-navigation-container ul.main li a.active {background: #000; color:#fff}
+.lt-menu-navigation-container ul.main li a {display: block;text-align: center;width:90px; padding:15px 0; }
+.lt-menu-navigation-container ul.main li a i,.lt-menu-navigation-container ul.main li a span {display:inline-block;font-size:14px;}
+.lt-menu-navigation-container ul.main li a i {font-size:24px;color: #bababa}
+.lt-menu-navigation-container ul.main li a span{color: #bababa;text-shadow: 0 1px 0 #333;width:90px;}
+.lt-menu-navigation-container ul.main li a:hover i,.lt-menu-navigation-container ul.main li a:hover span {color:#fff}
+.lt-menu-navigation-container ul.main li a.active span, .lt-menu-navigation-container ul.main li a.active i { color:#fff}
+
+
+
+/*JS Tree*/
+.tree{ padding:30px 10px; position:relative; float:left}
+.tree ul li a { color:#000 !important}
+.list{overflow-x: hidden;overflow-y: visible;text-overflow: ellipsis;white-space: nowrap;height:100%}
+.list{ background:#fff}
+.list::after {clear: both;content: "";display: table;}
+
+
+#exTab1 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+
+
