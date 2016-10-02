@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable } from 'rxjs/Rx';
 import { ConfigDataService } from '../services/configdata.service';
@@ -6,38 +6,41 @@ import { GlobalDataService } from '../services/globaldata.service';
 
 
 @Component({
-    moduleId: module.id,
-    selector: 'app-leftnav-nenu',
-    templateUrl: './leftnav-menu.component.html',
+    selector: 'tab-menu',
+    templateUrl: 'app/shared/tab-menu/tab-menu.component.html',
     providers: [ConfigDataService, GlobalDataService]
 })
-export class LeftNavMenuComponent {
-    public appConfigItems: any;
 
+export class TabMenuComponent {
+    @Input() filePath: string;
+    public appContentMenuItems: any;
+    
     constructor(private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
-        this._configDataService.configJsonPath = '/app/config/app.config.json';
+
     }
     
     ngOnInit() {
-        this._configDataService.configJsonPath = '/app/config/app.config.json';
+        console.log(this.filePath);
+        this._configDataService.configJsonPath = this.filePath;
         this.getConfigItems();
+        
     }
 
-    private initComponent() {
-        console.log(' LeftNavMenuComponent initComponent - done');
-    }
+    //private initComponent() {
+    //    console.log(this.filePath);
+    //}
 
     private getConfigItems() {
         this._configDataService.getConfigItems().subscribe(
             (items:any) => {
-                this.appConfigItems = items[0]
+                this.appContentMenuItems = items[0]
             },
             (err:any) => {
                 console.error(err);
             },
             () => {
-                console.log(' LeftNavMenuComponent getConfigItems - done');
-                this.initComponent();
+                console.log(' TabMenuComponent getConfigItems - done');
+                
             }
             // No error or completion callbacks here. They are optional, but
             // you will get console errors if the Observable is in an error state.

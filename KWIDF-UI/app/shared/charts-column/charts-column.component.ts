@@ -5,17 +5,7 @@ import { Filter } from '../model/filter';
 @Component({
     moduleId: module.id,
     selector: 'chart-column-area',
-    template: `
-        <div *ngIf="filter">
-          <h2>CHART-COLUMN => {{filter.name}} details!</h2>
-          <div>
-            <label>CHART-COLUMN id: </label>{{filter.id}}
-          </div>
-          <div>
-            <label>CHART-COLUMN name: </label>{{filter.name}}
-          </div>
-        </div>
-      `
+    templateUrl: './charts-column.component.html'
 })
 export class ChartComponent_Column {
     @Input() filter: Filter;

@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 body{font-family: 'Roboto', sans-serif;}
 .main-header{top:0;position:fixed;  width:100% ;padding:10px 20px 10px 20px;background:#e7e5e5;border-bottom:4px solid #c4c1c1; max-height:85px; box-sizing:border-box}
@@ -26,9 +26,9 @@ body{font-family: 'Roboto', sans-serif;}
 /*Body Sec Divider */
 .body-container{ position:relative; float:left;margin-top:84px;padding:0 0 0 90px; width:100%}
 .sidebar{position:fixed;height:100%;width:246px;-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-ms-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
-.dashboard-container{margin:0 0 0 266px;padding:0 20px 20px 0 ;-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-ms-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
+.dashboard-container{margin:0 0 0 0px;padding:0 20px 20px 0 ;-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-ms-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
 #menu {float: left;background-color: pink;width:90px;height: 100%;}
-#main {margin-left: 246px; padding:20px;}
+#main {margin-left: 246px; padding:0 0 0 20px;}
 #sidebar {float:left; padding:6px;background:#ededed; border-right:6px solid #dad8d8}
 #split-bar {height:100%;float:right;width:6px; margin-right:-5px;cursor: col-resize;}
 #split-bar:after{content:url(../images/scroller.png);position:relative; z-index:100000; right:0px; top:50%;}
@@ -87,23 +87,50 @@ body{font-family: 'Roboto', sans-serif;}
   background-color: #428bca;
   padding : 5px 15px;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
-}
 
+/*Dashboard tab-menu*/
+.tab-menu {position: relative;}
+ul.tab-links {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background: #f5f5f5;border: 1px solid #ccc;}
+ul.tab-links li {float: left; border-right:1px solid #ccc;}
+ul.tab-links li a {display:inline-block;font-size:16px;text-align: center;padding: 14px 16px;text-decoration: none;transition: 0.3s; color:#333333; }
+ul.tab-links li a:hover {background: #e7e5e5;}
 
+/*Dashboard content-area*/
+.content-area {position:relative; margin-top:20px;}
+.border{border:1px solid #d4d4d4}
+.over-view .content-area-left{ padding-right:10px; padding-left:0;}
+.over-view .content-area-right{ padding-left:10px; padding-right:0;}
+.dash-component-head{background:#f5f5f5;padding:10px;border-bottom:1px solid #d4d4d4}
+.dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold;}
+.dash-component-content{ position:relative; min-height:150px;}
+.over-view .well-map .dash-component-content{ height:361px;}
+.well-status,.well-event{ position:relative}
+.well-status{ margin-bottom:20px;}
+.well-status .dash-component-content{ height:150px;}
+.well-event .dash-component-content{ height:150px;}
+.content-area-left-btm{ position:relative; margin-top:20px;}
+.content-area-left-btm .left{ padding-right:10px; padding-left:0;}
+.content-area-left-btm .right{padding-left:10px; padding-right:0;}
+.lat-prod{position:relative;}
+.his-prod{position:relative;}
+.well-summary{ margin-top:20px;}
+.production{ min-height:200px;}
+filed-loss{}
+.margin-top20{ margin-top:20px;}
+/*loss-gains*/
+.loss-gains .well-map{ height:420px}
+.wt-priority .sec-1{ padding-left:0}
+.wt-priority .sec-2{ padding-left:5px padding-right:5px }
+.wt-priority .sec-3{ padding-right:0 }
+.wt-priority .dash-component-content{ height:400px;}
+
+@media  (max-width:991px){
+	.over-view .content-area-left,.content-area-left-btm .left{ padding:0;}
+	.over-view .content-area-right,.content-area-left-btm .right{ padding:0; margin-top:20px;}
+	.wt-priority .sec-1,.wt-priority .sec-2,.wt-priority .sec-3{ padding:0;}
+	}
+@media (max-width:1023px) {
+    ul.tab-links li {
+        border: 0;
+    }
+}

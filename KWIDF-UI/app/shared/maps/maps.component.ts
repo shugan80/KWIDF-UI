@@ -1,25 +1,32 @@
 ﻿import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Filter } from '../model/filter';
+import { FilterDataService } from '../services/filterdata.service';
 
 @Component({
     moduleId: module.id,
     selector: 'map-area',
-    template: `
-        <div *ngIf="filter">
-          <h2>MAP => {{filter.name}} details!</h2>
-          <div>
-            <label>MAP-id: </label>{{filter.id}}
-          </div>
-          <div>
-            <label>MAP-name: </label>
-            <input [(ngModel)]="filter.name" placeholder="name"/>
-          </div>
-        </div>
-      `
+    templateUrl: './maps.component.html'
 })
+
 export class MapsComponent {
     @Input() filter: Filter;
+
+    constructor(private _filterService: FilterDataService) {
+        this._filterService.modelChange$.subscribe(
+            (items: Filter) => {
+                console.log(items.name);
+                console.log(items.id);
+            },
+            (err: any) => {
+                console.error(err);
+            },
+            () => {
+                console.log(' MapsComponent subscribe - done');
+                
+            }
+        );
+    }
 }
 
 

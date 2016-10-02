@@ -1,0 +1,10 @@
+﻿<ul class="tab-links" *ngIf="appContentMenuItems">
+    <nav>
+        <li *ngFor="let config of appContentMenuItems.contentmenuItems">
+            <a [routerLink]=config.menuUrl routerLinkActive="active"><span class="text">{{config.menuText}}</span></a>
+        </li>
+    </nav>
+
+</ul>
+
+

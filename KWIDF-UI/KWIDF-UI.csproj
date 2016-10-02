@@ -69,11 +69,16 @@
     <Content Include="app\layout\layout.html" />
     <Content Include="app\main.ts" />
     <Content Include="app\os\os.component.html" />
+    <Content Include="app\shared\content-area\content-area.component.html" />
+    <Content Include="app\shared\tab-menu\tab-menu.component.html" />
     <Content Include="app\shared\maps\maps.component.html" />
     <Content Include="app\shared\charts-column\charts-column.component.html" />
     <Content Include="app\shared\charts-pie\charts-pie.component.html" />
     <Content Include="app\shared\filter-treeview\filter-treeview.component.html" />
     <Content Include="app\shared\leftnav-menu\leftnav-menu.component.html" />
+    <Content Include="app\shared\top-bar\top-bar.component.html" />
+    <Content Include="app\sps\sps-loss-gain\sps-loss-gain.component.html" />
+    <Content Include="app\sps\sps-overview\sps-overview.component.html" />
     <Content Include="app\sps\sps.component.html" />
     <Content Include="app\wpe\wpe.component.html" />
     <Content Include="css\bootstrap-theme.min.css" />
@@ -125,6 +130,8 @@
     <TypeScriptCompile Include="app\esp\esp.component.ts" />
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
+    <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
+    <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />
     <TypeScriptCompile Include="app\shared\maps\maps.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-column\charts-column.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-pie\charts-pie.component.ts" />
@@ -136,6 +143,9 @@
     <TypeScriptCompile Include="app\shared\services\helper.service.ts" />
     <TypeScriptCompile Include="app\shared\services\filterdata.service.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-filters.ts" />
+    <TypeScriptCompile Include="app\shared\top-bar\top-bar.component.ts" />
+    <TypeScriptCompile Include="app\sps\sps-loss-gain\sps-loss-gain.component.ts" />
+    <TypeScriptCompile Include="app\sps\sps-overview\sps-overview.component.ts" />
     <TypeScriptCompile Include="app\sps\sps.component.ts" />
     <TypeScriptCompile Include="app\wpe\wpe.component.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
@@ -151,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\shared\footer\" />
-    <Folder Include="app\shared\top-bar\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

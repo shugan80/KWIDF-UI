@@ -1,3 +1,30 @@
 ﻿{
-  "title": "SPS"
+  "title": "SPS",
+  "contentmenuItems": [
+    {
+      "menuText": "Overview",
+      "menuUrl": "overview",
+      "imgStyle": "fa fa-tachometer"
+    },
+    {
+      "menuText": "Loss & Gain",
+      "menuUrl": "../lossgain",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "menuText": "Well Test Priority",
+      "menuUrl": "/sps/well-test-priority",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "menuText": "Alarms/Events",
+      "menuUrl": "/sps/alarm-events",
+      "imgStyle": "fa fa-sitemap"
+    },
+    {
+      "menuText": "Well Configuration",
+      "menuUrl": "/well-configuration",
+      "imgStyle": "fa fa-sitemap"
+    }
+  ]
 }

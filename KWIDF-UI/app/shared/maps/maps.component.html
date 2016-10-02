@@ -1,1 +1,10 @@
-﻿Sudhakar
+﻿<div *ngIf="filter">
+    <h2>MAP => {{filter.name}} details!</h2>
+    <div>
+        <label>MAP-id: </label>{{filter.id}}
+    </div>
+    <div>
+        <label>MAP-name: </label>
+        <input [(ngModel)]="filter.name" placeholder="name" />
+    </div>
+</div>

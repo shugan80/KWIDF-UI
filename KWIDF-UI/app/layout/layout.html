@@ -1,10 +1,11 @@
 <header class="main-header">
     <div class="pull-left lt-90">
         <div class="breadcrumb-nav">
+            <app-top-bar></app-top-bar>
         </div>
     </div>
     <div class="pull-right">
-        <div class="last-visited"><span>last Visited : 08-07-2016</span>-<span>12:02:32 PM</span><i class="fa fa-bell"></i><i class="fa fa-user"></i></div>
+        <div class="last-visited"><span>Last Visited : 08-07-2016</span>-<span>12:02:32 PM</span><i class="fa fa-bell"></i><i class="fa fa-user"></i></div>
         <div class="top-search">
             <form role="search" class="navbar-form">
                 <div class="input-group add-on">
@@ -24,13 +25,9 @@
     <app-leftnav-nenu></app-leftnav-nenu>
 </div>
 <div class="body-container">
-    <div class="dashboard-container" id="main">
-        <div class="container-fluid">
-            <div class="row">
-                 <b>LAYOUT LAYOUT LAYOUT LAYOUT  LAYOUT LAYOUT LAYOUT LAYOUT</b>
-                <router-outlet></router-outlet>
-            </div>
-
-        </div>
+    <div class="dashboard-container">
+      <router-outlet></router-outlet>
+           
+       
     </div>
 </div>

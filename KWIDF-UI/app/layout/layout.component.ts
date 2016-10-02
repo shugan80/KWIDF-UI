@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router }  from '@angular/router';
 
-import { FilterTreeViewComponent } from '../shared/filter-treeview/filter-treeview'
 
 declare var jscustom: any;
 

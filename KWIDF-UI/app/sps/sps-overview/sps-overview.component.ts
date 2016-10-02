@@ -3,20 +3,19 @@ import { HttpModule } from '@angular/http';
 import { Router }  from '@angular/router';
 import {Observable } from 'rxjs/Rx';
 
-import { TabMenuComponent } from '../shared/tab-menu/tab-menu.component';
+import { TabMenuComponent } from '../../shared/tab-menu/tab-menu.component';
 
-import { Filter } from '../shared/model/filter';
-import { FilterDataService } from '../shared/services/filterdata.service';
+import { Filter } from '../../shared/model/filter';
+import { FilterDataService, GlobalFilter } from '../../shared/services/filterdata.service';
+
 
 @Component({
     moduleId: module.id,
-    selector: 'sps-component',
-    templateUrl: './sps.component.html',
+    selector: 'sps-overview',
+    templateUrl: './sps-overview.component.html',
     providers: [FilterDataService]
 })
-export class SPSComponent {
-
- 
+export class SPSOverviewComponent {
     title = 'North Kuwait';
     filters: Filter[];
     public selectedFilter: Filter;

@@ -5,17 +5,7 @@ import { Filter } from '../model/filter';
 @Component({
     moduleId: module.id,
     selector: 'chart-pie-area',
-    template: `
-        <div *ngIf="filter">
-          <h2>CHART-PIE => {{filter.name}} details!</h2>
-          <div>
-            <label>CHART-PIE id: </label>{{filter.id}}
-          </div>
-          <div>
-            <label>CHART-PIE name: </label>{{filter.name}}
-          </div>
-        </div>
-      `
+    templateUrl: './charts-pie.component.html'
 })
 export class ChartComponent_Pie {
     @Input() filter: Filter;
