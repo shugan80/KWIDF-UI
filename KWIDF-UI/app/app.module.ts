@@ -1,7 +1,17 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+
+//Import High charts
+import { CHART_DIRECTIVES } from 'angular2-highcharts'; //V0.2.1
+
+
+//Import - Angular2 Log Services
+//import {Logger} from 'angular2-logger/core';
+//import * as ng2log from 'angular2-logger/core';
+
+
 
 import { routing } from './app.routing';
 import { AppComponent }  from './app.component';
@@ -25,12 +35,16 @@ import { OSComponent }   from './os/os.component';
 import { SPSLossGainComponent }  from './sps/sps-loss-gain/sps-loss-gain.component';
 import { SPSOverviewComponent }  from './sps/sps-overview/sps-overview.component';
 
+
+
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing],
+        routing,
+        //ng2log.Logger
+    ],
     declarations: [
         AppComponent,
         LayoutComponent,
@@ -48,10 +62,12 @@ import { SPSOverviewComponent }  from './sps/sps-overview/sps-overview.component
         TabMenuComponent,
         ContentAreaComponent,
         SPSLossGainComponent,
-        SPSOverviewComponent
+        SPSOverviewComponent,
+        CHART_DIRECTIVES
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    //providers: [ng2log.Logger]
 })
 export class AppModule {
-    
+       
 }

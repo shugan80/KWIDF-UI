@@ -26,5 +26,15 @@
       "menuUrl": "/well-configuration",
       "imgStyle": "fa fa-sitemap"
     }
-  ]
+  ],
+  "wellEventsConfig": {
+    "title": "Well Events",
+    "isTitleVisible": false,
+    "isDataLabelsEnabled": false,
+    "subTitle": "",
+    "xAxisTitle": "",
+    "yAxisTitle": "No of Events",
+    "isLegendEnabled": false
+
+  }
 }

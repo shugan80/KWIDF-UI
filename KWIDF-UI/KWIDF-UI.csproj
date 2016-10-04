@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -97,6 +98,10 @@
     <Content Include="styles.css" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +136,9 @@
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-data-wellEvents.ts" />
+    <TypeScriptCompile Include="app\shared\model\key-value.ts" />
+    <TypeScriptCompile Include="app\shared\services\staticdata.service.ts" />
     <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />
     <TypeScriptCompile Include="app\shared\maps\maps.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-column\charts-column.component.ts" />
@@ -176,7 +184,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>52368</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:52368/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
