@@ -1,10 +1,28 @@
 ﻿<h1>{{title}}</h1>
 <h2>Filters</h2>
-<ul class="filters">
-    <li *ngFor="let filter of filters"
-        [class.selected]="filter === selectedFilter"
-        (click)="onSelect(filter)">
-        <span class="badge">{{filter.id}}</span> {{filter.name}}
+<ul>
+    <li *ngFor="let dir of filters">
+        <span class="iconButton" (click)="toggle()">{{getIcon()}}</span>
+
+        <input type="checkbox" [checked]="checked" (click)="check()" /> {{ dir.name }}
+        <div *ngIf="expanded">
+            <ul>
+                <li *ngFor="let file of dir.children">
+                    <input type="checkbox" [checked]="checked" (click)="check1()" /> {{ file.name }}
+                    <div *ngIf="expanded">
+                        <ul>
+                            <li *ngFor="let sfile of file.children">
+                                <input type="checkbox" [checked]="checked" (click)="check1()" /> {{ sfile.name }}
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
     </li>
 </ul>
+
+
 
