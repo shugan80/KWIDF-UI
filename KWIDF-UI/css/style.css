@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
 /* CSS Document */
-body{font-family: 'Roboto', sans-serif;}
+body{font-family: 'Roboto', sans-serif !important;}
 .main-header{top:0;position:fixed;  width:100% ;padding:10px 20px 10px 20px;background:#e7e5e5;border-bottom:4px solid #c4c1c1; max-height:85px; box-sizing:border-box}
 .lt-90{ margin-left:90px;}
 .header::after {clear: both;content: "";display: table;}
@@ -62,9 +62,6 @@ ul.tab-links li a:hover {background: #e7e5e5;}
 ul.tab-links li a.active {background: #e7e5e5;}
 ul.tab-links li.icon {display: none;}
 
-
-
-
 /*Dashboard content-area*/
 .content-area {position:relative; margin-top:20px;}
 .border{border:1px solid #d4d4d4}
@@ -73,7 +70,7 @@ ul.tab-links li.icon {display: none;}
 .over-view .content-area-right{ padding-left:10px; padding-right:0;}
 .dash-component-head{background:#f5f5f5;padding:10px;border-bottom:1px solid #d4d4d4}
 .dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold;}
-.dash-component-content{ position:relative; min-height:150px;}
+.dash-component-content{ position:relative; min-height:170px;}
 .over-view .well-map{ min-height:400px}
 .over-view .well-map .dash-component-content{ height:528px;}
 .well-status,.well-event{ position:relative}
@@ -84,7 +81,7 @@ ul.tab-links li.icon {display: none;}
 .content-area-left-btm .left{ padding-right:10px; padding-left:0;}
 .content-area-left-btm .right{padding-left:10px; padding-right:0;}
 .lat-prod{position:relative;}
-    .lat-prod .dash-component-content {height:150px}
+    .lat-prod .dash-component-content {height:170px}
 .his-prod{position:relative;}
 .well-summary{ margin-top:20px;}
 .production{ min-height:200px;}
@@ -96,7 +93,7 @@ filed-loss{}
 .loss-gains .content-area-right{ padding-left:10px; padding-right:0;}
 /*Well Test Priority*/
 .wt-priority .sec-1{ padding-left:0}
-.wt-priority .sec-2{ padding-left:5px padding-right:5px }
+.wt-priority .sec-2{ padding-left:5px;padding-right:5px }
 .wt-priority .sec-3{ padding-right:0 }
 .wt-priority .dash-component-content{ height:250px;}
 /*Alarms/Events*/
@@ -117,10 +114,9 @@ filed-loss{}
     .loss-gains .content-area-left,.loss-gains .content-area-right{padding:0;}
     .well-config .wc-settings{padding:0;}
 	}
-@media (max-width:1023px) {
-    ul.tab-links li {
-        border: 0;
-    }
+@media (max-width:1023px) {ul.tab-links {white-space: nowrap;overflow-x: auto;}
+                           ul.tab-links li {border: 0;float:none;display:inline-block;}
+                    ul.tab-links li a{}  
 }
 
 /* Side Bar left Filter View toggle  */
