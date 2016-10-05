@@ -1,4 +1,4 @@
-﻿<div *ngIf="filter">
+﻿<!--<div *ngIf="filter">
     <h2>CHART-PIE => {{filter.name}} details!</h2>
     <div>
         <label>CHART-PIE id: </label>{{filter.id}}
@@ -6,4 +6,11 @@
     <div>
         <label>CHART-PIE name: </label>{{filter.name}}
     </div>
+</div>-->
+
+<div class="dash-component-head">
+    <h3>{{title}}</h3>
+</div>
+<div class="dash-component-content">
+    <chart [options]="options"></chart>
 </div>

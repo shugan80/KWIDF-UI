@@ -1,56 +1,47 @@
-﻿import { Injectable, Output, EventEmitter}  from '@angular/core';
+﻿import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 import { Filter } from '../model/filter';
 import { Filters } from '../data/mock-filters';
 
-export class GlobalFilter {
-    constructor(public id: number, public name: string) { }
-}
-
-
-let filterObj = new GlobalFilter(1, "Tets");
+import { TreeViewFilter } from '../model/filter';
+import { TreeViewFilters } from '../data/mock-treeviewfilter';
 
 @Injectable()
 export class FilterDataService {
-    //public itemAdded$: EventEmitter<Filter> = new EventEmitter<Filter>(false);
+  filterObj:Filter;
+    // Observable navItem source
 
-    
-    @Output() modelChange$: EventEmitter<Filter> = new EventEmitter<Filter>();
+    private _navItemSource = new BehaviorSubject<number>(0);
+    // Observable navItem stream
+    navItem$ = this._navItemSource.asObservable();
+    // service command
+    changeNav(item:number) {       
+        this._navItemSource.next(item);
+    }    
 
-    constructor() {
-       // this.itemAdded$ = new EventEmitter();
-        //this.modelChange$ = new EventEmitter();
-    }
-
-    public setModel(model: Filter): void {
-        console.log(model);
-        this.modelChange$.emit(model);
-    }
-
-    getFilters(): Promise<Filter[]> {
-        return Promise.resolve(Filters);
+    getFilters(): Promise<TreeViewFilter[]> {
+        return Promise.resolve(TreeViewFilters);
     }
     // See the "Take it slow" appendix
-    getFiltersSlowly(): Promise<Filter[]> {
-        return new Promise<Filter[]>(resolve =>
+    getFiltersSlowly(): Promise<TreeViewFilter[]> {
+        return new Promise<TreeViewFilter[]>(resolve =>
             setTimeout(resolve, 2000)) // delay 2 seconds
             .then(() => this.getFilters());
     }
 
     getFilter() {
-        return filterObj;
+        return this.filterObj;
            
     }
 
     addFilter(filter: Filter) {
-        filterObj = filter;
-      //  this.itemAdded$.emit(filter);
-
-        //name = name.trim();
-        //if (name) {
-        //    let crisis = new Crisis(CrisisService.nextCrisisId++, name);
-        //    crisesPromise.then(crises => crises.push(crisis));
-        //}
+        this.filterObj = filter;
+     }
+    filterChanged(): Observable<boolean> {
+        return Observable.of(true);
     }
 
 }

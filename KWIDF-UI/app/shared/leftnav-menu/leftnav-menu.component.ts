@@ -2,19 +2,18 @@ import { Component } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable } from 'rxjs/Rx';
 import { ConfigDataService } from '../services/configdata.service';
-import { GlobalDataService } from '../services/globaldata.service';
 
 
 @Component({
     moduleId: module.id,
     selector: 'app-leftnav-nenu',
     templateUrl: './leftnav-menu.component.html',
-    providers: [ConfigDataService, GlobalDataService]
+    providers: [ConfigDataService]
 })
 export class LeftNavMenuComponent {
     public appConfigItems: any;
 
-    constructor(private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
+    constructor(private _configDataService: ConfigDataService) {
         this._configDataService.configJsonPath = '/app/config/app.config.json';
     }
     

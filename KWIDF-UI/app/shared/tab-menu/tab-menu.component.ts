@@ -2,20 +2,19 @@ import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable } from 'rxjs/Rx';
 import { ConfigDataService } from '../services/configdata.service';
-import { GlobalDataService } from '../services/globaldata.service';
 
 
 @Component({
     selector: 'tab-menu',
     templateUrl: 'app/shared/tab-menu/tab-menu.component.html',
-    providers: [ConfigDataService, GlobalDataService]
+    providers: [ConfigDataService]
 })
 
 export class TabMenuComponent {
     @Input() filePath: string;
     public appContentMenuItems: any;
     
-    constructor(private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
+    constructor(private _configDataService: ConfigDataService) {
 
     }
     

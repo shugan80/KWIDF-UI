@@ -4,3 +4,4 @@
 
 /KWIDF-UI/bin
 /KWIDF-UI/obj/Debug
+*.log

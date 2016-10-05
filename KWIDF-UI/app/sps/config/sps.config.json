@@ -8,26 +8,21 @@
     },
     {
       "menuText": "Loss & Gain",
-      "menuUrl": "../lossgain",
+      "menuUrl": "lossgain",
       "imgStyle": "fa fa-sitemap"
     },
     {
       "menuText": "Well Test Priority",
-      "menuUrl": "/sps/well-test-priority",
+      "menuUrl": "welltestpriority",
       "imgStyle": "fa fa-sitemap"
     },
     {
       "menuText": "Alarms/Events",
-      "menuUrl": "/sps/alarm-events",
-      "imgStyle": "fa fa-sitemap"
-    },
-    {
-      "menuText": "Well Configuration",
-      "menuUrl": "/well-configuration",
+      "menuUrl": "alarmsevents",
       "imgStyle": "fa fa-sitemap"
     }
   ],
-  "wellEventsConfig": {
+  "overview_WellEvents_Config": {
     "title": "Well Events",
     "isTitleVisible": false,
     "isDataLabelsEnabled": false,
@@ -36,5 +31,24 @@
     "yAxisTitle": "No of Events",
     "isLegendEnabled": false
 
+  },
+  "overview_WellStatus_Config": {
+    "title": "Overall Well Status",
+    "isTitleVisible": false,
+    "isDataLabelsEnabled": true,
+    "dataLablesColor": "white",
+    "subTitle": "",
+    "isLegendEnabled": true,
+    "seriesName": "Well Status"
+
+  },
+  "lossGain_Production_Config": {
+    "title": "Production",
+    "isTitleVisible": false,
+    "isDataLabelsEnabled": true,
+    "dataLablesColor": "white",
+    "subTitle": "",
+    "isLegendEnabled": true,
+    "seriesName": "Well Status"
   }
 }

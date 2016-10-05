@@ -34,6 +34,10 @@ import { WPEComponent }   from './wpe/wpe.component';
 import { OSComponent }   from './os/os.component';
 import { SPSLossGainComponent }  from './sps/sps-loss-gain/sps-loss-gain.component';
 import { SPSOverviewComponent }  from './sps/sps-overview/sps-overview.component';
+import { SPSWellTestComponent }  from './sps/sps-welltest-priority/sps-welltest-priority.component';
+import { SPSAlarmsEventsComponent }  from './sps/sps-alarms-events/sps-alarms-events.component';
+
+
 
 
 
@@ -63,7 +67,9 @@ import { SPSOverviewComponent }  from './sps/sps-overview/sps-overview.component
         ContentAreaComponent,
         SPSLossGainComponent,
         SPSOverviewComponent,
-        CHART_DIRECTIVES
+		CHART_DIRECTIVES,
+        SPSWellTestComponent,
+        SPSAlarmsEventsComponent
     ],
     bootstrap: [AppComponent],
     //providers: [ng2log.Logger]

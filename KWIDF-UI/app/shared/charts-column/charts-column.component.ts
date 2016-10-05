@@ -120,8 +120,8 @@ export class ChartComponent_Column {
 
         });
     }
-
-    options: HighchartsOptions;
+    options: Object;
+    //options: HighchartsOptions;
 
     getMaxData(dataArray: any) {
         if (dataArray != null && dataArray.length > 0) {
@@ -139,7 +139,7 @@ export class ChartComponent_Column {
     getConfigItems() {
         this._configService.getConfigItems().subscribe(
             items => {
-                this.chartConfigItems = items[0].wellEventsConfig
+                this.chartConfigItems = items[0].overview_WellEvents_Config
             },
             err => {
                 console.error(err);

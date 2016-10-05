@@ -78,8 +78,10 @@
     <Content Include="app\shared\filter-treeview\filter-treeview.component.html" />
     <Content Include="app\shared\leftnav-menu\leftnav-menu.component.html" />
     <Content Include="app\shared\top-bar\top-bar.component.html" />
+    <Content Include="app\sps\sps-alarms-events\sps-alarms-events.component.html" />
     <Content Include="app\sps\sps-loss-gain\sps-loss-gain.component.html" />
     <Content Include="app\sps\sps-overview\sps-overview.component.html" />
+    <Content Include="app\sps\sps-welltest-priority\sps-welltest-priority.component.html" />
     <Content Include="app\sps\sps.component.html" />
     <Content Include="app\wpe\wpe.component.html" />
     <Content Include="css\bootstrap-theme.min.css" />
@@ -137,6 +139,7 @@
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-wellEvents.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-treeviewfilter.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
     <TypeScriptCompile Include="app\shared\services\staticdata.service.ts" />
     <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />
@@ -146,14 +149,16 @@
     <TypeScriptCompile Include="app\shared\filter-treeview\filter-treeview.ts" />
     <TypeScriptCompile Include="app\shared\model\filter.ts" />
     <TypeScriptCompile Include="app\shared\leftnav-menu\leftnav-menu.component.ts" />
-    <TypeScriptCompile Include="app\shared\services\globaldata.service.ts" />
+    <TypeScriptCompile Include="app\shared\services\apidata.service.ts" />
     <TypeScriptCompile Include="app\shared\services\configdata.service.ts" />
     <TypeScriptCompile Include="app\shared\services\helper.service.ts" />
     <TypeScriptCompile Include="app\shared\services\filterdata.service.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-filters.ts" />
     <TypeScriptCompile Include="app\shared\top-bar\top-bar.component.ts" />
+    <TypeScriptCompile Include="app\sps\sps-alarms-events\sps-alarms-events.component.ts" />
     <TypeScriptCompile Include="app\sps\sps-loss-gain\sps-loss-gain.component.ts" />
     <TypeScriptCompile Include="app\sps\sps-overview\sps-overview.component.ts" />
+    <TypeScriptCompile Include="app\sps\sps-welltest-priority\sps-welltest-priority.component.ts" />
     <TypeScriptCompile Include="app\sps\sps.component.ts" />
     <TypeScriptCompile Include="app\wpe\wpe.component.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
