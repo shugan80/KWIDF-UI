@@ -20,6 +20,7 @@ import { StaticDataService } from '../services/staticdata.service';
     styles: [`
       chart {
         display: block;
+height:200px;
       }
     `],
     template: `<chart [options]="options"></chart>`,

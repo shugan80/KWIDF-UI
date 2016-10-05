@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 //Import High charts
 import { CHART_DIRECTIVES } from 'angular2-highcharts'; //V0.2.1
 
-
 //Import - Angular2 Log Services
 //import {Logger} from 'angular2-logger/core';
 //import * as ng2log from 'angular2-logger/core';
@@ -36,7 +35,8 @@ import { SPSLossGainComponent }  from './sps/sps-loss-gain/sps-loss-gain.compone
 import { SPSOverviewComponent }  from './sps/sps-overview/sps-overview.component';
 import { SPSWellTestComponent }  from './sps/sps-welltest-priority/sps-welltest-priority.component';
 import { SPSAlarmsEventsComponent }  from './sps/sps-alarms-events/sps-alarms-events.component';
-
+import { jQueryComponent }  from './jquery.component';
+import { fixedHeight}  from './dashboard-scroll.component';
 
 
 
@@ -69,7 +69,9 @@ import { SPSAlarmsEventsComponent }  from './sps/sps-alarms-events/sps-alarms-ev
         SPSOverviewComponent,
 		CHART_DIRECTIVES,
         SPSWellTestComponent,
-        SPSAlarmsEventsComponent
+        SPSAlarmsEventsComponent,
+        jQueryComponent,
+        fixedHeight
     ],
     bootstrap: [AppComponent],
     //providers: [ng2log.Logger]

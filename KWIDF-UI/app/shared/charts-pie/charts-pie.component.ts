@@ -16,6 +16,7 @@ import { StaticDataService } from '../services/staticdata.service';
     styles: [`
       chart {
         display: block;
+height:230px;
       }
     `],
     providers: [StaticDataService, ConfigDataService]
