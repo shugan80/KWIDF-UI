@@ -1,65 +1,60 @@
 <div class="container-fluid">
-        <div class="row">
-           
-             <div class="content-area" id="fixed-ht'">
-                      
-        <div class="over-view">
-        <div class="col-md-8 content-area-left">
-          <div class="well-map border">
-         
-            <div class="dash-component-content">
-                 <map-area [filter]="ObjFilter"></map-area>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="content-area-left-btm">
-            <div class="col-md-4 left">
-              <div class="lat-prod border">
-                <div class="dash-component-head">
-                  <h3>Latest Production</h3>
-                </div>
-                <div class="dash-component-content"></div>
-              </div>
-            </div>
-            <div class="col-md-8 right">
-              <div class="his-prod border">
-                <div class="dash-component-head">
-                  <h3>Historic Production</h3>
-                </div>
-                <div class="dash-component-content"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 content-area-right">
-          <div class="well-status border">
-            <div class="dash-component-head">
-              <h3>Overall Well Status</h3>
-            </div>
-            <div class="dash-component-content">
-                 <chart-pie-area [filter]="ObjFilter"></chart-pie-area>
-            </div>
-          </div>
-          <div class="well-event border">
-            <div class="dash-component-head">
-              <h3>Well Events</h3>
-            </div>
-            <div class="dash-component-content">
-                  <chart-column-area [filter]="ObjFilter"></chart-column-area>
-            </div>
-          </div>
-          <div class="well-summary border">
-            <div class="dash-component-head">
-              <h3>Active Well Summary</h3>
-            </div>
-            <div class="dash-component-content"></div>
-          </div>
-        </div>
-        </div>
+    <div class="row">
 
-             </div>
+        <div class="content-area" id="fixed-ht'">
+
+            <div class="over-view">
+                <div class="col-md-8 content-area-left">
+                    <div class="well-map border">
+
+                        <div class="dash-component-content">
+                            <map-area [filter]="ObjFilter"></map-area>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="content-area-left-btm">
+                        <div class="col-md-4 left">
+                            <div class="lat-prod border">
+                                <div class="dash-component-head">
+                                    <h3>Latest Production</h3>
+                                </div>
+                                <div class="dash-component-content"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 right">
+                            <div class="his-prod border">
+                                <div class="dash-component-head">
+                                    <h3>Historic Production</h3>
+                                </div>
+                                <div class="dash-component-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 content-area-right">
+                    <div class="production border">
+                        <chart-pie-area [filter]="ObjFilter" component_context="sps-overview-wellStatus"></chart-pie-area>
+                    </div>
+                    <div class="well-event border">
+                        <div class="dash-component-head">
+                            <h3>Well Events</h3>
+                        </div>
+                        <div class="dash-component-content">
+                            <chart-column-area [filter]="ObjFilter"></chart-column-area>
+                        </div>
+                    </div>
+                    <div class="well-summary border">
+                        <div class="dash-component-head">
+                            <h3>Active Well Summary</h3>
+                        </div>
+                        <div class="dash-component-content"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
 
 

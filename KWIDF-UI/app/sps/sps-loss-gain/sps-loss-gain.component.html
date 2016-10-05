@@ -1,46 +1,38 @@
-
-
-
 <div class="container-fluid">
-        <div class="row">
-           
-             <div class="content-area" id="fixed-ht'">
-                      
-    <div class="loss-gains">
-        <div class="col-md-8 content-area-left">
-          <div class="well-map border">
-            <div class="dash-component-head">
-              <h3>Well Map</h3>
-            </div>
-            <div class="dash-component-content">
-                    <map-area [filter]="ObjFilter"></map-area>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 content-area-right">
-          <div class="production border">
-            <div class="dash-component-head">
-              <h3>Production</h3>
-            </div>
-            <div class="dash-component-content">
-                 <chart-pie-area [filter]="ObjFilter"></chart-pie-area>
-            </div>
-          </div>
-          <div class="production margin-top20 border">
-            <div class="dash-component-head">
-              <h3>Field Losses & Gains</h3>
-            </div>
-            <div class="dash-component-content">
-                   <chart-column-area [filter]="ObjFilter"></chart-column-area>
-            </div>
-          </div>
-          
-        </div>
-        </div>
+    <div class="row">
 
-             </div>
+        <div class="content-area" id="fixed-ht'">
+
+            <div class="loss-gains">
+                <div class="col-md-8 content-area-left">
+                    <div class="well-map border">
+                        <div class="dash-component-head">
+                            <h3>Well Map</h3>
+                        </div>
+                        <div class="dash-component-content">
+                            <map-area [filter]="ObjFilter"></map-area>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 content-area-right">
+                    <div class="production border">
+                        <chart-pie-area [filter]="ObjFilter" component_context="sps-lossGain-production"></chart-pie-area>
+                    </div>
+                    <div class="production margin-top20 border">
+                        <div class="dash-component-head">
+                            <h3>Field Losses & Gains</h3>
+                        </div>
+                        <div class="dash-component-content">
+                            <chart-column-area [filter]="ObjFilter"></chart-column-area>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
 
 

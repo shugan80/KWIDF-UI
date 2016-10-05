@@ -13,19 +13,19 @@ export class MapsComponent {
     @Input() filter: Filter;
 
     constructor(private _filterService: FilterDataService) {
-        //this._filterService.modelChange$.subscribe(
-        //    (items: Filter) => {
-        //        console.log(items.name);
-        //        console.log(items.id);
-        //    },
-        //    (err: any) => {
-        //        console.error(err);
-        //    },
-        //    () => {
-        //        console.log(' MapsComponent subscribe - done');
+        this._filterService.navItem$.subscribe(
+            //(items: Filter) => {
+            //    console.log(items.name);
+            //    console.log(items.id);
+            //},
+            //(err: any) => {
+            //    console.error(err);
+            //},
+            //() => {
+            //    console.log(' MapsComponent subscribe - done');
                 
-        //    }
-        //);
+            //}
+        );
     }
 }
 

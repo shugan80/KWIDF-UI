@@ -14,7 +14,7 @@ import { FilterDataService } from '../../shared/services/filterdata.service';
 })
 export class SPSOverviewComponent {
     item: number;
-    title = 'North Kuwait';
+    //title = 'North Kuwait';
     filters: Filter[];
     ObjFilter: Filter;
     subscription: Subscription;

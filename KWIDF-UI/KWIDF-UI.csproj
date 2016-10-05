@@ -139,6 +139,7 @@
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-wellEvents.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-treeviewfilter.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
     <TypeScriptCompile Include="app\shared\services\staticdata.service.ts" />
     <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />
@@ -148,7 +149,7 @@
     <TypeScriptCompile Include="app\shared\filter-treeview\filter-treeview.ts" />
     <TypeScriptCompile Include="app\shared\model\filter.ts" />
     <TypeScriptCompile Include="app\shared\leftnav-menu\leftnav-menu.component.ts" />
-    <TypeScriptCompile Include="app\shared\services\globaldata.service.ts" />
+    <TypeScriptCompile Include="app\shared\services\apidata.service.ts" />
     <TypeScriptCompile Include="app\shared\services\configdata.service.ts" />
     <TypeScriptCompile Include="app\shared\services\helper.service.ts" />
     <TypeScriptCompile Include="app\shared\services\filterdata.service.ts" />

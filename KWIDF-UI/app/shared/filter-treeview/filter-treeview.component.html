@@ -1,28 +1,13 @@
 ﻿<h1>{{title}}</h1>
-<h2>Filters</h2>
-<ul>
-    <li *ngFor="let dir of filters">
-        <span class="iconButton" (click)="toggle()">{{getIcon()}}</span>
-
-        <input type="checkbox" [checked]="checked" (click)="check()" /> {{ dir.name }}
-        <div *ngIf="expanded">
-            <ul>
-                <li *ngFor="let file of dir.children">
-                    <input type="checkbox" [checked]="checked" (click)="check1()" /> {{ file.name }}
-                    <div *ngIf="expanded">
-                        <ul>
-                            <li *ngFor="let sfile of file.children">
-                                <input type="checkbox" [checked]="checked" (click)="check1()" /> {{ sfile.name }}
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div>
-    </li>
-</ul>
+<div class="demo-section k-content">
+    <div>
+        <div id="treeview"></div>
+    </div>
+    <div style="padding-top: 2em;">
+        <h4>Status</h4>
+        <p id="result">No nodes checked.</p>
+    </div>
+</div>
 
 
 
