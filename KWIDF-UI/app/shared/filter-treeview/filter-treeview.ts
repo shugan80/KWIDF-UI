@@ -25,22 +25,24 @@ export class FilterTreeViewComponent {
     ngOnInit(): void {
         console.log('filter-onit');
         this.getFilters();
+        this.filterDataService.changeNav(this.item);
+
     }
 
     treeViewToggle(cFilter:TreeViewFilter) {
         cFilter.expanded = !cFilter.expanded;
     }
 
-
     treeViewGetIcon(cFilter: TreeViewFilter) {
         if (cFilter.expanded) {
-            return '-';
+            return 'iconButton';
         }
-        return '+';
+        return 'icondown';
     }
-
+    
     onTreeViewChecked(cFilter: TreeViewFilter) {
         cFilter.checked = !cFilter.checked;
+        this.clearSelectedCheckbox(cFilter);
         this.checkRecursiveFilters(cFilter, cFilter.checked);
 
         //console.log('onTreeViewChecked');
@@ -65,6 +67,32 @@ export class FilterTreeViewComponent {
             });
 
         });
+    }
+
+    clearSelectedCheckbox(cFilter: TreeViewFilter) {
+        this.filters.forEach(c => {
+            //Root
+            if (c.id != cFilter.id) {
+                c.checked = false;
+            }
+
+            //Level 1
+            c.children.forEach(l => {
+
+                if (l.id != cFilter.id) {
+                    l.checked = false;
+                } 
+
+                //Level 2
+                l.children.forEach(s => {
+                    if (s.id != cFilter.id) {
+                        s.checked = false;
+                    }
+                }
+            }
+
+        });
+
     }
 
 }

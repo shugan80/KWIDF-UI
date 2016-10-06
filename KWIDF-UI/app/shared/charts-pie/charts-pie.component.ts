@@ -1,8 +1,9 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
+
 
 import { CHART_DIRECTIVES } from 'angular2-highcharts';
 
@@ -26,38 +27,40 @@ import { FilterDataService } from '../services/filterdata.service';
 export class ChartComponent_Pie {
     @Input() currentFilters: Filter;
     @Input() component_context: string;
-
-    title = '';
+   
+    title='';
     public chartConfigItems: any;
 
     constructor(private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
-        this._filterService.navItem$.subscribe(
-            (items: any) => {
-                //console.log(items.name);
-                //console.log(items.id);
-                if (items) {
-                    this.renderChart(items.id);
-                }
-                console.log(' MapsComponent subscribe - done');
-            },
-            (err: any) => {
-                console.error(err);
-            },
-            () => {
-                console.log(' MapsComponent subscribe - done');
-            }
-
-        );
+     
     }
 
     ngOnInit() {
         this._configService.configJsonPath = '/app/sps/config/sps.config.json';
         this.getConfigItems();
+   
+    }
+
+
+    ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+        let log: string[] = [];
+        for (let propName in changes) {
+            if (propName == "currentFilters") {
+                let changedProp = changes[propName];
+                this.ObjFilter = changedProp.currentValue;
+                this.renderChart(this.ObjFilter.id);
+            }
+            else {
+                let changedProp = changes[propName];
+                let from = JSON.stringify(changedProp.currentValue);
+            }
+        }
+      
     }
 
     loadModuleComponents() {
         this.title = this.chartConfigItems.title;
-        this.renderChart(0);
+        this.renderChart(this.ObjFilter.id);
     }
 
     //Chart functionality - Start
