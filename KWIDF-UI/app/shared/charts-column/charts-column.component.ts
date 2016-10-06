@@ -2,6 +2,7 @@
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { Filter } from '../model/filter';
+import { TreeViewFilter } from '../model/filter';
 
 //Import - Angular2 Log Services
 //import { Logger } from "angular2-logger/core";
@@ -20,14 +21,14 @@ import { StaticDataService } from '../services/staticdata.service';
     styles: [`
       chart {
         display: block;
-height:200px;
+        height:200px;
       }
     `],
     template: `<chart [options]="options"></chart>`,
     providers: [StaticDataService, ConfigDataService]
 })
 export class ChartComponent_Column {
-    @Input() filter: Filter;
+    @Input() currentFilters: Filter;
 
     public chartConfigItems: any;
 

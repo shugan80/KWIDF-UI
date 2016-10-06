@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { TabMenuComponent } from '../../shared/tab-menu/tab-menu.component';
 
 import { Filter } from '../../shared/model/filter';
+import { TreeViewFilter } from '../../shared/model/filter';
 import { FilterDataService } from '../../shared/services/filterdata.service';
 
 @Component({
@@ -19,8 +20,7 @@ export class SPSLossGainComponent {
 
 
     item: number;
-    //title = 'North Kuwait';
-    filters: Filter[];
+    currentFilters: TreeViewFilter[];
     ObjFilter: Filter;
     subscription: Subscription;
 
@@ -37,7 +37,7 @@ export class SPSLossGainComponent {
             item => {
                 console.log("dsafsf");
                 this.item = item;
-                this.ObjFilter = this.filterDataService.getFilter();
+                this.ObjFilter = this.filterDataService.getCurrentFilters();
                 //console.log(this.ObjFilter.id);
             });
     }

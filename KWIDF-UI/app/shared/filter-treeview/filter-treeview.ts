@@ -1,144 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
+
 import { FilterDataService } from '../services/filterdata.service';
 
-
-
-declare var jQuery: any;
-
 @Component({
-    moduleId: module.id,
-    selector: 'tree-view',
-    templateUrl: './filter-treeview.component.html',
-    providers: [FilterDataService]
+
+    selector: 'filter-tree-view',
+    templateUrl: 'app/shared/filter-treeview/filter-treeview.component.html'
 })
 export class FilterTreeViewComponent {
+    item: number = 0;
+    filters: Filter[];
 
-    public filters: TreeViewFilter[];
-    public filtersData: TreeViewFilter[];
 
     constructor(private filterDataService: FilterDataService) { }
 
+    getFilters(): void {
+        this.filterDataService.getFilters().then(filters => this.filters = filters);
+    }
+
     ngOnInit(): void {
         console.log('filter-onit');
-        //this.getFilters();
+        this.getFilters();
     }
 
-    getFilters(): void {
-        this.filterDataService.getFilters().then(filters => this.filtersData = filters);
+    treeViewToggle(cFilter:TreeViewFilter) {
+        cFilter.expanded = !cFilter.expanded;
     }
 
-    setFilters(data: any) {
-        this.filtersData = data;
-        this.renderChart();
+
+    treeViewGetIcon(cFilter: TreeViewFilter) {
+        if (cFilter.expanded) {
+            return '-';
+        }
+        return '+';
     }
-    
-    ngAfterViewInit() {
-        this.filterDataService.getFilters().then(filters => this.setFilters(filters));
+
+    onTreeViewChecked(cFilter: TreeViewFilter) {
+        cFilter.checked = !cFilter.checked;
+        this.checkRecursiveFilters(cFilter, cFilter.checked);
+
+        //console.log('onTreeViewChecked');
+        this.filterDataService.publishFilterData(cFilter);
+        this.filterDataService.changeNav(this.item);
+
     }
 
-    renderChart() {
-        jQuery("#treeview").kendoTreeView({
-            checkboxes: {
-                checkChildren: true
-            },
+    checkRecursiveFilters(cFilter: TreeViewFilter, state: boolean) {
+        cFilter.children.forEach(d => {
+            d.checked = state;
 
-            check: this.onCheck,
+            //Level 1
+            d.children.forEach(d => {
+                d.checked = state;
 
-            dataSource: this.filtersData
+                //Level 2
+                d.children.forEach(d => {
+                    d.checked = state;
+                });
+
+            });
+
         });
     }
-
-    onCheck() {
-        var self = this;
-        let checkedNodes: Array<string> = [];
-        let treeView = jQuery("#treeview").data("kendoTreeView");
-        let message = '';
-        this.filters = [];
-
-
-        //this.checkedNodeIds(treeView.dataSource.view(), checkedNodes);
-        let nodes: any = treeView.dataSource.view();
-        for (var i = 0; i < nodes.length; i++) {
-            let tvFilter: TreeViewFilter;
-            if (nodes[i].checked) {
-                checkedNodes.push(nodes[i].id);
-
-                tvFilter = new TreeViewFilter();
-                tvFilter.id = nodes[i].id;
-                tvFilter.expanded = nodes[i].expanded;
-                tvFilter.items = nodes[i].items;
-                tvFilter.spriteCssClass = nodes[i].spriteCssClass;
-                tvFilter.text = nodes[i].text;
-
-                this.filters.push(tvFilter);
-            }
-            if (nodes[i].hasChildren) {
-                let firstLevelChildren = nodes[i].children.view();
-                for (var j = 0; j < firstLevelChildren.length; j++) {
-                    if (firstLevelChildren[j].checked) {
-                        checkedNodes.push(firstLevelChildren[j].id);
-
-                        tvFilter = new TreeViewFilter();
-                        tvFilter.id = firstLevelChildren[j].id;
-                        tvFilter.expanded = firstLevelChildren[j].expanded;
-                        tvFilter.items = firstLevelChildren[j].items;
-                        tvFilter.spriteCssClass = firstLevelChildren[j].spriteCssClass;
-                        tvFilter.text = firstLevelChildren[j].text;
-
-                        this.filters.push(tvFilter);
-                    }
-                    if (firstLevelChildren[j].hasChildren) {
-                        let secondLevelChildren = firstLevelChildren[j].children.view();
-                        for (var k = 0; k < secondLevelChildren.length; k++) {
-                            if (secondLevelChildren[k].checked) {
-                                checkedNodes.push(secondLevelChildren[k].id);
-
-                                tvFilter = new TreeViewFilter();
-                                tvFilter.id = secondLevelChildren[k].id;
-                                tvFilter.expanded = secondLevelChildren[k].expanded;
-                                tvFilter.items = secondLevelChildren[k].items;
-                                tvFilter.spriteCssClass = secondLevelChildren[k].spriteCssClass;
-                                tvFilter.text = secondLevelChildren[k].text;
-
-                                this.filters.push(tvFilter);
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-
-        if (checkedNodes.length > 0) {
-            message = "IDs of checked nodes: " + checkedNodes.join(",");
-        } else {
-            message = "No nodes checked.";
-        }
-
-
-        console.log(this.filters);
-        jQuery("#result").html(message);
-    }
-
-    //checkedNodeIds(nodes: any, checkedNodes: any) {
-    //    for (var i = 0; i < nodes.length; i++) {
-    //        if (nodes[i].checked) {
-    //            checkedNodes.push(nodes[i].id);
-    //        }
-
-    //        if (nodes[i].hasChildren) {
-    //            this.checkedNodeIds(nodes[i].children.view(), checkedNodes);
-    //        }
-    //    }
-    //}
-
-    //onSelect(filter: Filter): void {
-    //    this.selectedFilter = filter;
-    //    console.log('onSelect');
-    //}
 
 }
 

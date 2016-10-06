@@ -1,10 +1,30 @@
-﻿<div *ngIf="filter">
-    <h2>MAP => {{filter.name}} details!</h2>
+﻿<div>
     <div>
-        <label>MAP-id: </label>{{filter.id}}
+        <h3>Well Map </h3>
     </div>
-    <div>
-        <label>MAP-name: </label>
-        <input [(ngModel)]="filter.name" placeholder="name" />
+    <div *ngIf="currentFilters">
+        <ul>
+            <li>
+                <span> {{ currentFilters.name }} </span>
+                <!-- First Level End-->
+                <div>
+                    <ul>
+                        <li *ngFor="let filter_l1 of currentFilters.children">
+                            <span> {{ filter_l1.name }} </span>
+                            <!-- Second Level Start-->
+                            <div>
+                                <ul>
+                                    <li *ngFor="let filter_l2 of filter_l1.children">
+                                        <span> {{ filter_l2.name }} </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Second Level End-->
+                        </li>
+                    </ul>
+                </div>
+                <!-- First Level End-->
+            </li>
+        </ul>
     </div>
 </div>

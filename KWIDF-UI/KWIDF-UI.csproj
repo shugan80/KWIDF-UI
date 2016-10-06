@@ -138,8 +138,7 @@
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
-    <TypeScriptCompile Include="app\shared\data\mock-data-wellEvents.ts" />
-    <TypeScriptCompile Include="app\shared\data\mock-treeviewfilter.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
     <TypeScriptCompile Include="app\shared\services\staticdata.service.ts" />
     <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />

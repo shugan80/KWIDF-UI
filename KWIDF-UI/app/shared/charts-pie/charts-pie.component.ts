@@ -2,12 +2,14 @@
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { Filter } from '../model/filter';
+import { TreeViewFilter } from '../model/filter';
 
 import { CHART_DIRECTIVES } from 'angular2-highcharts';
 
 import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
+import { FilterDataService } from '../services/filterdata.service';
 
 @Component({
     moduleId: module.id,
@@ -16,20 +18,36 @@ import { StaticDataService } from '../services/staticdata.service';
     styles: [`
       chart {
         display: block;
-height:230px;
+        height:230px;
       }
     `],
     providers: [StaticDataService, ConfigDataService]
 })
 export class ChartComponent_Pie {
-    @Input() filter: Filter;
+    @Input() currentFilters: Filter;
     @Input() component_context: string;
 
     title = '';
     public chartConfigItems: any;
 
-    constructor(private _configService: ConfigDataService, private dataService: StaticDataService) {
+    constructor(private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
+        this._filterService.navItem$.subscribe(
+            (items: any) => {
+                //console.log(items.name);
+                //console.log(items.id);
+                if (items) {
+                    this.renderChart(items.id);
+                }
+                console.log(' MapsComponent subscribe - done');
+            },
+            (err: any) => {
+                console.error(err);
+            },
+            () => {
+                console.log(' MapsComponent subscribe - done');
+            }
 
+        );
     }
 
     ngOnInit() {
@@ -39,12 +57,13 @@ export class ChartComponent_Pie {
 
     loadModuleComponents() {
         this.title = this.chartConfigItems.title;
-        this.renderChart();
+        this.renderChart(0);
     }
 
     //Chart functionality - Start
-    renderChart() {
-        this.dataService.get_pieChart_Data(this.component_context).then(data => {
+    renderChart(filterId: number) {
+        console.log("sudhakar..." + filterId);
+        this.dataService.get_pieChart_Data(this.component_context, filterId).then(data => {
 
             let maxYAxisData = this.getMaxData(data);
             let dataColors = this.getColors(data);
@@ -68,7 +87,7 @@ export class ChartComponent_Pie {
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: this.chartConfigItems.isDataLabelsEnabled,
-                            distance: -50,
+                            distance: -30,
                             color: this.chartConfigItems.dataLablesColor,
                             formatter: function () {
                                 return Math.round(this.y);

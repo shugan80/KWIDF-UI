@@ -34,7 +34,7 @@ export class SPSAlarmsEventsComponent {
             item => {
                
                 this.item = item;
-                this.ObjFilter = this.filterDataService.getFilter();
+                this.ObjFilter = this.filterDataService.getCurrentFilters();
               
             });
     }

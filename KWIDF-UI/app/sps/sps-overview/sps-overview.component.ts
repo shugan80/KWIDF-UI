@@ -31,7 +31,7 @@ export class SPSOverviewComponent {
             item => {
                 console.log("dsafsf");
                 this.item = item;
-                this.ObjFilter = this.filterDataService.getFilter();
+                this.ObjFilter = this.filterDataService.getCurrentFilters();
               
             });
     }
