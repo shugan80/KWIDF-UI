@@ -1,30 +1,38 @@
 ﻿<div>
-    <div>
+    <div class="dash-component-head">
         <h3>Well Map </h3>
+        <div class="pull-right"><ul class="list-icons">
+    <li><a href="" class="expand" ></a></li>
+    <li><a href="" class="pdf"></a></li>
+    <li><a href="" class="excel"></a></li>
+    <li><a href="" class="table"></a></li>
+</ul></div>
     </div>
-    <div *ngIf="currentFilters">
-        <ul>
-            <li>
-                <span> {{ currentFilters.name }} </span>
-                <!-- First Level End-->
-                <div>
-                    <ul>
-                        <li *ngFor="let filter_l1 of currentFilters.children">
-                            <span> {{ filter_l1.name }} </span>
-                            <!-- Second Level Start-->
-                            <div>
-                                <ul>
-                                    <li *ngFor="let filter_l2 of filter_l1.children">
-                                        <span> {{ filter_l2.name }} </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Second Level End-->
-                        </li>
-                    </ul>
-                </div>
-                <!-- First Level End-->
-            </li>
-        </ul>
+    <div class="dash-component-content">
+        <div *ngIf="currentFilters">
+            <ul>
+                <li>
+                    <span> {{ currentFilters.name }} </span>
+                    <!-- First Level End-->
+                    <div>
+                        <ul>
+                            <li *ngFor="let filter_l1 of currentFilters.children">
+                                <span> {{ filter_l1.name }} </span>
+                                <!-- Second Level Start-->
+                                <div>
+                                    <ul>
+                                        <li *ngFor="let filter_l2 of filter_l1.children">
+                                            <span> {{ filter_l2.name }} </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Second Level End-->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- First Level End-->
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

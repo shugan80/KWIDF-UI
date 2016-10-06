@@ -68,27 +68,15 @@ body{font-family: 'Roboto', sans-serif !important;}
 .list-grand-child .control--checkbox .control__indicator:after {    left: 2px;top: 0px;width: 5px;height: 8px;border: solid #55555a;border-width: 0 2px 2px 0;transform: rotate(45deg);}
 .control--checkbox input:disabled ~ .control__indicator:after {border-color: #7b7b7b;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Dashboard Webpart icons*/
+.list-icons{}
+.list-icons { padding:0; margin:0;list-style-type: none;}
+.list-icons li{float:right; padding-left:6px;}
+.list-icons  li a{ display:inline-block}
+.list-icons a.expand{ background:url(../images/expand.png) left 50% no-repeat;width:18px;height:18px; background-image:}
+.list-icons a.pdf{ background:url(../images/pdf.png) left 50% no-repeat;width:18px;height:18px;}
+.list-icons a.excel{ background:url(../images/excel.png) left 50% no-repeat;width:18px;height:18px;}
+.list-icons a.table{ background:url(../images/table.png) left 50% no-repeat;width:18px;height:18px; margin-bottom:0;}
 
 
 
@@ -124,10 +112,10 @@ ul.tab-links li.icon {display: none;}
 .over-view .content-area-left{ padding-right:10px; padding-left:0;}
 .over-view .content-area-right{ padding-left:10px; padding-right:0;}
 .dash-component-head{background:#f5f5f5;padding:10px;border-bottom:1px solid #d4d4d4}
-.dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold;}
+.dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold; display:inline-block}
 .dash-component-content{ position:relative; min-height:170px;}
 .over-view .well-map{ min-height:400px}
-.over-view .well-map .dash-component-content{ height:528px;}
+.over-view .well-map .dash-component-content{ height:490px;}
 .well-status,.well-event{ position:relative}
 .well-status{ margin-bottom:20px;}
 .well-status .dash-component-content{ height:150px;}
