@@ -12,8 +12,8 @@ import { TreeViewFilters } from '../data/mock-filters';
 @Injectable()
 export class FilterDataService {
 
-    filterObj: Filter;
-    public finalfilters: Array<TreeViewFilter>;
+    private filterObj: TreeViewFilter;
+    finalfilters: Array<TreeViewFilter>;
 
     // Observable navItem source
     private _navItemSource = new BehaviorSubject<number>(0);
@@ -29,7 +29,7 @@ export class FilterDataService {
 
     getFilters(): Promise<TreeViewFilter[]> {
         this.finalfilters = this.DirectoryProcess(TreeViewFilters);
-        return Promise.resolve(TreeViewFilters);
+        return Promise.resolve(this.finalfilters);
     }
     // See the "Take it slow" appendix
     getFiltersSlowly(): Promise<TreeViewFilter[]> {
@@ -40,6 +40,7 @@ export class FilterDataService {
 
     DirectoryProcess(objrootDirectories: Array<TreeViewFilter>) {
         let rootDirs = this.Traverse(objrootDirectories);
+        this.filterObj = rootDirs[0].children.find(x=> x.checked == true);
         console.log(rootDirs);
         return rootDirs;
     }
@@ -48,7 +49,11 @@ export class FilterDataService {
         let directoriesList: TreeViewFilter[] = [];
         for (let dir of objDirs) {
             let obj = new TreeViewFilter();
+            obj.id = dir.id;
+            obj.parentId = dir.parentId;
             obj.name = dir.name;
+            obj.expanded = dir.expanded;
+            obj.checked = dir.checked;
             let child = this.Traverse(dir.children);
             obj.children = child;
             directoriesList.push(obj);
@@ -61,7 +66,7 @@ export class FilterDataService {
 
     }
 
-    publishFilterData(filter: Filter) {
+    publishFilterData(filter: TreeViewFilter) {
         this.filterObj = filter;
         console.log(filter);
     }

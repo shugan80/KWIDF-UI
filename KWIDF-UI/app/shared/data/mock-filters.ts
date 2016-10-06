@@ -33,7 +33,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 children: [
                     {
                         id: 201,
-                        parentId: 100,
+                        parentId: 200,
                         name: 'Subriyah',
                         checked: false,
                         expanded: false,
@@ -41,7 +41,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                     },
                     {
                         id: 202,
-                        parentId: 100,
+                        parentId: 200,
                         name: 'Raudhatain',
                         checked: false,
                         expanded: false,
@@ -49,7 +49,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                     },
                     {
                         id: 203,
-                        parentId: 100,
+                        parentId: 200,
                         name: 'Abdali',
                         checked: false,
                         expanded: false,
@@ -57,7 +57,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                     },
                     {
                         id: 204,
-                        parentId: 100,
+                        parentId: 200,
                         name: 'Ratqa',
                         checked: false,
                         expanded: false,
@@ -142,7 +142,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         id: 501,
                         parentId: 500,
                         name: 'MARIO',
-                        checked: false,
+                        checked: true,
                         expanded: false,
                         children: []
                     },
@@ -150,7 +150,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         id: 501,
                         parentId: 500,
                         name: 'BAENEZI',
-                        checked: false,
+                        checked: true,
                         expanded: false,
                         children: []
                     },
@@ -158,7 +158,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         id: 501,
                         parentId: 500,
                         name: 'TTWAITAN',
-                        checked: false,
+                        checked: true,
                         expanded: false,
                         children: []
 

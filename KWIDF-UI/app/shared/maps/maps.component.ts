@@ -1,8 +1,7 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { Filter } from '../model/filter';
+
 import { TreeViewFilter } from '../model/filter';
-import { FilterDataService } from '../services/filterdata.service';
 
 @Component({
     moduleId: module.id,
@@ -11,24 +10,20 @@ import { FilterDataService } from '../services/filterdata.service';
 })
 
 export class MapsComponent {
-    @Input() currentFilters: Filter;
-
-    constructor(private _filterService: FilterDataService) {
-        this._filterService.navItem$.subscribe(
-            (items: any) => {
-                //console.log(items.name);
-                //console.log(items.id);
-                console.log(' MapsComponent subscribe - done');
-            },
-            (err: any) => {
-                console.error(err);
-            },
-            () => {
-                console.log(' MapsComponent subscribe - done');
-            }
-            
-        );
+    @Input() currentFilters: TreeViewFilter;
+    
+    
+    ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+        let log: string[] = [];
+        for (let propName in changes) {
+            let changedProp = changes[propName];
+            let from = JSON.stringify(changedProp.previousValue);
+            let to = JSON.stringify(changedProp.currentValue);
+            log.push(`${propName} changed from ${from} to ${to}`);
+        }
+      
     }
+   
 }
 
 
