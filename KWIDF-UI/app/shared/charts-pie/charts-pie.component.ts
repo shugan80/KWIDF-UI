@@ -27,7 +27,9 @@ import { FilterDataService } from '../services/filterdata.service';
 export class ChartComponent_Pie {
     @Input() currentFilters: Filter;
     @Input() component_context: string;
-   
+  
+    ObjFilter: Filter;
+    
     title='';
     public chartConfigItems: any;
 

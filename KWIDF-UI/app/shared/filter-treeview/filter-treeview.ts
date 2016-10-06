@@ -13,7 +13,7 @@ import { FilterDataService } from '../services/filterdata.service';
 })
 export class FilterTreeViewComponent {
     item: number = 0;
-    filters: Filter[];
+    filters: TreeViewFilter[];
 
 
     constructor(private filterDataService: FilterDataService) { }
@@ -88,8 +88,8 @@ export class FilterTreeViewComponent {
                     if (s.id != cFilter.id) {
                         s.checked = false;
                     }
-                }
-            }
+                });
+            });
 
         });
 
