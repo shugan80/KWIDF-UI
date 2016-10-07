@@ -31,6 +31,7 @@ export class SPSWellTestComponent {
      }
 
     ngOnInit() {
+        console.log(' SPSWellTestComponent ngOnInit');
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
                

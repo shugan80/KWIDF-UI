@@ -30,6 +30,7 @@ export class SPSAlarmsEventsComponent {
      }
 
     ngOnInit() {
+        console.log(' SPSAlarmsEventsComponent ngOnInit');
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
                

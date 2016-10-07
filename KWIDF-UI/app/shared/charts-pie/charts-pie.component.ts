@@ -1,4 +1,4 @@
-﻿import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
+﻿import { Component, Input, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { Filter } from '../model/filter';
@@ -7,10 +7,15 @@ import { TreeViewFilter } from '../model/filter';
 
 import { CHART_DIRECTIVES } from 'angular2-highcharts';
 
-import { ConfigDataService } from '../services/configdata.service'
+
+
+import { ConfigDataService } from '../services/configdata.service';
+import { GlobalDataService } from '../services/globaldata.service';
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { FilterDataService } from '../services/filterdata.service';
+
+//declare var jQuery: any;
 
 @Component({
     moduleId: module.id,
@@ -22,25 +27,28 @@ import { FilterDataService } from '../services/filterdata.service';
         height:230px;
       }
     `],
-    providers: [StaticDataService, ConfigDataService]
+    providers: [StaticDataService, ConfigDataService, GlobalDataService]
 })
 export class ChartComponent_Pie {
-    @Input() currentFilters: Filter;
+    @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
-  
+
+
     ObjFilter: Filter;
-    
-    title='';
+    title = '';
     public chartConfigItems: any;
 
-    constructor(private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
-     
+    constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
+
     }
 
     ngOnInit() {
-        this._configService.configJsonPath = '/app/sps/config/sps.config.json';
-        this.getConfigItems();
-   
+        console.log(' ChartComponent_Pie ngOnInit');
+        this.loadConfigItems();
+    }
+
+    ngAfterViewInit() {
+        
     }
 
 
@@ -57,19 +65,37 @@ export class ChartComponent_Pie {
                 let from = JSON.stringify(changedProp.currentValue);
             }
         }
-      
+
     }
 
-    loadModuleComponents() {
+    loadConfigItems() {
+        let configItems: any = this._globalDataService.getModuleConfigItems();
+        if (this.component_context === "sps-overview-wellStatus") {
+            this.chartConfigItems = configItems.overview_WellStatus_Config;
+        }
+        else {
+            this.chartConfigItems = configItems.lossGain_Production_Config;
+        }
         this.title = this.chartConfigItems.title;
-        this.renderChart(this.ObjFilter.id);
     }
+
+    //loadModuleComponents() {
+    //    this.title = this.chartConfigItems.title;
+    //    this.renderChart(this.ObjFilter.id);
+    //}
+
 
     //Chart functionality - Start
     renderChart(filterId: number) {
-        console.log("sudhakar..." + filterId);
-        this.dataService.get_pieChart_Data(this.component_context, filterId).then(data => {
-
+        this.dataService.get_pieChart_Data(this.component_context, filterId).then(resultData => {
+            let data: Array<KeyValueData>;
+            if (resultData.length > 0) {
+                data = resultData[0].data;
+            }
+            else {
+                data = [];
+            }
+            
             let maxYAxisData = this.getMaxData(data);
             let dataColors = this.getColors(data);
 
@@ -103,14 +129,15 @@ export class ChartComponent_Pie {
                 },
                 colors: dataColors,
                 exporting: {
-                    enabled: true,
+                    en: true,
                     filename: "chart",
-                    type: "image/png"
+                    type: "image/png",
+                    
                 },
                 series: [{
                     name: this.chartConfigItems.seriesName,
                     colorByPoint: true,
-                    data: data.map(function (point) {
+                    data: data.map(function (point:any) {
                         return [point.key, point.value]
                     })
                 }]
@@ -148,25 +175,8 @@ export class ChartComponent_Pie {
 
     //Chart functionality - End
 
-    getConfigItems() {
-        this._configService.getConfigItems().subscribe(
-            items => {
-                if (this.component_context === "sps-overview-wellStatus") {
-                    this.chartConfigItems = items[0].overview_WellStatus_Config;
-                }
-                else {
-                    this.chartConfigItems = items[0].lossGain_Production_Config;
-                }
-            },
-            err => {
-                console.error(err);
-            },
-            () => {
-                console.log('done');
-                this.loadModuleComponents();
-            }
-            // No error or completion callbacks here. They are optional, but
-            // you will get console errors if the Observable is in an error state.
-        );
+
+    onClickIcons(): void {
+
     }
 }

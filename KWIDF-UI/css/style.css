@@ -72,11 +72,11 @@ body{font-family: 'Roboto', sans-serif !important;}
 .list-icons{}
 .list-icons { padding:0; margin:0;list-style-type: none;}
 .list-icons li{float:right; padding-left:6px;}
-.list-icons  li a{ display:inline-block}
-.list-icons a.expand{ background:url(../images/expand.png) left 50% no-repeat;width:18px;height:18px; background-image:}
-.list-icons a.pdf{ background:url(../images/pdf.png) left 50% no-repeat;width:18px;height:18px;}
-.list-icons a.excel{ background:url(../images/excel.png) left 50% no-repeat;width:18px;height:18px;}
-.list-icons a.table{ background:url(../images/table.png) left 50% no-repeat;width:18px;height:18px; margin-bottom:0;}
+.list-icons  li span{ display:inline-block}
+.list-icons span.expand{ background:url(../images/expand.png) left 50% no-repeat;width:18px;height:18px; cursor:pointer}
+.list-icons span.pdf{ background:url(../images/pdf.png) left 50% no-repeat;width:18px;height:18px;}
+.list-icons span.excel{ background:url(../images/excel.png) left 50% no-repeat;width:18px;height:18px;}
+.list-icons span.table{ background:url(../images/table.png) left 50% no-repeat;width:18px;height:18px; margin-bottom:0;}
 
 
 

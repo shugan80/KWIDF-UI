@@ -26,5 +26,6 @@
       "navUrl": "/os",
       "imgStyle": "fa fa-sitemap"
     }
-  ]
+  ],
+  "sps_config_path":  "/app/sps/config/sps.config.json"
 }

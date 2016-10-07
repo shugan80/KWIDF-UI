@@ -50,5 +50,15 @@
     "subTitle": "",
     "isLegendEnabled": true,
     "seriesName": "Well Status"
+  },
+  "lossGain_FieldLossGain_Config": {
+    "title": "Field Losses & Gains",
+    "isTitleVisible": false,
+    "isDataLabelsEnabled": false,
+    "subTitle": "",
+    "xAxisTitle": "",
+    "yAxisTitle": "No of Events",
+    "isLegendEnabled": false
+
   }
 }

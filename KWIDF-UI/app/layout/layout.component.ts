@@ -13,9 +13,9 @@ export class LayoutComponent {
     // jscustom: any;
     constructor(
         private router: Router) {
+        console.log('LayoutComponent123');
     }
-    //ngOnInit() {
-    //    this.jscustom = new jscustom();
-    //    jscustom.type();
-    //}
+    ngOnInit() {
+        console.log('LayoutComponent');
+    }
 }

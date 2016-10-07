@@ -41,7 +41,6 @@ export class FilterDataService {
     DirectoryProcess(objrootDirectories: Array<TreeViewFilter>) {
         let rootDirs = this.Traverse(objrootDirectories);
         this.filterObj = rootDirs[0].children.find(x=> x.checked == true);
-        console.log(rootDirs);
         return rootDirs;
     }
 
@@ -68,7 +67,6 @@ export class FilterDataService {
 
     publishFilterData(filter: TreeViewFilter) {
         this.filterObj = filter;
-        console.log(filter);
     }
 
 }

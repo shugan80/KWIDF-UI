@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 //Import High charts
 import { CHART_DIRECTIVES } from 'angular2-highcharts'; //V0.2.1
 
+import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
+
 //Import - Angular2 Log Services
 //import {Logger} from 'angular2-logger/core';
 //import * as ng2log from 'angular2-logger/core';
@@ -38,7 +40,11 @@ import { SPSAlarmsEventsComponent }  from './sps/sps-alarms-events/sps-alarms-ev
 import { jQueryComponent }  from './jquery.component';
 import { fixedHeight}  from './dashboard-scroll.component';
 
-
+// Create config options (see ILocalStorageServiceConfigOptions) for deets:
+let localStorageServiceConfig = {
+    prefix: 'koc-app',
+    storageType: 'sessionStorage'
+};
 
 
 @NgModule({
@@ -75,6 +81,12 @@ import { fixedHeight}  from './dashboard-scroll.component';
     ],
     bootstrap: [AppComponent],
     //providers: [ng2log.Logger]
+    providers: [
+        LocalStorageService,
+        {
+            provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: localStorageServiceConfig
+        }
+    ],
 })
 export class AppModule {
        

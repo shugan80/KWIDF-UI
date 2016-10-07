@@ -1,15 +1,13 @@
-﻿<!--<div *ngIf="filter">
-    <h2>CHART-PIE => {{filter.name}} details!</h2>
-    <div>
-        <label>CHART-PIE id: </label>{{filter.id}}
-    </div>
-    <div>
-        <label>CHART-PIE name: </label>{{filter.name}}
-    </div>
-</div>-->
-
-<div class="dash-component-head">
+﻿<div class="dash-component-head">
     <h3>{{title}}</h3>
+    <div class="pull-right">
+        <ul class="list-icons">
+            <li><span class="expand" #abcd></span></li>
+            <li><span class="pdf" (click)="onClickIcons()"></span></li>
+            <li><span class="excel" (click)="onClickIcons()"></span></li>
+            <li><span class="table" (click)="onClickIcons()"></span></li>
+        </ul>
+    </div>
 </div>
 <div class="dash-component-content">
     <chart [options]="options"></chart>

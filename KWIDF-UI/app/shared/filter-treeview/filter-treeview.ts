@@ -23,7 +23,7 @@ export class FilterTreeViewComponent {
     }
 
     ngOnInit(): void {
-        console.log('filter-onit');
+        console.log('filterTreeView-onit');
         this.getFilters();
         this.filterDataService.changeNav(this.item);
 
@@ -45,7 +45,6 @@ export class FilterTreeViewComponent {
         this.clearSelectedCheckbox(cFilter);
         this.checkRecursiveFilters(cFilter, cFilter.checked);
 
-        //console.log('onTreeViewChecked');
         this.filterDataService.publishFilterData(cFilter);
         this.filterDataService.changeNav(this.item);
 

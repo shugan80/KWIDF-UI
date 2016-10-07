@@ -19,16 +19,11 @@ export class TabMenuComponent {
     }
     
     ngOnInit() {
-        console.log(this.filePath);
         this._configDataService.configJsonPath = this.filePath;
         this.getConfigItems();
         
     }
-
-    //private initComponent() {
-    //    console.log(this.filePath);
-    //}
-
+    
     private getConfigItems() {
         this._configDataService.getConfigItems().subscribe(
             (items:any) => {

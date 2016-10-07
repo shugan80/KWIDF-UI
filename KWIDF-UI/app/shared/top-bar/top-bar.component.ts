@@ -24,7 +24,7 @@ export class TopBarComponent {
                     childrenRoutes.forEach(route => {
                         if (route.outlet === 'primary') {
                             let routeSnapshot = route.snapshot;
-                            console.log('snapshot:', routeSnapshot)
+                            //console.log('snapshot:', routeSnapshot);
                             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
                             var breadCrumData: any = route.snapshot.data;
                             this.breadcrumbs.push({

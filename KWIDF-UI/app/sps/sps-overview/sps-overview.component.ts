@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { TabMenuComponent } from '../../shared/tab-menu/tab-menu.component';
 
 import { Filter } from '../../shared/model/filter';
+import { TreeViewFilter } from '../../shared/model/filter';
 import { FilterDataService } from '../../shared/services/filterdata.service';
 
 
@@ -16,10 +17,9 @@ export class SPSOverviewComponent {
     item: number;
     //title = 'North Kuwait';
     filters: Filter[];
-    ObjFilter: Filter;
+    ObjFilter: TreeViewFilter;
     subscription: Subscription;
 
-    childPath: string = '/app/sps/config/sps.config.json';
 
     constructor(
         private router: Router, private filterDataService: FilterDataService) {
@@ -27,14 +27,15 @@ export class SPSOverviewComponent {
     }
 
     ngOnInit() {
+        console.log(' SPSOverviewComponent ngOnInit');
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
-                console.log("dsafsf");
                 this.item = item;
                 this.ObjFilter = this.filterDataService.getCurrentFilters();
-              
             });
     }
+    
+
     ngOnDestroy() {
         // prevent memory leak when component is destroyed
         this.subscription.unsubscribe();

@@ -23,9 +23,7 @@ export class SPSLossGainComponent {
     currentFilters: TreeViewFilter[];
     ObjFilter: Filter;
     subscription: Subscription;
-
-    childPath: string = '/app/sps/config/sps.config.json';
-
+    
     constructor(
         private router: Router, private filterDataService: FilterDataService) {
 
@@ -33,9 +31,9 @@ export class SPSLossGainComponent {
     }
 
     ngOnInit() {
+        console.log(' SPSLossGainComponent ngOnInit');
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
-                console.log("dsafsf");
                 this.item = item;
                 this.ObjFilter = this.filterDataService.getCurrentFilters();
                 //console.log(this.ObjFilter.id);

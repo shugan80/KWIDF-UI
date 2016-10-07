@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { Filter } from '../model/filter';
@@ -13,6 +13,7 @@ import { CHART_DIRECTIVES } from 'angular2-highcharts';
 import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
+import { GlobalDataService } from '../services/globaldata.service';
 
 @Component({
     moduleId: module.id,
@@ -24,15 +25,18 @@ import { StaticDataService } from '../services/staticdata.service';
         height:200px;
       }
     `],
-    template: `<chart [options]="options"></chart>`,
-    providers: [StaticDataService, ConfigDataService]
+    templateUrl: `./charts-column.component.html`,
+    providers: [StaticDataService, ConfigDataService, GlobalDataService]
 })
 export class ChartComponent_Column {
-    @Input() currentFilters: Filter;
+    @Input() currentFilters: TreeViewFilter;
+    @Input() component_context: string;
+    ObjFilter: Filter;
 
-    public chartConfigItems: any;
+    chartConfigItems: any;
+    title = '';
 
-    constructor(private _configService: ConfigDataService, private dataService: StaticDataService) {
+    constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private dataService: StaticDataService) {
         //constructor(private _logger: ng2log.Logger) {
         //this._logger.error('This is a priority level 1 error message...');
         //this._logger.warn('This is a priority level 2 warning message...');
@@ -52,17 +56,48 @@ export class ChartComponent_Column {
     }
 
     ngOnInit() {
-        this._configService.configJsonPath = '/app/sps/config/sps.config.json';
-        this.getConfigItems();
+        this.chartConfigItems = this._globalDataService.getModuleConfigItems();
+        this.loadConfigItems();
     }
 
-    loadModuleComponents() {
-        this.renderChart();
+    ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+        let log: string[] = [];
+        for (let propName in changes) {
+            if (propName == "currentFilters") {
+                let changedProp = changes[propName];
+                this.ObjFilter = changedProp.currentValue;
+                this.renderChart(this.ObjFilter.id);
+            }
+            else {
+                let changedProp = changes[propName];
+                let from = JSON.stringify(changedProp.currentValue);
+            }
+        }
+
+    }
+
+
+    loadConfigItems() {
+        let configItems: any = this._globalDataService.getModuleConfigItems();
+        if (this.component_context === "sps-overview-wellEvents") {
+            this.chartConfigItems = configItems.overview_WellEvents_Config;
+        }
+        else {
+            this.chartConfigItems = configItems.lossGain_FieldLossGain_Config;
+        }
+        this.title = this.chartConfigItems.title;
     }
 
     //Chart functionality - Start
-    renderChart() {
-        this.dataService.get_columnChart_Data().then(data => {
+    renderChart(filterId: number) {
+        this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
+            let data: Array<KeyValueData>;
+            if (resultData.length > 0) {
+                data = resultData[0].data;
+            }
+            else {
+                data = [];
+            }
 
             let maxYAxisData = this.getMaxData(data);
             this.options = {
@@ -122,6 +157,7 @@ export class ChartComponent_Column {
 
         });
     }
+
     options: Object;
     //options: HighchartsOptions;
 
@@ -138,22 +174,6 @@ export class ChartComponent_Column {
 
     //Chart functionality - End
 
-    getConfigItems() {
-        this._configService.getConfigItems().subscribe(
-            items => {
-                this.chartConfigItems = items[0].overview_WellEvents_Config
-            },
-            err => {
-                console.error(err);
-            },
-            () => {
-                console.log('done');
-                this.loadModuleComponents();
-            }
-            // No error or completion callbacks here. They are optional, but
-            // you will get console errors if the Observable is in an error state.
-        );
-    }
 }
 
 
