@@ -14,7 +14,7 @@ import { FilterDataService } from '../services/filterdata.service';
 export class FilterTreeViewComponent {
     item: number = 0;
     filters: TreeViewFilter[];
-
+    isFromNodeSelection: boolean;  
 
     constructor(private filterDataService: FilterDataService) { }
 
@@ -29,7 +29,7 @@ export class FilterTreeViewComponent {
 
     }
 
-    treeViewToggle(cFilter:TreeViewFilter) {
+    treeViewToggle(cFilter: TreeViewFilter) {
         cFilter.expanded = !cFilter.expanded;
     }
 
@@ -39,33 +39,46 @@ export class FilterTreeViewComponent {
         }
         return 'icondown';
     }
-    
+
     onTreeViewChecked(cFilter: TreeViewFilter) {
         cFilter.checked = !cFilter.checked;
-        this.clearSelectedCheckbox(cFilter);
+        this.clearSelectedCheckbox(cFilter);       
         this.checkRecursiveFilters(cFilter, cFilter.checked);
+
+        if (!cFilter.checked)
+            cFilter.style = "list-unselected";
 
         this.filterDataService.publishFilterData(cFilter);
         this.filterDataService.changeNav(this.item);
+    }
 
+    onTreeViewChildSelected(cFilter: TreeViewFilter) {
+        this.isFromNodeSelection = true;
+        cFilter.style = "list-unselected";
+        if (!cFilter.checked) {
+            cFilter.style = 'list-selected';
+        }
+        this.checkRecursiveFilters(cFilter, cFilter.checked);
     }
 
     checkRecursiveFilters(cFilter: TreeViewFilter, state: boolean) {
         cFilter.children.forEach(d => {
             d.checked = state;
 
+            if (!this.isFromNodeSelection)
+                d.style = "list-unselected";
+
             //Level 1
             d.children.forEach(d => {
                 d.checked = state;
-
+               
                 //Level 2
                 d.children.forEach(d => {
                     d.checked = state;
                 });
-
             });
-
         });
+        this.isFromNodeSelection = false;
     }
 
     clearSelectedCheckbox(cFilter: TreeViewFilter) {
@@ -86,12 +99,11 @@ export class FilterTreeViewComponent {
                 l.children.forEach(s => {
                     if (s.id != cFilter.id) {
                         s.checked = false;
+                        s.style = "list-unselected";
                     }
                 });
             });
-
         });
-
     }
 
 }
