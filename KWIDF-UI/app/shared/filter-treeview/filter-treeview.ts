@@ -14,7 +14,7 @@ import { FilterDataService } from '../services/filterdata.service';
 export class FilterTreeViewComponent {
     item: number = 0;
     filters: TreeViewFilter[];
-    isFromNodeSelection: boolean;  
+    isFromNodeSelection: boolean;
 
     constructor(private filterDataService: FilterDataService) { }
 
@@ -26,7 +26,6 @@ export class FilterTreeViewComponent {
         console.log('filterTreeView-onit');
         this.getFilters();
         this.filterDataService.changeNav(this.item);
-
     }
 
     treeViewToggle(cFilter: TreeViewFilter) {
@@ -42,11 +41,9 @@ export class FilterTreeViewComponent {
 
     onTreeViewChecked(cFilter: TreeViewFilter) {
         cFilter.checked = !cFilter.checked;
-        this.clearSelectedCheckbox(cFilter);       
+        this.clearSelectedCheckbox(cFilter);
         this.checkRecursiveFilters(cFilter, cFilter.checked);
-
-        if (!cFilter.checked)
-            cFilter.style = "list-unselected";
+        cFilter.style = 'list-selected';
 
         this.filterDataService.publishFilterData(cFilter);
         this.filterDataService.changeNav(this.item);
@@ -54,10 +51,7 @@ export class FilterTreeViewComponent {
 
     onTreeViewChildSelected(cFilter: TreeViewFilter) {
         this.isFromNodeSelection = true;
-        cFilter.style = "list-unselected";
-        if (!cFilter.checked) {
-            cFilter.style = 'list-selected';
-        }
+        cFilter.style = 'list-selected';
         this.checkRecursiveFilters(cFilter, cFilter.checked);
     }
 
