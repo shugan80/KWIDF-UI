@@ -4,35 +4,28 @@ import { Observable } from 'rxjs/Rx';
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
 
-//Import - Angular2 Log Services
-//import { Logger } from "angular2-logger/core";
-//import * as ng2log from 'angular2-logger/core';
-
 import { ChartComponent, Highcharts } from 'angular2-highcharts';
 require('highcharts/modules/exporting.js')(Highcharts);
 require('highcharts/modules/export-csv.js')(Highcharts);
-
 
 import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
-
-
 @Component({
     moduleId: module.id,
-    selector: 'chart-column-area',
+    selector: 'chart-column-spline-area',
     styles: [`
       chart {
         display: block;
-        height:200px;
+        height:280px;
       }
     `],
-    templateUrl: `./charts-column.component.html`,
+    templateUrl: `./charts-column-spline.component.html`,
     providers: [StaticDataService, ConfigDataService, GlobalDataService]
 })
-export class ChartComponent_Column {
+export class ChartComponent_ColumnSpline {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
     ObjFilter: Filter;
@@ -41,24 +34,16 @@ export class ChartComponent_Column {
     title = '';
 
     constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private dataService: StaticDataService) {
-        //constructor(private _logger: ng2log.Logger) {
-        //this._logger.error('This is a priority level 1 error message...');
-        //this._logger.warn('This is a priority level 2 warning message...');
-        //this._logger.info('This is a priority level 3 warning message...');
-        //this._logger.debug('This is a priority level 4 debug message...');
-        //this._logger.log('This is a priority level 5 log message...');
-        //let myValidator = new ng2log.Logger();
-        //myValidator.info('ChartComponent_Column1111 - Logger loaded');
-        //this._logger.info('ChartComponent_Column - Logger loaded');
 
     }
 
     ngOnInit() {
+        this.chartConfigItems = this._globalDataService.getModuleConfigItems();
         this.loadConfigItems();
     }
 
     ngAfterViewInit() {
-        this.renderChart(this.ObjFilter.id);
+        //this.renderChart(this.ObjFilter.id);
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -69,7 +54,7 @@ export class ChartComponent_Column {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.renderChart(this.ObjFilter.id);
+                    //this.renderChart(this.ObjFilter.id);
                 }
             }
             else {
@@ -94,59 +79,35 @@ export class ChartComponent_Column {
 
     //Chart functionality - Start
     renderChart(filterId: number) {
-        console.log('renderChart renderChart renderChart');
         this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
-            let data: Array<KeyValueData>;
-            if (resultData.length > 0) {
-                data = resultData[0].data;
-            }
-            else {
-                data = [];
-            }
-
-            let maxYAxisData = this.getMaxData(data);
             this.options = {
                 chart: {
-                    type: 'column'
+                    zoomType: 'xy'
                 },
                 title: {
-                    text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
+                    text: null
                 },
                 subtitle: {
-                    text: this.chartConfigItems.subTitle
+                    text: null
                 },
-                xAxis: {
-                    type: 'category',
-                    title: {
-                        text: this.chartConfigItems.xAxisTitle
-                    },
+                xAxis: [{
+                    categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
                     crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    max: (maxYAxisData == null) ? null : maxYAxisData.value,
+                }],
+                yAxis: [{ // Primary yAxis
                     title: {
-                        text: this.chartConfigItems.yAxisTitle
+                        text: "Downtime Hours/Well Count"
                     },
                     lineWidth: 1
-                },
-                legend: {
-                    enabled: this.chartConfigItems.isLegendEnabled
-                },
+                }, { // Secondary yAxis
+                    title: {
+                        text: 'Stb/d(1000s)'
+                    },
+                    lineWidth: 1,
+                    opposite: true
+                }],
                 tooltip: {
-
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0,
-                        dataLabels: {
-                            enabled: this.chartConfigItems.isDataLabelsEnabled,
-                            formatter: function () {
-                                return this.y;
-                            }
-                        }
-                    }
+                    shared: true
                 },
                 exporting: {
                     enabled: false,
@@ -162,14 +123,33 @@ export class ChartComponent_Column {
                     }
                 },
                 series: [{
-                    name: this.chartConfigItems.yAxisTitle,
-                    data: data.map(function (point) {
-                        return [point.key, point.value]
-                    })
-                }]
-            }
+                    name: 'DownTime (Hours)',
+                    type: 'column',
+                    data: [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+                    tooltip: {
+                        valueSuffix: ' hours'
+                    }
 
-        });
+                }, {
+                    name: 'Well Count',
+                    type: 'spline',
+                    data: [100, 120, 70, 50, 110, 30, 80, 110, 60, 20, 80, 100, 110],
+                    tooltip: {
+                        valueSuffix: ''
+                    }
+                },
+                {
+                    name: 'Lost Production (Stb/d)',
+                    type: 'spline',
+                    yAxis: 1,
+                    data: [0.4, 0.6, 0.8, 0.3, 0.7, 0.6, 0.6, 0.6, 0.6, 0.4, 0.8, 0.3, 0.8],
+                    tooltip: {
+                        valueSuffix: ' stb/d'
+                    }
+                }]
+
+            }
+        })
     }
 
     options: Object;
@@ -194,7 +174,7 @@ export class ChartComponent_Column {
     onClickIcons(exportType: string): void {
         //console.log(this.chartInstance);
         if (exportType) {
-            this.renderChart(this.ObjFilter.id);
+            //this.renderChart(this.ObjFilter.id);
             var exportOptions = { type: exportType, filename: this.title };
             if (exportType == 'application/vnd.ms-excel') {
                 let tempChartInstance: any = this.chartInstance;

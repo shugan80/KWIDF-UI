@@ -28,9 +28,11 @@
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
             'angular2-highcharts': 'npm:angular2-highcharts',
-            //'highcharts/highstock.src':   'https://cdn.rawgit.com/highcharts/highcharts-dist/v4.2.1/highstock.js',
             'highcharts/highstock.src': 'npm:highcharts/highstock.js',
             'highcharts/highcharts-3d': 'npm:highcharts/highcharts-3d.js',
+            'highcharts': 'npm:highcharts',
+            'HighchartExporting': 'npm:highcharts/modules/exporting.js',
+            'HighchartCSVExporting': 'npm:highcharts/modules/export-csv.js',
             'angular-2-local-storage': 'npm:angular-2-local-storage',
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -50,6 +52,18 @@
                 main: 'index',
                 format: 'cjs',
                 defaultExtension: 'js'
+            },
+            'highcharts': {
+                defaultExtension: 'js',
+                format: 'cjs'
+            },
+            'HighchartExporting': {
+                defaultExtension: 'js',
+                format: 'cjs'
+            },
+            'HighchartCSVExporting': {
+                defaultExtension: 'js',
+                format: 'cjs'
             },
             'angular-2-local-storage': { main: 'dist/index.js', defaultExtension: 'js' }
         }

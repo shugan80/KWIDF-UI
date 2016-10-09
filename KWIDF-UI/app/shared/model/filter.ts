@@ -9,5 +9,5 @@ export class TreeViewFilter {
     checked: boolean;
     expanded: boolean;
     children: Array<TreeViewFilter>;
-    style?: string;
+    style: string;
 }

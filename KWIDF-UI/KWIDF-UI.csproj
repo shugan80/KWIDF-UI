@@ -22,7 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +70,7 @@
     <Content Include="app\layout\layout.html" />
     <Content Include="app\main.ts" />
     <Content Include="app\os\os.component.html" />
+    <Content Include="app\shared\charts-column-spline\charts-column-spline.component.html" />
     <Content Include="app\shared\content-area\content-area.component.html" />
     <Content Include="app\shared\tab-menu\tab-menu.component.html" />
     <Content Include="app\shared\maps\maps.component.html" />
@@ -137,6 +138,7 @@
     <TypeScriptCompile Include="app\esp\esp.component.ts" />
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
+    <TypeScriptCompile Include="app\shared\charts-column-spline\charts-column-spline.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />

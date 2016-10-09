@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Import High charts
-import { CHART_DIRECTIVES } from 'angular2-highcharts'; //V0.2.1
+import { ChartModule } from 'angular2-highcharts';
 
 import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
 
@@ -26,6 +26,7 @@ import { ContentAreaComponent } from './shared/content-area/content-area.compone
 import { MapsComponent } from './shared/maps/maps.component';
 import { ChartComponent_Column } from './shared/charts-column/charts-column.component';
 import { ChartComponent_Pie } from './shared/charts-pie/charts-pie.component';
+import { ChartComponent_ColumnSpline } from './shared/charts-column-spline/charts-column-spline.component';
 
 import { LayoutComponent }  from './layout/layout.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
@@ -53,6 +54,7 @@ let localStorageServiceConfig = {
         FormsModule,
         HttpModule,
         routing,
+        ChartModule,
         //ng2log.Logger
     ],
     declarations: [
@@ -68,12 +70,12 @@ let localStorageServiceConfig = {
         MapsComponent,
         ChartComponent_Column,
         ChartComponent_Pie,
+        ChartComponent_ColumnSpline,
         TopBarComponent,
         TabMenuComponent,
         ContentAreaComponent,
         SPSLossGainComponent,
         SPSOverviewComponent,
-		CHART_DIRECTIVES,
         SPSWellTestComponent,
         SPSAlarmsEventsComponent,
         jQueryComponent,

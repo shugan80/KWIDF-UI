@@ -36,10 +36,7 @@
                         <chart-column-area [currentFilters]="ObjFilter" component_context="sps-overview-wellEvents"></chart-column-area>
                     </div>
                     <div class="well-summary border">
-                        <div class="dash-component-head">
-                            <h3>Active Well Summary</h3>
-                        </div>
-                        <div class="dash-component-content"></div>
+                        <chart-column-spline-area [currentFilters]="ObjFilter" component_context="sps-overview-downtime-prodloss"></chart-column-spline-area>
                     </div>
                 </div>
             </div>

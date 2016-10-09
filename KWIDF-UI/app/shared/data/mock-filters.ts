@@ -23,6 +23,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
         name: 'North Kuwait',
         checked: false,
         expanded: true,
+        style: '',
         children: [
             {
                 id: 200,
@@ -30,6 +31,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'Fields',
                 checked: false,
                 expanded: true,
+                style: '',
                 children: [
                     {
                         id: 201,
@@ -37,6 +39,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Subriyah',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -45,6 +48,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Raudhatain',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -53,6 +57,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Abdali',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -61,6 +66,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Ratqa',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     }
                 ]
@@ -71,6 +77,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'CG',
                 checked: false,
                 expanded: true,
+                style: '',
                 children: [
                     {
                         id: 301,
@@ -78,6 +85,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'CG-23',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -86,6 +94,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'CG-24',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -94,6 +103,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'CG-120',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     }
                 ]
@@ -104,6 +114,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'Reservoirs',
                 checked: false,
                 expanded: true,
+                style: '',
                 children: [
                     {
                         id: 401,
@@ -111,6 +122,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Maddud',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -119,6 +131,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Upper Burgan',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -127,6 +140,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'Lower Burgan',
                         checked: false,
                         expanded: false,
+                        style: '',
                         children: []
                     }
                 ]
@@ -137,6 +151,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'Engineer',
                 checked: true,
                 expanded: true,
+                style: '',
                 children: [
                     {
                         id: 501,
@@ -144,6 +159,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'MARIO',
                         checked: true,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -152,6 +168,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'BAENEZI',
                         checked: true,
                         expanded: false,
+                        style: '',
                         children: []
                     },
                     {
@@ -160,6 +177,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                         name: 'TTWAITAN',
                         checked: true,
                         expanded: false,
+                        style: '',
                         children: []
 
                     },

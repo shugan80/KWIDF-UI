@@ -2,13 +2,16 @@
     <h3>{{title}}</h3>
     <div class="pull-right">
         <ul class="list-icons">
-            <li><span class="expand" #abcd></span></li>
-            <li><span class="pdf" (click)="onClickIcons()"></span></li>
-            <li><span class="excel" (click)="onClickIcons()"></span></li>
+            <li><span class="expand" (click)="onClickIcons()"></span></li>
+            <li><span class="pdf" (click)="onClickIcons('application/pdf')"></span></li>
+            <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')"></span></li>
             <li><span class="table" (click)="onClickIcons()"></span></li>
+            <li><span class="table" (click)="onClickIcons('image/png')"></span></li>
         </ul>
     </div>
 </div>
 <div class="dash-component-content">
-    <chart [options]="options"></chart>
+    <chart [options]="options"
+           (load)="saveInstance($event.context)">
+    </chart>
 </div>
