@@ -88,6 +88,8 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="app\css\landingpage.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fonts-roboto.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
     <Content Include="e2e\app.e2e-spec.js" />
@@ -95,6 +97,7 @@
     <Content Include="images\32px.png" />
     <Content Include="images\Logo.jpg" />
     <Content Include="images\scroller.png" />
+    <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\koc.custom.js" />
     <Content Include="welcome.html" />
     <Content Include="index.html" />
@@ -140,6 +143,7 @@
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-column-spline\charts-column-spline.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-data-sps-lossgain.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
     <TypeScriptCompile Include="app\shared\services\globaldata.service.ts" />
@@ -175,6 +179,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\shared\charts-gauge\" />
+    <Folder Include="app\shared\charts-line\" />
     <Folder Include="app\shared\footer\" />
   </ItemGroup>
   <PropertyGroup>

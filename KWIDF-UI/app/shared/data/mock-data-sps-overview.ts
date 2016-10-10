@@ -1,5 +1,7 @@
 ﻿import { KeyValueData } from '../model/key-value';
 import { KeyValueObject } from '../model/key-value';
+import { KeyValueDataArray } from '../model/key-value';
+import { KeyValueDataArrayObject } from '../model/key-value';
 
 export const SPS_OverView_WellEvents_DATA: KeyValueObject[] = [
     {
@@ -279,37 +281,241 @@ export const SPS_OverView_WellStatus_DATA: KeyValueObject[] = [
     }
 ]
 
-export const SPS_LossGain_Production_DATA: KeyValueObject[] = [
+export const SPS_OverView_DownTime_ProdLoss_DATA: KeyValueDataArrayObject[] = [
     {
-        "id": 500, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 100, "properties": { "color": "purple" } }
+        "id": 200,
+        "collection": [
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 25, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "DownTime (Hours)", "chartType": "column", "displayUnit": "hours", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 25, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "black", "seriesName": "Well Count", "chartType": "spline", "displayUnit": "", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 0.4, "properties": {} },
+                    { "key": 1, "value": 0.6, "properties": {} },
+                    { "key": 2, "value": 0.7, "properties": {} },
+                    { "key": 3, "value": 0.8, "properties": {} },
+                    { "key": 4, "value": 0.7, "properties": {} },
+                    { "key": 5, "value": 0.6, "properties": {} },
+                    { "key": 6, "value": 0.5, "properties": {} },
+                    { "key": 7, "value": 0.4, "properties": {} },
+                    { "key": 8, "value": 0.8, "properties": {} },
+                    { "key": 9, "value": 0.3, "properties": {} },
+                    { "key": 10, "value": 0.5, "properties": {} },
+                    { "key": 11, "value": 0.7, "properties": {} },
+                    { "key": 11, "value": 0.2, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Lost Production (Stb/d)", "chartType": "spline", "displayUnit": "stb/d", "yAxis": 1 }
+            }
         ]
     },
     {
-        "id": 400, "data": [
-            { "key": "Producing", "value": 20, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 40, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 60, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 80, "properties": { "color": "purple" } }
+        "id": 300,
+        "collection": [
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 100, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "DownTime (Hours)", "chartType": "column", "displayUnit": "hours", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 5, "properties": {} },
+                    { "key": 1, "value": 10, "properties": {} },
+                    { "key": 2, "value": 15, "properties": {} },
+                    { "key": 3, "value": 20, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 60, "properties": {} },
+                    { "key": 7, "value": 70, "properties": {} },
+                    { "key": 8, "value": 80, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 10, "properties": {} }
+                ],
+                "properties": { "color": "black", "seriesName": "Well Count", "chartType": "spline", "displayUnit": "", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 0.4, "properties": {} },
+                    { "key": 1, "value": 0.6, "properties": {} },
+                    { "key": 2, "value": 0.7, "properties": {} },
+                    { "key": 3, "value": 0.8, "properties": {} },
+                    { "key": 4, "value": 0.7, "properties": {} },
+                    { "key": 5, "value": 0.6, "properties": {} },
+                    { "key": 6, "value": 0.5, "properties": {} },
+                    { "key": 7, "value": 0.4, "properties": {} },
+                    { "key": 8, "value": 0.8, "properties": {} },
+                    { "key": 9, "value": 0.3, "properties": {} },
+                    { "key": 10, "value": 0.5, "properties": {} },
+                    { "key": 11, "value": 0.7, "properties": {} },
+                    { "key": 11, "value": 0.2, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Lost Production (Stb/d)", "chartType": "spline", "displayUnit": "stb/d", "yAxis": 1 }
+            }
         ]
     },
     {
-        "id": 300, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+        "id": 400,
+        "collection": [
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 150, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "DownTime (Hours)", "chartType": "column", "displayUnit": "hours", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 75, "properties": {} }
+                ],
+                "properties": { "color": "black", "seriesName": "Well Count", "chartType": "spline", "displayUnit": "", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 0.4, "properties": {} },
+                    { "key": 1, "value": 0.6, "properties": {} },
+                    { "key": 2, "value": 0.7, "properties": {} },
+                    { "key": 3, "value": 0.8, "properties": {} },
+                    { "key": 4, "value": 0.7, "properties": {} },
+                    { "key": 5, "value": 0.6, "properties": {} },
+                    { "key": 6, "value": 0.5, "properties": {} },
+                    { "key": 7, "value": 0.4, "properties": {} },
+                    { "key": 8, "value": 0.8, "properties": {} },
+                    { "key": 9, "value": 0.3, "properties": {} },
+                    { "key": 10, "value": 0.5, "properties": {} },
+                    { "key": 11, "value": 0.7, "properties": {} },
+                    { "key": 11, "value": 0.2, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Lost Production (Stb/d)", "chartType": "spline", "displayUnit": "stb/d", "yAxis": 1 }
+            }
         ]
     },
     {
-        "id": 200, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+        "id": 500,
+        "collection": [
+            {
+                "data": [
+                    { "key": 0, "value": 100, "properties": {} },
+                    { "key": 1, "value": 75, "properties": {} },
+                    { "key": 2, "value": 50, "properties": {} },
+                    { "key": 3, "value": 25, "properties": {} },
+                    { "key": 4, "value": 5, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 100, "properties": {} },
+                    { "key": 7, "value": 25, "properties": {} },
+                    { "key": 8, "value": 50, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 150, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "DownTime (Hours)", "chartType": "column", "displayUnit": "hours", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 25, "properties": {} },
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 100, "properties": {} },
+                    { "key": 4, "value": 25, "properties": {} },
+                    { "key": 5, "value": 50, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 25, "properties": {} },
+                    { "key": 9, "value": 50, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} },
+                    { "key": 11, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "black", "seriesName": "Well Count", "chartType": "spline", "displayUnit": "", "yAxis": 0 }
+            },
+            {
+                "data": [
+                    { "key": 0, "value": 0.4, "properties": {} },
+                    { "key": 1, "value": 0.6, "properties": {} },
+                    { "key": 2, "value": 0.7, "properties": {} },
+                    { "key": 3, "value": 0.8, "properties": {} },
+                    { "key": 4, "value": 0.7, "properties": {} },
+                    { "key": 5, "value": 0.6, "properties": {} },
+                    { "key": 6, "value": 0.5, "properties": {} },
+                    { "key": 7, "value": 0.4, "properties": {} },
+                    { "key": 8, "value": 0.8, "properties": {} },
+                    { "key": 9, "value": 0.3, "properties": {} },
+                    { "key": 10, "value": 0.5, "properties": {} },
+                    { "key": 11, "value": 0.7, "properties": {} },
+                    { "key": 11, "value": 0.2, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Lost Production (Stb/d)", "chartType": "spline", "displayUnit": "stb/d", "yAxis": 1 }
+            }
         ]
     }
 ]

@@ -15,6 +15,7 @@ require('highcharts/modules/export-csv.js')(Highcharts);
 
 import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
+import { KeyValueObject } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
@@ -39,6 +40,7 @@ export class ChartComponent_Column {
 
     chartConfigItems: any;
     title = '';
+    chartContextData: KeyValueObject;
 
     constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private dataService: StaticDataService) {
         //constructor(private _logger: ng2log.Logger) {
@@ -58,7 +60,7 @@ export class ChartComponent_Column {
     }
 
     ngAfterViewInit() {
-        this.renderChart(this.ObjFilter.id);
+        this.getDataAndRenderChart(this.ObjFilter.id);
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -69,7 +71,7 @@ export class ChartComponent_Column {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.renderChart(this.ObjFilter.id);
+                    this.getDataAndRenderChart(this.ObjFilter.id);
                 }
             }
             else {
@@ -92,84 +94,89 @@ export class ChartComponent_Column {
         this.title = this.chartConfigItems.title;
     }
 
-    //Chart functionality - Start
-    renderChart(filterId: number) {
-        console.log('renderChart renderChart renderChart');
+    getDataAndRenderChart(filterId: number) {
         this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
-            let data: Array<KeyValueData>;
-            if (resultData.length > 0) {
-                data = resultData[0].data;
-            }
-            else {
-                data = [];
-            }
-
-            let maxYAxisData = this.getMaxData(data);
-            this.options = {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
-                },
-                subtitle: {
-                    text: this.chartConfigItems.subTitle
-                },
-                xAxis: {
-                    type: 'category',
-                    title: {
-                        text: this.chartConfigItems.xAxisTitle
-                    },
-                    crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    max: (maxYAxisData == null) ? null : maxYAxisData.value,
-                    title: {
-                        text: this.chartConfigItems.yAxisTitle
-                    },
-                    lineWidth: 1
-                },
-                legend: {
-                    enabled: this.chartConfigItems.isLegendEnabled
-                },
-                tooltip: {
-
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0,
-                        dataLabels: {
-                            enabled: this.chartConfigItems.isDataLabelsEnabled,
-                            formatter: function () {
-                                return this.y;
-                            }
-                        }
-                    }
-                },
-                exporting: {
-                    enabled: false,
-                    filename: this.title,
-                    type: "image/png",
-                    buttons: {
-                        exportButton: {
-                            enabled: false
-                        },
-                        printButton: {
-                            enabled: false
-                        }
-                    }
-                },
-                series: [{
-                    name: this.chartConfigItems.yAxisTitle,
-                    data: data.map(function (point) {
-                        return [point.key, point.value]
-                    })
-                }]
-            }
-
+            this.chartContextData = resultData;
+            this.renderChart();
         });
+    }
+
+    //Chart functionality - Start
+    renderChart() {
+        console.log('renderChart renderChart renderChart');
+        let data: Array<KeyValueData>;
+        if (this.chartContextData != null) {
+            data = this.chartContextData.data;
+        }
+        else {
+            data = [];
+        }
+
+        let maxYAxisData = this.getMaxData(data);
+        this.options = {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
+            },
+            subtitle: {
+                text: this.chartConfigItems.subTitle
+            },
+            xAxis: {
+                type: 'category',
+                title: {
+                    text: this.chartConfigItems.xAxisTitle
+                },
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                max: (maxYAxisData == null) ? null : maxYAxisData.value,
+                title: {
+                    text: this.chartConfigItems.yAxisTitle
+                },
+                lineWidth: 1
+            },
+            legend: {
+                enabled: this.chartConfigItems.isLegendEnabled
+            },
+            tooltip: {
+
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: this.chartConfigItems.isDataLabelsEnabled,
+                        formatter: function () {
+                            return this.y;
+                        }
+                    }
+                }
+            },
+            exporting: {
+                enabled: false,
+                filename: this.title,
+                type: "image/png",
+                buttons: {
+                    exportButton: {
+                        enabled: false
+                    },
+                    printButton: {
+                        enabled: false
+                    }
+                }
+            },
+            series: [{
+                name: this.chartConfigItems.yAxisTitle,
+                data: data.map(function (point) {
+                    return [point.key, point.value]
+                })
+            }]
+        }
+
     }
 
     options: Object;
@@ -194,14 +201,16 @@ export class ChartComponent_Column {
     onClickIcons(exportType: string): void {
         //console.log(this.chartInstance);
         if (exportType) {
-            this.renderChart(this.ObjFilter.id);
-            var exportOptions = { type: exportType, filename: this.title };
-            if (exportType == 'application/vnd.ms-excel') {
-                let tempChartInstance: any = this.chartInstance;
-                tempChartInstance.downloadXLS(exportOptions);
-            }
-            else {
-                this.chartInstance.exportChart(exportOptions);
+            if (this.chartContextData != null) {
+                this.renderChart();
+                var exportOptions = { type: exportType, filename: this.title };
+                if (exportType == 'application/vnd.ms-excel') {
+                    let tempChartInstance: any = this.chartInstance;
+                    tempChartInstance.downloadXLS(exportOptions);
+                }
+                else {
+                    this.chartInstance.exportChart(exportOptions);
+                }
             }
         }
     }

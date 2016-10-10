@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
 
@@ -13,6 +13,7 @@ require('highcharts/modules/export-csv.js')(Highcharts);
 import { ConfigDataService } from '../services/configdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 import { KeyValueData } from '../model/key-value';
+import { KeyValueObject } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { FilterDataService } from '../services/filterdata.service';
 
@@ -40,6 +41,7 @@ export class ChartComponent_Pie {
     ObjFilter: Filter;
     title = '';
     public chartConfigItems: any;
+    chartContextData: KeyValueObject;
 
     constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
         this.loadConfigItems();
@@ -51,7 +53,7 @@ export class ChartComponent_Pie {
     }
 
     ngAfterViewInit() {
-        this.renderChart(this.ObjFilter.id);
+        this.getDataAndRenderChart(this.ObjFilter.id);
     }
 
 
@@ -63,7 +65,7 @@ export class ChartComponent_Pie {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.renderChart(this.ObjFilter.id);
+                    this.getDataAndRenderChart(this.ObjFilter.id);
                 }
             }
             else {
@@ -86,71 +88,79 @@ export class ChartComponent_Pie {
     }
 
     //Chart functionality - Start
-    renderChart(filterId: number) {
+
+    getDataAndRenderChart(filterId: number) {
         this.dataService.get_pieChart_Data(this.component_context, filterId).then(resultData => {
-            let data: Array<KeyValueData>;
-            if (resultData.length > 0) {
-                data = resultData[0].data;
-            }
-            else {
-                data = [];
-            }
-
-            let maxYAxisData = this.getMaxData(data);
-            let dataColors = this.getColors(data);
-
-            this.options = {
-                chart: {
-                    type: 'pie'
-                },
-                title: {
-                    text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
-                },
-                subtitle: {
-                    text: this.chartConfigItems.subTitle
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: this.chartConfigItems.isDataLabelsEnabled,
-                            distance: -30,
-                            color: this.chartConfigItems.dataLablesColor,
-                            formatter: function () {
-                                return Math.round(this.y);
-                            },
-                        },
-                        showInLegend: this.chartConfigItems.isLegendEnabled
-                    }
-                },
-                colors: dataColors,
-                exporting: {
-                    enabled: false,
-                    filename: this.title,
-                    type: "image/png",
-                    buttons: {
-                        exportButton: {
-                            enabled: false
-                        },
-                        printButton: {
-                            enabled: false
-                        }
-                    }
-                },
-                series: [{
-                    name: this.chartConfigItems.seriesName,
-                    colorByPoint: true,
-                    data: data.map(function (point: any) {
-                        return [point.key, point.value]
-                    })
-                }]
-            }
-
+            this.chartContextData = resultData;
+            this.renderChart();
         });
+    }
+
+    renderChart() {
+
+        let data: Array<KeyValueData>;
+        if (this.chartContextData != null) {
+            data = this.chartContextData.data;
+        }
+        else {
+            data = [];
+        }
+
+        let maxYAxisData = this.getMaxData(data);
+        let dataColors = this.getColors(data);
+
+        this.options = {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
+            },
+            subtitle: {
+                text: this.chartConfigItems.subTitle
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: this.chartConfigItems.isDataLabelsEnabled,
+                        distance: -30,
+                        color: this.chartConfigItems.dataLablesColor,
+                        formatter: function () {
+                            return Math.round(this.y);
+                        },
+                    },
+                    showInLegend: this.chartConfigItems.isLegendEnabled
+                }
+            },
+            colors: dataColors,
+            exporting: {
+                enabled: false,
+                filename: this.title,
+                type: "image/png",
+                buttons: {
+                    exportButton: {
+                        enabled: false
+                    },
+                    printButton: {
+                        enabled: false
+                    }
+                }
+            },
+            series: [{
+                name: this.chartConfigItems.seriesName,
+                colorByPoint: true,
+                data: data.map(function (point: any) {
+                    return [point.key, point.value]
+                })
+            }]
+        }
+
+
     }
 
     options: Object;
@@ -188,14 +198,16 @@ export class ChartComponent_Pie {
     onClickIcons(exportType: string): void {
         //console.log(this.chartInstance);
         if (exportType) {
-            this.renderChart(this.ObjFilter.id);
-            var exportOptions = { type: exportType, filename: this.title };
-            if (exportType == 'application/vnd.ms-excel') {
-                let tempChartInstance: any = this.chartInstance;
-                tempChartInstance.downloadXLS(exportOptions);
-            }
-            else {
-                this.chartInstance.exportChart(exportOptions);
+            if (this.chartContextData != null) {
+                this.renderChart();
+                var exportOptions = { type: exportType, filename: this.title };
+                if (exportType == 'application/vnd.ms-excel') {
+                    let tempChartInstance: any = this.chartInstance;
+                    tempChartInstance.downloadXLS(exportOptions);
+                }
+                else {
+                    this.chartInstance.exportChart(exportOptions);
+                }
             }
         }
     }
@@ -203,5 +215,5 @@ export class ChartComponent_Pie {
     //Chart functionality - End
 
 
-   
+
 }

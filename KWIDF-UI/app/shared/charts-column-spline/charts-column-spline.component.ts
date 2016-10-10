@@ -4,6 +4,10 @@ import { Observable } from 'rxjs/Rx';
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
 
+import { KeyValueObject } from '../model/key-value';
+import { KeyValueDataArray } from '../model/key-value';
+import { KeyValueDataArrayObject } from '../model/key-value';
+
 import { ChartComponent, Highcharts } from 'angular2-highcharts';
 require('highcharts/modules/exporting.js')(Highcharts);
 require('highcharts/modules/export-csv.js')(Highcharts);
@@ -32,6 +36,8 @@ export class ChartComponent_ColumnSpline {
 
     chartConfigItems: any;
     title = '';
+    chartContextData: KeyValueDataArrayObject;
+
 
     constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private dataService: StaticDataService) {
 
@@ -43,7 +49,7 @@ export class ChartComponent_ColumnSpline {
     }
 
     ngAfterViewInit() {
-        //this.renderChart(this.ObjFilter.id);
+        this.getDataAndRenderChart(this.ObjFilter.id);
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -54,7 +60,7 @@ export class ChartComponent_ColumnSpline {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    //this.renderChart(this.ObjFilter.id);
+                    this.getDataAndRenderChart(this.ObjFilter.id);
                 }
             }
             else {
@@ -64,7 +70,6 @@ export class ChartComponent_ColumnSpline {
         }
 
     }
-
 
     loadConfigItems() {
         let configItems: any = this._globalDataService.getModuleConfigItems();
@@ -78,78 +83,95 @@ export class ChartComponent_ColumnSpline {
     }
 
     //Chart functionality - Start
-    renderChart(filterId: number) {
-        this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
-            this.options = {
-                chart: {
-                    zoomType: 'xy'
-                },
+    getDataAndRenderChart(filterId: number) {
+        this.dataService.get_columnSplineChart_Data(this.component_context, filterId).then(resultData => {
+            this.chartContextData = resultData;
+            this.renderChart();
+        });
+    }
+
+    renderChart() {
+
+        let seriesData: any = [];
+        if (this.chartContextData != null) {
+            seriesData = this.chartContextData.collection.map(function (point: any) {
+                return [];
+            })
+        }
+        
+
+        this.options = {
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: null
+            },
+            subtitle: {
+                text: null
+            },
+            yAxis: [{ // Primary yAxis
+                lineWidth: 1,
                 title: {
-                    text: null
-                },
-                subtitle: {
-                    text: null
-                },
-                xAxis: [{
-                    categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-                    crosshair: true
-                }],
-                yAxis: [{ // Primary yAxis
-                    title: {
-                        text: "Downtime Hours/Well Count"
-                    },
-                    lineWidth: 1
-                }, { // Secondary yAxis
-                    title: {
-                        text: 'Stb/d(1000s)'
-                    },
-                    lineWidth: 1,
-                    opposite: true
-                }],
-                tooltip: {
-                    shared: true
-                },
-                exporting: {
-                    enabled: false,
-                    filename: this.title,
-                    type: "image/png",
-                    buttons: {
-                        exportButton: {
-                            enabled: false
-                        },
-                        printButton: {
-                            enabled: false
-                        }
-                    }
-                },
-                series: [{
-                    name: 'DownTime (Hours)',
-                    type: 'column',
-                    data: [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
-                    tooltip: {
-                        valueSuffix: ' hours'
-                    }
+                    text: 'Downtime Hours/Well Count'
+                }
 
-                }, {
-                    name: 'Well Count',
-                    type: 'spline',
-                    data: [100, 120, 70, 50, 110, 30, 80, 110, 60, 20, 80, 100, 110],
-                    tooltip: {
-                        valueSuffix: ''
-                    }
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Stb/d(1000s)'
                 },
-                {
-                    name: 'Lost Production (Stb/d)',
-                    type: 'spline',
-                    yAxis: 1,
-                    data: [0.4, 0.6, 0.8, 0.3, 0.7, 0.6, 0.6, 0.6, 0.6, 0.4, 0.8, 0.3, 0.8],
-                    tooltip: {
-                        valueSuffix: ' stb/d'
+                lineWidth: 1,
+                opposite: true
+            }],
+            tooltip: {
+                shared: true
+            },
+            exporting: {
+                enabled: false,
+                filename: this.title,
+                type: "image/png",
+                buttons: {
+                    exportButton: {
+                        enabled: false
+                    },
+                    printButton: {
+                        enabled: false
                     }
-                }]
+                }
+            },
+            series: seriesData
+            
 
+        };
+
+        if (this.chartContextData != null) {
+            var index: number = 0;
+            for (let object of this.chartContextData.collection) {
+                let cData: any = this.chartContextData.collection[index];
+                let tempOptions: any = this.options;
+                tempOptions.series[index] = ({
+                    name: cData.properties.seriesName,
+                    type: cData.properties.chartType,
+                    yAxis: cData.properties.yAxis,
+                    color: cData.properties.color,
+                    tooltip: {
+                        valueSuffix: ' ' + cData.properties.displayUnit
+                    },
+                    data: cData.data.map(function (point: any) {
+                        return [point.key, point.value]
+                    })
+                });
+                //console.log(tempOptions.series[index]);
+                index++;
             }
-        })
+        }
+        else {
+            let tempOptions: any = this.options;
+            tempOptions.series[0] = ({
+                name: "No data available",
+                data: []
+            });
+        }
     }
 
     options: Object;
@@ -174,14 +196,16 @@ export class ChartComponent_ColumnSpline {
     onClickIcons(exportType: string): void {
         //console.log(this.chartInstance);
         if (exportType) {
-            //this.renderChart(this.ObjFilter.id);
-            var exportOptions = { type: exportType, filename: this.title };
-            if (exportType == 'application/vnd.ms-excel') {
-                let tempChartInstance: any = this.chartInstance;
-                tempChartInstance.downloadXLS(exportOptions);
-            }
-            else {
-                this.chartInstance.exportChart(exportOptions);
+            if (this.chartContextData != null) {
+                this.renderChart();
+                var exportOptions = { type: exportType, filename: this.title };
+                if (exportType == 'application/vnd.ms-excel') {
+                    let tempChartInstance: any = this.chartInstance;
+                    tempChartInstance.downloadXLS(exportOptions);
+                }
+                else {
+                    this.chartInstance.exportChart(exportOptions);
+                }
             }
         }
     }
