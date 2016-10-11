@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { Router }  from '@angular/router';
-import {Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 import { Subscription } from 'rxjs/Subscription';
+import { Logger } from "angular2-logger/core";
 
 import { TabMenuComponent } from '../../shared/tab-menu/tab-menu.component';
-
 import { Filter } from '../../shared/model/filter';
 import { FilterDataService } from '../../shared/services/filterdata.service';
 
@@ -25,18 +25,19 @@ export class SPSAlarmsEventsComponent {
     subscription: Subscription;
 
     constructor(
-        private router: Router, private filterDataService: FilterDataService) {
+        private _logger: Logger, private router: Router,
+        private filterDataService: FilterDataService) {
 
-     }
+    }
 
     ngOnInit() {
-        console.log(' SPSAlarmsEventsComponent ngOnInit');
+        this._logger.log(' SPSAlarmsEventsComponent ngOnInit');
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
-               
+
                 this.item = item;
                 this.ObjFilter = this.filterDataService.getCurrentFilters();
-              
+
             });
     }
     ngOnDestroy() {

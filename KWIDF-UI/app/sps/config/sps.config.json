@@ -29,7 +29,8 @@
     "subTitle": "",
     "xAxisTitle": "",
     "yAxisTitle": "No of Events",
-    "isLegendEnabled": false
+    "isLegendEnabled": false,
+    "yAxisTickInterval":  2
 
   },
   "overview_WellStatus_Config": {
@@ -39,7 +40,34 @@
     "dataLablesColor": "white",
     "subTitle": "",
     "isLegendEnabled": true,
-    "seriesName": "Well Status"
+    "seriesName": "Well Status",
+    "toolTipPointFormat": "{series.name}: <b>{point.percentage:.1f}%</b>"
+
+  },
+  "overview_DownTime_ProdLoss_Config": {
+    "title": "Downtime Vs Prod Loss",
+    "isTitleVisible": false,
+    "subTitle": "",
+    "isDataLabelsEnabled": true,
+    "dataLablesColor": "white",
+    "isLegendEnabled": true,
+    "yAxisPrimaryTitle": "Downtime Hours/Well Count",
+    "yAxisSecondaryTitle": "Stb/d(1000s)",
+    "xAxisTickInterval":  1,
+    "yAxisPrimaryTickInterval": 50,
+    "yAxisSecondaryTickInterval":  0.2
+
+  },
+  "overview_Historic_Production_Config": {
+    "title": "Historic Production",
+    "isTitleVisible": false,
+    "subTitle": "Production vs. Allowable vs. PGOR test",
+    "isDataLabelsEnabled": true,
+    "dataLablesColor": "white",
+    "isLegendEnabled": true,
+    "yAxisTitle": "Stb/d(1000s)",
+    "xAxisTickInterval": 2,
+    "yAxisTickInterval":  20
 
   },
   "lossGain_Production_Config": {

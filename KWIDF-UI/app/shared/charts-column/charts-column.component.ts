@@ -1,18 +1,13 @@
 ﻿import { Component, Input, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Filter } from '../model/filter';
-import { TreeViewFilter } from '../model/filter';
-
-//Import - Angular2 Log Services
-//import { Logger } from "angular2-logger/core";
-//import * as ng2log from 'angular2-logger/core';
-
+import { Logger } from "angular2-logger/core";
 import { ChartComponent, Highcharts } from 'angular2-highcharts';
 require('highcharts/modules/exporting.js')(Highcharts);
 require('highcharts/modules/export-csv.js')(Highcharts);
 
-
+import { Filter } from '../model/filter';
+import { TreeViewFilter } from '../model/filter';
 import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { KeyValueObject } from '../model/key-value';
@@ -42,16 +37,8 @@ export class ChartComponent_Column {
     title = '';
     chartContextData: KeyValueObject;
 
-    constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private dataService: StaticDataService) {
-        //constructor(private _logger: ng2log.Logger) {
-        //this._logger.error('This is a priority level 1 error message...');
-        //this._logger.warn('This is a priority level 2 warning message...');
-        //this._logger.info('This is a priority level 3 warning message...');
-        //this._logger.debug('This is a priority level 4 debug message...');
-        //this._logger.log('This is a priority level 5 log message...');
-        //let myValidator = new ng2log.Logger();
-        //myValidator.info('ChartComponent_Column1111 - Logger loaded');
-        //this._logger.info('ChartComponent_Column - Logger loaded');
+    constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
+        private _configService: ConfigDataService, private dataService: StaticDataService) {
 
     }
 
@@ -103,7 +90,7 @@ export class ChartComponent_Column {
 
     //Chart functionality - Start
     renderChart() {
-        console.log('renderChart renderChart renderChart');
+        this._logger.log('renderChart renderChart renderChart');
         let data: Array<KeyValueData>;
         if (this.chartContextData != null) {
             data = this.chartContextData.data;
@@ -136,7 +123,8 @@ export class ChartComponent_Column {
                 title: {
                     text: this.chartConfigItems.yAxisTitle
                 },
-                lineWidth: 1
+                lineWidth: 1,
+                tickInterval: this.chartConfigItems.yAxisTickInterval
             },
             legend: {
                 enabled: this.chartConfigItems.isLegendEnabled
@@ -199,7 +187,7 @@ export class ChartComponent_Column {
     }
 
     onClickIcons(exportType: string): void {
-        //console.log(this.chartInstance);
+        //this._logger.log(this.chartInstance);
         if (exportType) {
             if (this.chartContextData != null) {
                 this.renderChart();

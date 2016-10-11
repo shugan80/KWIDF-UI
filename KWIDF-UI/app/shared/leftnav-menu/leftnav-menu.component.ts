@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import {Observable } from 'rxjs/Rx';
-import { ConfigDataService } from '../services/configdata.service';
+import { Observable } from 'rxjs/Rx';
+import { Logger } from "angular2-logger/core";
 
+import { ConfigDataService } from '../services/configdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
 @Component({
@@ -14,11 +15,12 @@ import { GlobalDataService } from '../services/globaldata.service';
 export class LeftNavMenuComponent {
     public appConfigItems: any;
 
-    constructor(private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
+    constructor(private _logger: Logger, private _configDataService: ConfigDataService,
+        private _globalDataService: GlobalDataService) {
     }
 
     ngOnInit() {
-        console.log('LeftNavMenuComponent');
+        this._logger.log('LeftNavMenuComponent');
         let configItems = this._globalDataService.getAppConfigItems();
         if (configItems == null) {
             this._configDataService.configJsonPath = '/app/config/app.config.json';
@@ -36,13 +38,13 @@ export class LeftNavMenuComponent {
                 this._globalDataService.setAppConfigItems(this.appConfigItems);
             },
             (err: any) => {
-                console.error(err);
+                this._logger.error(err);
             },
             () => {
-                console.log(' LeftNavMenuComponent getConfigItems - done');
+                this._logger.log(' LeftNavMenuComponent getConfigItems - done');
             }
             // No error or completion callbacks here. They are optional, but
-            // you will get console errors if the Observable is in an error state.
+            // you will get this._logger. errors if the Observable is in an error state.
         );
     }
 

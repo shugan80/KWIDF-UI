@@ -71,6 +71,7 @@
     <Content Include="app\main.ts" />
     <Content Include="app\os\os.component.html" />
     <Content Include="app\shared\charts-column-spline\charts-column-spline.component.html" />
+    <Content Include="app\shared\charts-line-multiple\charts-line-multiple.component.html" />
     <Content Include="app\shared\content-area\content-area.component.html" />
     <Content Include="app\shared\tab-menu\tab-menu.component.html" />
     <Content Include="app\shared\maps\maps.component.html" />
@@ -99,6 +100,7 @@
     <Content Include="images\scroller.png" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\koc.custom.js" />
+    <Content Include="temp\temp.html" />
     <Content Include="welcome.html" />
     <Content Include="index.html" />
     <Content Include="styles.css" />
@@ -142,6 +144,7 @@
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-column-spline\charts-column-spline.component.ts" />
+    <TypeScriptCompile Include="app\shared\charts-line-multiple\charts-line-multiple.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-lossgain.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
@@ -180,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\shared\charts-gauge\" />
-    <Folder Include="app\shared\charts-line\" />
     <Folder Include="app\shared\footer\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Logger } from "angular2-logger/core";
 
 import { ConfigDataService } from './shared/services/configdata.service';
 import { HelperService } from './shared/services/helper.service';
 import { GlobalDataService } from './shared/services/globaldata.service';
+
 
 @Component({
     moduleId: module.id,
@@ -13,8 +15,8 @@ import { GlobalDataService } from './shared/services/globaldata.service';
 })
 export class AppComponent {
 
-    constructor(private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
-        
+    constructor(private _logger: Logger, private _configDataService: ConfigDataService, private _globalDataService: GlobalDataService) {
+        this._logger.log('AppComponent loaded...');
     }
 
     ngOnInit() {
@@ -33,10 +35,10 @@ export class AppComponent {
                 this._globalDataService.setAppConfigItems(appConfigItems);
             },
             (err: any) => {
-                console.error(err);
+                this._logger.error(err);
             },
             () => {
-                console.log(' AppComponent getConfigItems - done');
+                this._logger.log(' AppComponent getConfigItems - done');
                 let appConfigItems: any = this._globalDataService.getAppConfigItems();
                 if (appConfigItems == null) {
                     throw new Error("App config items not loaded!"); 
@@ -47,7 +49,7 @@ export class AppComponent {
                 }
             }
             // No error or completion callbacks here. They are optional, but
-            // you will get console errors if the Observable is in an error state.
+            // you will get this._logger. errors if the Observable is in an error state.
         );
     }
 
@@ -59,13 +61,13 @@ export class AppComponent {
                 this._globalDataService.setModuleConfigItems(appConfigItems);
             },
             (err: any) => {
-                console.error(err);
+                this._logger.error(err);
             },
             () => {
-                console.log(' AppComponent getSPSModuleConfigItems - done');
+                this._logger.log(' AppComponent getSPSModuleConfigItems - done');
             }
             // No error or completion callbacks here. They are optional, but
-            // you will get console errors if the Observable is in an error state.
+            // you will get this._logger. errors if the Observable is in an error state.
         );
     }
 }

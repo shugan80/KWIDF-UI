@@ -520,3 +520,260 @@ export const SPS_OverView_DownTime_ProdLoss_DATA: KeyValueDataArrayObject[] = [
     }
 ]
 
+export const SPS_OverView_Historic_Production_Day_DATA: KeyValueDataArrayObject[] = [
+    {
+        "id": 200,
+        "collection": [
+            {
+                "data": [
+                    { "key": 1, "value": 70, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 85, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 95, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 80, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 95, "properties": {} },
+                    { "key": 12, "value": 100, "properties": {} },
+                    { "key": 13, "value": 65, "properties": {} },
+                    { "key": 14, "value": 70, "properties": {} },
+                    { "key": 15, "value": 75, "properties": {} },
+                    { "key": 16, "value": 80, "properties": {} },
+                    { "key": 17, "value": 85, "properties": {} },
+                    { "key": 18, "value": 90, "properties": {} },
+                    { "key": 19, "value": 95, "properties": {} },
+                    { "key": 20, "value": 100, "properties": {} },
+                    { "key": 21, "value": 85, "properties": {} },
+                    { "key": 22, "value": 65, "properties": {} },
+                    { "key": 23, "value": 55, "properties": {} },
+                    { "key": 24, "value": 40, "properties": {} }
+                ],
+                "properties": { "color": "green", "seriesName": "Oil", "displayUnit": "stb/d", "markerEnabled": true }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 80, "properties": {} },
+                    { "key": 2, "value": 80, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 80, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 90, "properties": {} },
+                    { "key": 7, "value": 90, "properties": {} },
+                    { "key": 8, "value": 90, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 90, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 85, "properties": {} },
+                    { "key": 13, "value": 85, "properties": {} },
+                    { "key": 14, "value": 85, "properties": {} },
+                    { "key": 15, "value": 85, "properties": {} },
+                    { "key": 16, "value": 95, "properties": {} },
+                    { "key": 17, "value": 95, "properties": {} },
+                    { "key": 18, "value": 95, "properties": {} },
+                    { "key": 19, "value": 95, "properties": {} },
+                    { "key": 20, "value": 95, "properties": {} },
+                    { "key": 21, "value": 85, "properties": {} },
+                    { "key": 22, "value": 85, "properties": {} },
+                    { "key": 23, "value": 85, "properties": {} },
+                    { "key": 24, "value": 85, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Allowable", "displayUnit": "stb/d", "markerEnabled": false}
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 65, "properties": {} },
+                    { "key": 2, "value": 65, "properties": {} },
+                    { "key": 3, "value": 65, "properties": {} },
+                    { "key": 4, "value": 65, "properties": {} },
+                    { "key": 5, "value": 75, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 75, "properties": {} },
+                    { "key": 8, "value": 75, "properties": {} },
+                    { "key": 9, "value": 75, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 85, "properties": {} },
+                    { "key": 13, "value": 85, "properties": {} },
+                    { "key": 14, "value": 85, "properties": {} },
+                    { "key": 15, "value": 85, "properties": {} },
+                    { "key": 16, "value": 85, "properties": {} },
+                    { "key": 17, "value": 85, "properties": {} },
+                    { "key": 18, "value": 90, "properties": {} },
+                    { "key": 19, "value": 90, "properties": {} },
+                    { "key": 20, "value": 90, "properties": {} },
+                    { "key": 21, "value": 90, "properties": {} },
+                    { "key": 22, "value": 90, "properties": {} },
+                    { "key": 23, "value": 90, "properties": {} },
+                    { "key": 24, "value": 90, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "PGOR test", "displayUnit": "stb/d", "markerEnabled": false }
+            }
+        ]
+    }
+]
+
+export const SPS_OverView_Historic_Production_Week_DATA: KeyValueDataArrayObject[] = [
+    {
+        "id": 200,
+        "collection": [
+            {
+                "data": [
+                    { "key": 1, "value": 100, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 85, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 95, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "green", "seriesName": "Oil", "displayUnit": "stb/d", "markerEnabled": true }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 100, "properties": {} },
+                    { "key": 2, "value": 80, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 80, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 90, "properties": {} },
+                    { "key": 7, "value": 90, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Allowable", "displayUnit": "stb/d", "markerEnabled": false }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 100, "properties": {} },
+                    { "key": 2, "value": 65, "properties": {} },
+                    { "key": 3, "value": 65, "properties": {} },
+                    { "key": 4, "value": 65, "properties": {} },
+                    { "key": 5, "value": 75, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 75, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "PGOR test", "displayUnit": "stb/d", "markerEnabled": false }
+            }
+        ]
+    }
+]
+
+export const SPS_OverView_Historic_Production_Month_DATA: KeyValueDataArrayObject[] = [
+    {
+        "id": 200,
+        "collection": [
+            {
+                "data": [
+                    { "key": 1, "value": 40, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 85, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 95, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 80, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 95, "properties": {} },
+                    { "key": 12, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "green", "seriesName": "Oil", "displayUnit": "stb/d", "markerEnabled": true }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 50, "properties": {} },
+                    { "key": 2, "value": 80, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 80, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 90, "properties": {} },
+                    { "key": 7, "value": 90, "properties": {} },
+                    { "key": 8, "value": 90, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 90, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 85, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Allowable", "displayUnit": "stb/d", "markerEnabled": false }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 60, "properties": {} },
+                    { "key": 2, "value": 65, "properties": {} },
+                    { "key": 3, "value": 65, "properties": {} },
+                    { "key": 4, "value": 65, "properties": {} },
+                    { "key": 5, "value": 75, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 75, "properties": {} },
+                    { "key": 8, "value": 75, "properties": {} },
+                    { "key": 9, "value": 75, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 85, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "PGOR test", "displayUnit": "stb/d", "markerEnabled": false }
+            }
+        ]
+    }
+]
+
+export const SPS_OverView_Historic_Production_Year_DATA: KeyValueDataArrayObject[] = [
+    {
+        "id": 200,
+        "collection": [
+            {
+                "data": [
+                    { "key": 1, "value": 90, "properties": {} },
+                    { "key": 2, "value": 75, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 85, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 95, "properties": {} },
+                    { "key": 7, "value": 100, "properties": {} },
+                    { "key": 8, "value": 80, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 95, "properties": {} },
+                    { "key": 12, "value": 100, "properties": {} }
+                ],
+                "properties": { "color": "green", "seriesName": "Oil", "displayUnit": "stb/d", "markerEnabled": true }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 100, "properties": {} },
+                    { "key": 2, "value": 80, "properties": {} },
+                    { "key": 3, "value": 80, "properties": {} },
+                    { "key": 4, "value": 80, "properties": {} },
+                    { "key": 5, "value": 90, "properties": {} },
+                    { "key": 6, "value": 90, "properties": {} },
+                    { "key": 7, "value": 90, "properties": {} },
+                    { "key": 8, "value": 90, "properties": {} },
+                    { "key": 9, "value": 90, "properties": {} },
+                    { "key": 10, "value": 90, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 85, "properties": {} }
+                ],
+                "properties": { "color": "red", "seriesName": "Allowable", "displayUnit": "stb/d", "markerEnabled": false }
+            },
+            {
+                "data": [
+                    { "key": 1, "value": 75, "properties": {} },
+                    { "key": 2, "value": 65, "properties": {} },
+                    { "key": 3, "value": 65, "properties": {} },
+                    { "key": 4, "value": 65, "properties": {} },
+                    { "key": 5, "value": 75, "properties": {} },
+                    { "key": 6, "value": 75, "properties": {} },
+                    { "key": 7, "value": 75, "properties": {} },
+                    { "key": 8, "value": 75, "properties": {} },
+                    { "key": 9, "value": 75, "properties": {} },
+                    { "key": 10, "value": 75, "properties": {} },
+                    { "key": 11, "value": 85, "properties": {} },
+                    { "key": 12, "value": 80, "properties": {} }
+                ],
+                "properties": { "color": "blue", "seriesName": "PGOR test", "displayUnit": "stb/d", "markerEnabled": false }
+            }
+        ]
+    }
+]
+

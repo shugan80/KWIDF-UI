@@ -18,17 +18,17 @@ import { GlobalDataService } from '../services/globaldata.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'chart-column-spline-area',
+    selector: 'chart-line-multiple',
     styles: [`
       chart {
         display: block;
         height:280px;
       }
     `],
-    templateUrl: `./charts-column-spline.component.html`,
+    templateUrl: `./charts-line-multiple.component.html`,
     providers: [StaticDataService, ConfigDataService, GlobalDataService]
 })
-export class ChartComponent_ColumnSpline {
+export class ChartComponent_LineMultiple {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
     ObjFilter: Filter;
@@ -49,7 +49,7 @@ export class ChartComponent_ColumnSpline {
     }
 
     ngAfterViewInit() {
-        this.getDataAndRenderChart(this.ObjFilter.id);
+        this.getDataAndRenderChart(this.ObjFilter.id, 'day');
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -60,7 +60,7 @@ export class ChartComponent_ColumnSpline {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.getDataAndRenderChart(this.ObjFilter.id);
+                    this.getDataAndRenderChart(this.ObjFilter.id, 'day');
                 }
             }
             else {
@@ -73,8 +73,8 @@ export class ChartComponent_ColumnSpline {
 
     loadConfigItems() {
         let configItems: any = this._globalDataService.getModuleConfigItems();
-        if (this.component_context === "sps-overview-downtime-prodloss") {
-            this.chartConfigItems = configItems.overview_DownTime_ProdLoss_Config;
+        if (this.component_context === "sps-overview-historicProduction") {
+            this.chartConfigItems = configItems.overview_Historic_Production_Config;
         }
         //else {
         //    this.chartConfigItems = configItems.lossGain_FieldLossGain_Config;
@@ -83,8 +83,8 @@ export class ChartComponent_ColumnSpline {
     }
 
     //Chart functionality - Start
-    getDataAndRenderChart(filterId: number) {
-        this.dataService.get_columnSplineChart_Data(this.component_context, filterId).then(resultData => {
+    getDataAndRenderChart(filterId: number, filterType:string) {
+        this.dataService.get_lineMultipleChart_Data(this.component_context, filterId, filterType).then(resultData => {
             this.chartContextData = resultData;
             this.renderChart();
         });
@@ -98,9 +98,12 @@ export class ChartComponent_ColumnSpline {
                 return [];
             })
         }
-        
+
 
         this.options = {
+            global: {
+                useUTC: false
+            },
             chart: {
                 zoomType: 'xy'
             },
@@ -111,25 +114,22 @@ export class ChartComponent_ColumnSpline {
                 text: this.chartConfigItems.subTitle
             },
             xAxis: {
-                tickInterval: this.chartConfigItems.xAxisTickInterval
+                //type: 'datetime',
+                //labels: {
+                //    //format: '{value:%m-%d-%Y}',
+                //    rotation: 45,
+                //    align: 'left'
+                //}
+                tickInterval: this.chartConfigItems.xAxisTickInterval,
             },
-            yAxis: [{ // Primary yAxis
-                lineWidth: 1,
+            yAxis: {
                 title: {
-                    text: this.chartConfigItems.yAxisPrimaryTitle
+                    text: this.chartConfigItems.yAxisTitle
                 },
                 min: 0,
-                tickInterval: this.chartConfigItems.yAxisPrimaryTickInterval
-
-            }, { // Secondary yAxis
-                title: {
-                    text: this.chartConfigItems.yAxisSecondaryTitle
-                },
-                lineWidth: 1,
-                opposite: true,
-                min: 0,
-                tickInterval: this.chartConfigItems.yAxisSecondaryTickInterval
-            }],
+                tickInterval: this.chartConfigItems.yAxisTickInterval,
+                lineWidth: 1
+            },
             tooltip: {
                 shared: true
             },
@@ -147,8 +147,6 @@ export class ChartComponent_ColumnSpline {
                 }
             },
             series: seriesData
-            
-
         };
 
         if (this.chartContextData != null) {
@@ -158,11 +156,14 @@ export class ChartComponent_ColumnSpline {
                 let tempOptions: any = this.options;
                 tempOptions.series[index] = ({
                     name: cData.properties.seriesName,
-                    type: cData.properties.chartType,
-                    yAxis: cData.properties.yAxis,
                     color: cData.properties.color,
                     tooltip: {
                         valueSuffix: ' ' + cData.properties.displayUnit
+                    },
+                    marker: {
+                        enabled: cData.properties.markerEnabled
+                        //symbol: 'circle',
+                        //radius: 7
                     },
                     data: cData.data.map(function (point: any) {
                         return [point.key, point.value]
@@ -214,6 +215,13 @@ export class ChartComponent_ColumnSpline {
                     this.chartInstance.exportChart(exportOptions);
                 }
             }
+        }
+    }
+
+    onClickFilters(filterType: string): void {
+        //this._logger.log(this.chartInstance);
+        if (filterType) {
+            this.getDataAndRenderChart(this.ObjFilter.id, filterType);
         }
     }
 

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { Logger } from "angular2-logger/core";
 
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
-
 import { FilterDataService } from '../services/filterdata.service';
 
 @Component({
@@ -16,14 +16,14 @@ export class FilterTreeViewComponent {
     filters: TreeViewFilter[];
     isFromNodeSelection: boolean;
 
-    constructor(private filterDataService: FilterDataService) { }
+    constructor(private _logger: Logger, private filterDataService: FilterDataService) { }
 
     getFilters(): void {
         this.filterDataService.getFilters().then(filters => this.filters = filters);
     }
 
     ngOnInit(): void {
-        console.log('filterTreeView-onit');
+        this._logger.log('filterTreeView-onit');
         this.getFilters();
         this.filterDataService.changeNav(this.item);
     }

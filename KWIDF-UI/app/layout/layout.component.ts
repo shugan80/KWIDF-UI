@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router }  from '@angular/router';
-
+import { Router } from '@angular/router';
+import { Logger } from "angular2-logger/core";
 
 declare var jscustom: any;
 
@@ -11,11 +11,11 @@ declare var jscustom: any;
 })
 export class LayoutComponent {
     // jscustom: any;
-    constructor(
+    constructor(private _logger: Logger,
         private router: Router) {
-        console.log('LayoutComponent123');
+        this._logger.log('LayoutComponent constructor...');
     }
     ngOnInit() {
-        console.log('LayoutComponent');
+        this._logger.log('LayoutComponent init');
     }
 }

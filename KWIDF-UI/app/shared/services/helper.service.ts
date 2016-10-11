@@ -18,11 +18,12 @@ import {Injectable} from '@angular/core';
 import {HttpModule, Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/Rx'; 
+import { Logger } from "angular2-logger/core";
 
 @Injectable()
 export class HelperService { 
     
-    constructor(private http: Http) {
+    constructor(private _logger: Logger,private http: Http) {
     }
 
     public handleError(error: any) {
@@ -30,7 +31,7 @@ export class HelperService {
         // We'd also dig deeper into the error to get a better message
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
+        this._logger.error(errMsg); // log to this._logger. instead
         return Observable.throw(errMsg);
     }
    

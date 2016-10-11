@@ -1,15 +1,14 @@
 ﻿import { Component, Input, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Filter } from '../model/filter';
-import { TreeViewFilter } from '../model/filter';
-
-
+import { Logger } from "angular2-logger/core";
 import { ChartComponent, Highcharts } from 'angular2-highcharts';
 require('highcharts/modules/exporting.js')(Highcharts);
 require('highcharts/modules/export-csv.js')(Highcharts);
 
 
+import { Filter } from '../model/filter';
+import { TreeViewFilter } from '../model/filter';
 import { ConfigDataService } from '../services/configdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 import { KeyValueData } from '../model/key-value';
@@ -43,12 +42,13 @@ export class ChartComponent_Pie {
     public chartConfigItems: any;
     chartContextData: KeyValueObject;
 
-    constructor(private _globalDataService: GlobalDataService, private _configService: ConfigDataService, private _filterService: FilterDataService, private dataService: StaticDataService) {
-        this.loadConfigItems();
+    constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
+        private _configService: ConfigDataService, private _filterService: FilterDataService,
+        private dataService: StaticDataService) {
     }
 
     ngOnInit() {
-        console.log(' ChartComponent_Pie ngOnInit');
+        this._logger.log(' ChartComponent_Pie ngOnInit');
         this.loadConfigItems();
     }
 
@@ -120,7 +120,8 @@ export class ChartComponent_Pie {
                 text: this.chartConfigItems.subTitle
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                //pointFormat: this.chartConfigItems.toolTipPointFormat
+                //pointFormat: '{ series.name }: <b > { point.percentage:.1f} % </b>'
             },
             plotOptions: {
                 pie: {
@@ -196,7 +197,7 @@ export class ChartComponent_Pie {
     }
 
     onClickIcons(exportType: string): void {
-        //console.log(this.chartInstance);
+        //this._logger.log(this.chartInstance);
         if (exportType) {
             if (this.chartContextData != null) {
                 this.renderChart();
@@ -204,6 +205,14 @@ export class ChartComponent_Pie {
                 if (exportType == 'application/vnd.ms-excel') {
                     let tempChartInstance: any = this.chartInstance;
                     tempChartInstance.downloadXLS(exportOptions);
+                }
+                else if (exportType == 'viewDataTable')
+                {
+                    let tempChartInstance: any = this.chartInstance;
+                    //let htmlString = tempChartInstance.getTable();
+                    //let htmlString = tempChartInstance.getCSV();
+                    let htmlString = tempChartInstance.getDataRows();
+                    this._logger.log(htmlString);
                 }
                 else {
                     this.chartInstance.exportChart(exportOptions);
