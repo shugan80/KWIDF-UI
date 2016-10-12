@@ -111,17 +111,18 @@ ul.tab-links li.icon {display: none;}
 .content-area {position:relative; margin-top:20px;}
 .border{border:1px solid #d4d4d4}
 /*Overview*/
+
 .over-view .content-area-left{ padding-right:10px; padding-left:0;}
 .over-view .content-area-right{ padding-left:10px; padding-right:0;}
 .dash-component-head{background:#f5f5f5;padding:10px;border-bottom:1px solid #d4d4d4}
 .dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold; display:inline-block}
-.dash-component-content{ position:relative; min-height:170px;}
+.dash-component-content{ position:relative; min-height:140px;}
 .over-view .well-map{ min-height:400px}
-.over-view .well-map .dash-component-content{ height:490px;}
+.over-view .well-map .dash-component-content{ height:530px;}
 .well-status,.well-event{ position:relative}
 .well-status{ margin-bottom:20px;}
-.well-status .dash-component-content{ height:150px;}
-.well-event .dash-component-content{ height:200px;}
+.well-status .dash-component-content{ min-height:150px;}
+.well-event .dash-component-content{}
 .content-area-left-btm{ position:relative; margin-top:20px;}
 .content-area-left-btm .left{ padding-right:10px; padding-left:0;}
 .content-area-left-btm .right{padding-left:10px; padding-right:0;}
@@ -134,7 +135,7 @@ filed-loss{}
 .margin-top20{ margin-top:20px;}
 /*loss-gains*/
 .loss-gains .well-map{ height:530px}
-.loss-gains .content-area-left{ padding-right:10px; padding-left:0;}
+.loss-gains .content-area-left{ padding-right:10px; padding-left:0; }
 .loss-gains .content-area-right{ padding-left:10px; padding-right:0;}
 /*Well Test Priority*/
 .wt-priority .sec-1{ padding-left:0}
@@ -183,3 +184,23 @@ filed-loss{}
 #sidebar .handle{background-color:rgba(79,79,79,.5);border-radius: 0 16px 16px 0;right: -24px;padding:4px 14px 4px 8px;position: absolute;top: 40%;cursor: pointer;-moz-transition: 200ms ease all;-webkit-transition: 200ms ease all;-o-transition: 200ms ease all;transition: 200ms ease all;z-index:1009}
 .body-container.menuCollapsed #sidebar .handle {right:-30px;}
 
+
+/*Highcharts*/
+.highcart-pie{height:264px;display:block; padding-bottom:5px}
+.highcart-column{height:203px; padding-bottom:5px; padding-top:10px; display:block}
+.highcart-column .highcharts-series-group rect{fill:#5b9bd5}
+ .highcharts-background{background:none}
+ .highcart-column  .highcharts-grid path { stroke:none}
+.highcharts-axis-labels tspan, .highcharts-xaxis-labels tspan{font-size:13px;color:#404040 !important;}
+tspan{text-decoration:none;text-shadow:none !important;font-size:13px;}
+.highcharts-axis-labels text {fill:#404040 !important}
+.highcharts-series path,.highcharts-tracker path {stroke-width: 0px;}
+.highcharts-legend-item text{font-weight:normal !important;font-size:13px!important; color:#404040!important;}
+.highcharts-legend-item rect{}
+.highcharts-legend-item rect {x:8;y:6;width:8px;height:8px}
+.highcharts-legend-item{width:auto}
+
+@media (min-width: 992px){
+.col-md-8 {width: 69.66666667% !important;}
+.col-md-4 {width: 30.33333333% !important;}
+}
