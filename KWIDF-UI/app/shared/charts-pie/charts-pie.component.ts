@@ -9,7 +9,6 @@ require('highcharts/modules/export-csv.js')(Highcharts);
 
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
-import { ConfigDataService } from '../services/configdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 import { KeyValueData } from '../model/key-value';
 import { KeyValueObject } from '../model/key-value';
@@ -30,7 +29,7 @@ import { FilterDataService } from '../services/filterdata.service';
        
       }
     `],
-    providers: [StaticDataService, ConfigDataService, GlobalDataService]
+    providers: [StaticDataService, GlobalDataService]
 })
 export class ChartComponent_Pie {
     @Input() currentFilters: TreeViewFilter;
@@ -51,7 +50,7 @@ export class ChartComponent_Pie {
     chartContextData: KeyValueObject;
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
-        private _configService: ConfigDataService, private _filterService: FilterDataService,
+        private _filterService: FilterDataService,
         private dataService: StaticDataService) {
     }
 
@@ -201,7 +200,8 @@ export class ChartComponent_Pie {
             let colors: any = [];
             colors = dataArray.map(function (d: any) {
                 return d.properties.color;
-            })
+            });
+            console.log(colors);
             return colors;
         }
         else {

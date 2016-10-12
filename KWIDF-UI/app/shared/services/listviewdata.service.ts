@@ -24,16 +24,13 @@ export class ListViewDataService {
         this._listviewItemSource.next(number);
     }
 
-    getListviewFilters(id: any, level: any) {
-        
-        if (level == "typeId") {
-            this.finalListviewFilters = ListViewFilters.filter(x=> x.typeId == id);
-           // ListViewFilters.
+    getListviewFilters(cFilters: Array<number>) {
+        let listViewFilters:any = [];
+        for (let cID of cFilters) {
+            var abc = ListViewFilters.filter(x => x.fieldId == cID);
+            listViewFilters = listViewFilters.concat(abc);
         }
-        else {
-            this.finalListviewFilters = ListViewFilters.filter(x=> x.fieldId == id);
-        }
-      
+        this.finalListviewFilters = listViewFilters; 
         return this.finalListviewFilters;
     }
     // See the "Take it slow" appendix
@@ -45,7 +42,6 @@ export class ListViewDataService {
 
     getCurrentListviewFilters() {
         return this.listviewFilterObj;
-
     }
 
     publishListviewFilterData(filter: ListViewFilter) {

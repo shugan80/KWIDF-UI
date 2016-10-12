@@ -8,7 +8,6 @@ require('highcharts/modules/export-csv.js')(Highcharts);
 
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
-import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { KeyValueObject } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
@@ -26,7 +25,7 @@ import { GlobalDataService } from '../services/globaldata.service';
       }
     `],
     templateUrl: `./charts-column.component.html`,
-    providers: [StaticDataService, ConfigDataService, GlobalDataService]
+    providers: [StaticDataService, GlobalDataService]
 })
 export class ChartComponent_Column {
     @Input() currentFilters: TreeViewFilter;
@@ -38,7 +37,7 @@ export class ChartComponent_Column {
     chartContextData: KeyValueObject;
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
-        private _configService: ConfigDataService, private dataService: StaticDataService) {
+        private dataService: StaticDataService) {
 
     }
 
@@ -124,7 +123,7 @@ export class ChartComponent_Column {
                     text: this.chartConfigItems.yAxisTitle
                 },
                 lineWidth: 1,
-                tickInterval: this.chartConfigItems.yAxisTickInterval
+                tickInterval: this.chartConfigItems.yAxisTickInterval,
             },
             legend: {
                 enabled: this.chartConfigItems.isLegendEnabled
@@ -135,7 +134,7 @@ export class ChartComponent_Column {
             plotOptions: {
                 column: {
                     pointPadding: 0.2,
-                    borderWidth: 0,
+                    borderWidth: 1,
                     dataLabels: {
                         enabled: this.chartConfigItems.isDataLabelsEnabled,
                         formatter: function () {

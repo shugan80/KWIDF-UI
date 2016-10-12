@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -22,23 +22,23 @@ export class FilterListViewComponent {
 
     constructor(private filterListviewDataService: ListViewDataService,private filterDataService: FilterDataService) { }
 
-    getListviewFilters(id:any,level:any) {
-        this.filters= this.filterListviewDataService.getListviewFilters(id,level);
+    getListviewFilters(cFilters: Array<number>) {
+        this.filters = this.filterListviewDataService.getListviewFilters(cFilters);
     }
 
-    ngOnInit(): void {
-       
-        
-        //this.filterListviewDataService.changeListviewItem(this.item);
-
+    ngOnInit(): void {      
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
                 this.item = item;
                 this.ObjFilter = this.filterDataService.getCurrentFilters();
-                //this.getListviewFilters(this.ObjFilter.id, this.ObjFilter.level);
-                this.filters = this.filterListviewDataService.getListviewFilters(this.ObjFilter.id, this.ObjFilter.level);
+                let cFilters: Array<number> = [];
+                cFilters = this.ObjFilter.children.map(function (d: any) {
+                    return d.id;
+                });
+                cFilters.push(this.ObjFilter.id);
+                this.getListviewFilters(cFilters);
                 this.page = 1;
             });
-
     }
+    
 }

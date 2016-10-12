@@ -71,6 +71,7 @@
     <Content Include="app\main.ts" />
     <Content Include="app\os\os.component.html" />
     <Content Include="app\shared\charts-column-spline\charts-column-spline.component.html" />
+    <Content Include="app\shared\charts-gauge\charts-gauge.component.html" />
     <Content Include="app\shared\charts-line-multiple\charts-line-multiple.component.html" />
     <Content Include="app\shared\content-area\content-area.component.html" />
     <Content Include="app\shared\filter-listview\filter-listview.component.html" />
@@ -132,7 +133,6 @@
     <Content Include="typings\globals\node\typings.json" />
     <Content Include="typings\globals\selenium-webdriver\typings.json" />
     <Content Include="app\dashboard\config\dashboard.config.json" />
-    <Content Include="app\sps\config\sps.config.json" />
     <Content Include="app\wpe\config\wpe.config.json" />
     <Content Include="app\esp\config\esp.config.json" />
     <Content Include="app\os\config\os.config.json" />
@@ -145,16 +145,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\config\app.config.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="app\esp\esp.component.ts" />
     <TypeScriptCompile Include="app\layout\layout.component.ts" />
     <TypeScriptCompile Include="app\os\os.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-column-spline\charts-column-spline.component.ts" />
+    <TypeScriptCompile Include="app\shared\charts-gauge\charts-gauge.component.ts" />
     <TypeScriptCompile Include="app\shared\charts-line-multiple\charts-line-multiple.component.ts" />
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-lossgain.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
-    <TypeScriptCompile Include="app\shared\data\mock-datefilter.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-listview.ts" />
     <TypeScriptCompile Include="app\shared\filter-listview\filter-listview.component.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
@@ -174,6 +175,7 @@
     <TypeScriptCompile Include="app\shared\services\filterdata.service.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-filters.ts" />
     <TypeScriptCompile Include="app\shared\top-bar\top-bar.component.ts" />
+    <TypeScriptCompile Include="app\sps\config\sps.config.ts" />
     <TypeScriptCompile Include="app\sps\sps-alarms-events\sps-alarms-events.component.ts" />
     <TypeScriptCompile Include="app\sps\sps-loss-gain\sps-loss-gain.component.ts" />
     <TypeScriptCompile Include="app\sps\sps-overview\sps-overview.component.ts" />
@@ -192,7 +194,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\shared\charts-gauge\" />
     <Folder Include="app\shared\footer\" />
   </ItemGroup>
   <PropertyGroup>

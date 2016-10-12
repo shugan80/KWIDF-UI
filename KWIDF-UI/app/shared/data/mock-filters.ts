@@ -32,7 +32,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'Fields',
                 level: 'typeId',
                 checked: false,
-                expanded: true,
+                expanded: false,
                 style: '',
                 children: [
                     {
@@ -80,16 +80,16 @@ export const TreeViewFilters: TreeViewFilter[] = [
             {
                 id: 300,
                 parentId: 1,
-                name: 'CG',
+                name: 'GC',
                 level: 'typeId',
                 checked: false,
-                expanded: true,
+                expanded: false,
                 style: '',
                 children: [
                     {
                         id: 301,
                         parentId: 300,
-                        name: 'CG-23',
+                        name: 'GC-23',
                         level: 'fieldId',
                         checked: false,
                         expanded: false,
@@ -99,7 +99,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                     {
                         id: 302,
                         parentId: 300,
-                        name: 'CG-24',
+                        name: 'GC-24',
                         level: 'fieldId',
                         checked: false,
                         expanded: false,
@@ -109,7 +109,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                     {
                         id: 303,
                         parentId: 300,
-                        name: 'CG-120',
+                        name: 'GC-120',
                         level: 'fieldId',
                         checked: false,
                         expanded: false,
@@ -124,7 +124,7 @@ export const TreeViewFilters: TreeViewFilter[] = [
                 name: 'Reservoirs',
                 level: 'typeId',
                 checked: false,
-                expanded: true,
+                expanded: false,
                 style: '',
                 children: [
                     {

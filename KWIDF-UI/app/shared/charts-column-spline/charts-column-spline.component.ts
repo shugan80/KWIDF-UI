@@ -11,7 +11,6 @@ import { TreeViewFilter } from '../model/filter';
 import { KeyValueObject } from '../model/key-value';
 import { KeyValueDataArray } from '../model/key-value';
 import { KeyValueDataArrayObject } from '../model/key-value';
-import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
@@ -26,7 +25,7 @@ import { GlobalDataService } from '../services/globaldata.service';
       }
     `],
     templateUrl: `./charts-column-spline.component.html`,
-    providers: [StaticDataService, ConfigDataService, GlobalDataService]
+    providers: [StaticDataService, GlobalDataService]
 })
 export class ChartComponent_ColumnSpline {
     @Input() currentFilters: TreeViewFilter;
@@ -39,7 +38,7 @@ export class ChartComponent_ColumnSpline {
 
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
-        private _configService: ConfigDataService, private dataService: StaticDataService) {
+        private dataService: StaticDataService) {
 
     }
 

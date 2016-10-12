@@ -1,5 +1,5 @@
 ﻿/**
- * @filename configdata.service.ts
+ * @filename helper.service.ts
  * 
  * The common configuration service. This will read the JSON file and return the JSON object wherever it needed.
  * The public property "configJsonPath" is declared. The Caller needs to set the JSON relative path to this property.

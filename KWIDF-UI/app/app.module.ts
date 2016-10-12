@@ -29,6 +29,7 @@ import { ChartComponent_Column } from './shared/charts-column/charts-column.comp
 import { ChartComponent_Pie } from './shared/charts-pie/charts-pie.component';
 import { ChartComponent_ColumnSpline } from './shared/charts-column-spline/charts-column-spline.component';
 import { ChartComponent_LineMultiple } from './shared/charts-line-multiple/charts-line-multiple.component';
+import { ChartComponent_Gauge } from './shared/charts-gauge/charts-gauge.component';
 
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -82,6 +83,7 @@ let loggingOptions = {
         ChartComponent_Pie,
         ChartComponent_ColumnSpline,
         ChartComponent_LineMultiple,
+        ChartComponent_Gauge,
         TopBarComponent,
         TabMenuComponent,
         ContentAreaComponent,

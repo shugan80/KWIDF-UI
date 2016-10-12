@@ -10,10 +10,7 @@
                     <div class="content-area-left-btm">
                         <div class="col-md-4 left">
                             <div class="lat-prod border" id="ov-lat-prod">
-                                <div class="dash-component-head">
-                                    <h3>Latest Production</h3>
-                                </div>
-                                <div class="dash-component-content"></div>
+                                <chart-gauge-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-gauge-area>
                             </div>
                         </div>
                         <div class="col-md-8 right">

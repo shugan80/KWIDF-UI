@@ -11,13 +11,13 @@ import { TreeViewFilter } from '../model/filter';
 import { KeyValueObject } from '../model/key-value';
 import { KeyValueDataArray } from '../model/key-value';
 import { KeyValueDataArrayObject } from '../model/key-value';
-import { ConfigDataService } from '../services/configdata.service'
 import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
 import { DateFilter } from '../model/filter';
-import { DateFilters } from '../data/mock-datefilter';
+import { SPS_HistoricProd_DateFilters } from '../../sps/config/sps.config';
+
 
 @Component({
     moduleId: module.id,
@@ -29,34 +29,42 @@ import { DateFilters } from '../data/mock-datefilter';
       }
     `],
     templateUrl: `./charts-line-multiple.component.html`,
-    providers: [StaticDataService, ConfigDataService, GlobalDataService]
+    providers: [StaticDataService, GlobalDataService]
 })
 export class ChartComponent_LineMultiple {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
-    ObjFilter: Filter;
+    @Input() currentControlId: string;
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
+    ObjFilter: Filter;
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueDataArrayObject;
-    dateFilterObj: any;
-    @Input() currentControlId: string;
-    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+    chartFilterObject: any;
+    chartFilterDefaultSelection: Object;
+    
 
 
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
-        private _configService: ConfigDataService, private dataService: StaticDataService) {
-        this.dateFilterObj = DateFilters;
+        private dataService: StaticDataService) {
+        
     }
 
     ngOnInit() {
+        if (this.component_context === "sps-overview-historicProduction") {
+            if (SPS_HistoricProd_DateFilters.length > 0) {
+                this.chartFilterObject = SPS_HistoricProd_DateFilters;
+                this.chartFilterDefaultSelection = SPS_HistoricProd_DateFilters[0].value;
+            }
+        }
         this.chartConfigItems = this._globalDataService.getModuleConfigItems();
         this.loadConfigItems();
     }
 
     ngAfterViewInit() {
-        this.getDataAndRenderChart(this.ObjFilter.id, 'day');
+        this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterDefaultSelection);
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -67,7 +75,7 @@ export class ChartComponent_LineMultiple {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.getDataAndRenderChart(this.ObjFilter.id, 'day');
+                    this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterDefaultSelection);
                 }
             }
             else {
@@ -90,7 +98,7 @@ export class ChartComponent_LineMultiple {
     }
 
     //Chart functionality - Start
-    getDataAndRenderChart(filterId: number, filterType:string) {
+    getDataAndRenderChart(filterId: number, filterType:Object) {
         this.dataService.get_lineMultipleChart_Data(this.component_context, filterId, filterType).then(resultData => {
             this.chartContextData = resultData;
             this.renderChart();
@@ -128,6 +136,9 @@ export class ChartComponent_LineMultiple {
                 //    align: 'left'
                 //}
                 tickInterval: this.chartConfigItems.xAxisTickInterval,
+                labels: {
+                    rotation: 1
+                },
             },
             yAxis: {
                 title: {
@@ -225,7 +236,7 @@ export class ChartComponent_LineMultiple {
         }
     }
 
-    onClickFilters(filterType: string): void {
+    onClickFilters(filterType: Object): void {
         //this._logger.log(this.chartInstance);
         if (filterType) {
             this.getDataAndRenderChart(this.ObjFilter.id, filterType);

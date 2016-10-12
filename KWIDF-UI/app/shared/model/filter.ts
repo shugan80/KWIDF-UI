@@ -14,12 +14,11 @@ export class TreeViewFilter {
 }
 export class ListViewFilter {
     wellId: number;
-    typeId: number;
     fieldId: number;
     wellName: string;
 }
 
 export class DateFilter {
-    id: number;
-    name: string;
+    text: Object;
+    value: Object;
 }
