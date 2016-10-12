@@ -6,138 +6,138 @@ import { KeyValueDataArrayObject } from '../model/key-value';
 export const SPS_OverView_WellEvents_DATA: KeyValueObject[] = [
     {
         "id": 200, "data": [
-            { "key": "Trips", "value": 200, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 150, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 100, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 50, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 200, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 150, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 100, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 50, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 201, "data": [
-            { "key": "Trips", "value": 10, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 20, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 202, "data": [
-            { "key": "Trips", "value": 25, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 50, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 203, "data": [
-            { "key": "Trips", "value": 40, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 204, "data": [
-            { "key": "Trips", "value": 40, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 300, "data": [
-            { "key": "Trips", "value": 20, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 40, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 60, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 80, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 20, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 40, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 60, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 80, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 301, "data": [
-            { "key": "Trips", "value": 10, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 20, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 302, "data": [
-            { "key": "Trips", "value": 25, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 50, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 303, "data": [
-            { "key": "Trips", "value": 40, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 400, "data": [
-            { "key": "Trips", "value": 10, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 20, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 401, "data": [
-            { "key": "Trips", "value": 10, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 20, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 402, "data": [
-            { "key": "Trips", "value": 25, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 50, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 403, "data": [
-            { "key": "Trips", "value": 40, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 500, "data": [
-            { "key": "Trips", "value": 20, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 40, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 50, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 20, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 40, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 50, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 501, "data": [
-            { "key": "Trips", "value": 10, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 20, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 502, "data": [
-            { "key": "Trips", "value": 25, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 50, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 503, "data": [
-            { "key": "Trips", "value": 40, "properties": { "color": "green" } },
-            { "key": "Build-Ups", "value": 30, "properties": { "color": "red" } },
-            { "key": "Pump Issues", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Workovers", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Trips", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Build-Ups", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Pump Issues", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Workovers", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     }
 ]
@@ -145,138 +145,138 @@ export const SPS_OverView_WellEvents_DATA: KeyValueObject[] = [
 export const SPS_OverView_WellStatus_DATA: KeyValueObject[] = [
     {
         "id": 200, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 100, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 100, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 201, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 202, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 203, "data": [
-            { "key": "Producing", "value": 40, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 204, "data": [
-            { "key": "Producing", "value": 40, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 300, "data": [
-            { "key": "Producing", "value": 20, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 40, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 60, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 80, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 20, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 40, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 60, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 80, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 301, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 302, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 303, "data": [
-            { "key": "Producing", "value": 40, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 400, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 401, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 402, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 403, "data": [
-            { "key": "Producing", "value": 40, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 500, "data": [
-            { "key": "Producing", "value": 20, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 40, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 50, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 20, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 40, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 50, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 501, "data": [
-            { "key": "Producing", "value": 10, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 20, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 30, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 40, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 10, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 20, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 30, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 40, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 502, "data": [
-            { "key": "Producing", "value": 25, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 50, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 75, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 15, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 25, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 50, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 75, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 15, "properties": { "color": "#ffc000" } }
         ]
     },
     {
         "id": 503, "data": [
-            { "key": "Producing", "value": 40, "properties": { "color": "green" } },
-            { "key": "Shut-In", "value": 30, "properties": { "color": "red" } },
-            { "key": "Workover", "value": 20, "properties": { "color": "grey" } },
-            { "key": "Equipment Issue", "value": 10, "properties": { "color": "purple" } }
+            { "key": "Producing", "value": 40, "properties": { "color": "#00b050" } },
+            { "key": "Shut-In", "value": 30, "properties": { "color": "#ff0000" } },
+            { "key": "Workover", "value": 20, "properties": { "color": "#0070c0" } },
+            { "key": "Equipment Issue", "value": 10, "properties": { "color": "#ffc000" } }
         ]
     }
 ]

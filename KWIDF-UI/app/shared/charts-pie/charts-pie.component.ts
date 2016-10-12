@@ -27,7 +27,7 @@ import { FilterDataService } from '../services/filterdata.service';
     styles: [`
       chart {
         display: block;
-        height:230px;
+       
       }
     `],
     providers: [StaticDataService, ConfigDataService, GlobalDataService]
@@ -119,6 +119,11 @@ export class ChartComponent_Pie {
             },
             title: {
                 text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
+            },
+            legend: {
+                // layout: 'horizontal', // default
+                itemDistance: 5,
+           
             },
             subtitle: {
                 text: this.chartConfigItems.subTitle
