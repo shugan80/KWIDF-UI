@@ -35,6 +35,7 @@
             'HighchartCSVExporting': 'npm:highcharts/modules/export-csv.js',
             'angular-2-local-storage': 'npm:angular-2-local-storage',
             'angular2-logger': 'npm:angular2-logger',
+            'ng2-pagination': 'npm:ng2-pagination',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -68,6 +69,11 @@
             },
             'angular-2-local-storage': { main: 'dist/index.js', defaultExtension: 'js' },
             'angular2-logger': { main: 'core.js', defaultExtension: 'js' },
+            'ng2-pagination': {
+                main: 'index',
+                format: 'cjs',
+                defaultExtension: 'js'
+            },
         }
     });
 })(this);

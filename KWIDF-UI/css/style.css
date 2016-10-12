@@ -30,7 +30,7 @@ body{font-family: 'Roboto', sans-serif !important;}
 #menu {float: left;background-color: pink;width:90px;height: 100%;}
 #main {margin-left: 246px; padding:0 0 0 20px;}
 #sidebar {float:left; border-right:6px solid #dad8d8}
-.sidebar-greybg{ border:6px solid #ededed;height:100%
+.sidebar-greybg{ border:6px solid #ededed;height:50%
 }
 #split-bar {height:100%;float:right;width:6px; margin-right:-5px;cursor: col-resize;}
 #split-bar:after{content:url(../images/scroller.png);position:relative; z-index:100000; right:0px; top:50%;}
