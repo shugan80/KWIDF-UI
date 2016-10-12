@@ -1,17 +1,15 @@
 <div class="container-fluid">
     <div class="row">
-
         <div class="" id="fixed-ht">
-
             <div class="over-view">
                 <div class="col-md-8 content-area-left">
-                    <div class="well-map border">
-                 <map-area [currentFilters]="ObjFilter"></map-area>
+                    <div class="well-map border" id="ov-well-map">
+                        <map-area [currentFilters]="ObjFilter"></map-area>
                     </div>
                     <div class="clearfix"></div>
                     <div class="content-area-left-btm">
                         <div class="col-md-4 left">
-                            <div class="lat-prod border">
+                            <div class="lat-prod border" id="ov-lat-prod">
                                 <div class="dash-component-head">
                                     <h3>Latest Production</h3>
                                 </div>
@@ -19,29 +17,26 @@
                             </div>
                         </div>
                         <div class="col-md-8 right">
-                            <div class="his-prod border">
-                                <chart-line-multiple [currentFilters]="ObjFilter" component_context="sps-overview-historicProduction"></chart-line-multiple>
+                            <div class="his-prod border" id="ov-his-prod">
+                                <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="chartHistProdId"  (notify)='onNotify($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 content-area-right">
-                    <div class="production border ">
-                        <chart-pie-area [currentFilters]="ObjFilter" component_context="sps-overview-wellStatus"></chart-pie-area>
+                    <div class="production border " id="ov-production">
+                        <chart-pie-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-pie-area>
                     </div>
-                    <div class="well-event border margin-top20">
+                    <div class="well-event border margin-top20" id="ov-well-event">
                         <chart-column-area [currentFilters]="ObjFilter" component_context="sps-overview-wellEvents"></chart-column-area>
                     </div>
-                    <div class="well-summary border">
+                    <div class="well-summary border" id="ov-well-summary">
                         <chart-column-spline-area [currentFilters]="ObjFilter" component_context="sps-overview-downtime-prodloss"></chart-column-spline-area>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-   
 </div>
-
 
 <fixed-ht></fixed-ht>

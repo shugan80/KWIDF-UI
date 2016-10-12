@@ -96,8 +96,13 @@
     <Content Include="e2e\app.e2e-spec.js" />
     <Content Include="favicon.ico" />
     <Content Include="images\32px.png" />
+    <Content Include="images\excel.png" />
+    <Content Include="images\expand.png" />
     <Content Include="images\Logo.jpg" />
+    <Content Include="images\pdf.png" />
+    <Content Include="images\pie-chart.png" />
     <Content Include="images\scroller.png" />
+    <Content Include="images\table.png" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\koc.custom.js" />
     <Content Include="temp\temp.html" />

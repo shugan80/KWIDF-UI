@@ -21,8 +21,8 @@ import { GlobalDataService } from '../services/globaldata.service';
     selector: 'chart-column-area',
     styles: [`
       chart {
-        display: block;
-        height:200px;
+       
+        
       }
     `],
     templateUrl: `./charts-column.component.html`,
