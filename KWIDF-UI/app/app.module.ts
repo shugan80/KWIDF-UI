@@ -12,13 +12,12 @@ import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-loc
 import { Logger, Options } from "angular2-logger/core";
 //import * as ng2log from 'angular2-logger/core';
 
-import {Ng2PaginationModule} from 'ng2-pagination';
+
 
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { LeftNavMenuComponent } from './shared/leftnav-menu/leftnav-menu.component';
 import { FilterTreeViewComponent } from './shared/filter-treeview/filter-treeview';
-import { FilterListViewComponent } from './shared/filter-listview/filter-listview.component';
 
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
 import { TabMenuComponent } from './shared/tab-menu/tab-menu.component';
@@ -64,7 +63,6 @@ let loggingOptions = {
         HttpModule,
         routing,
         ChartModule,
-        Ng2PaginationModule
     ],
     declarations: [
         AppComponent,
@@ -75,7 +73,6 @@ let loggingOptions = {
         WPEComponent,
         OSComponent,
         LeftNavMenuComponent,
-        FilterListViewComponent,
         FilterTreeViewComponent,
         MapsComponent,
         ChartComponent_Column,

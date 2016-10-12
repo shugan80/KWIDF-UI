@@ -16,9 +16,6 @@ import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
-import { DateFilter } from '../model/filter';
-import { DateFilters } from '../data/mock-datefilter';
-
 @Component({
     moduleId: module.id,
     selector: 'chart-line-multiple',
@@ -35,24 +32,20 @@ export class ChartComponent_LineMultiple {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
     ObjFilter: Filter;
-    dateFilterObj: any;
 
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueDataArrayObject;
-    test1:Array<string> = ['ggg', 'hhh', 'kkk'];
-    //selectedDate: DateFilter = new DateFilter(2, 'Week');
+
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private _configService: ConfigDataService, private dataService: StaticDataService) {
-        this.dateFilterObj = DateFilters;
+
     }
 
     ngOnInit() {
-      //  this.dateFilterObj = this.dataService.getDateFilters();
         this.chartConfigItems = this._globalDataService.getModuleConfigItems();
         this.loadConfigItems();
-
     }
 
     ngAfterViewInit() {

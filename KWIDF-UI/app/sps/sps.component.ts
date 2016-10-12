@@ -7,13 +7,12 @@ import { Logger } from "angular2-logger/core";
 import { ConfigDataService } from '../shared/services/configdata.service';
 import { GlobalDataService } from '../shared/services/globaldata.service';
 import { FilterDataService } from '../shared/services/filterdata.service';
-import { ListViewDataService } from '../shared/services/listviewdata.service';
 
 @Component({
 
     selector: 'sps-component',
     templateUrl: 'app/sps/sps.component.html',
-    providers: [FilterDataService, GlobalDataService, ListViewDataService]
+    providers: [FilterDataService, GlobalDataService]
 })
 export class SPSComponent {
 

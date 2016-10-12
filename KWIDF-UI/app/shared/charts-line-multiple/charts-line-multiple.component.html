@@ -7,24 +7,16 @@
             <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')"></span></li>
             <li><span class="table" (click)="onClickIcons()"></span></li>
             <li><span class="table" (click)="onClickIcons('image/png')"></span></li>
-
-        </ul> 
-
-   
+        </ul>
     </div>
-    <select>
-        <option *ngFor="let country of dateFilterObj" value={{country.id}}>{{country.name}}</option>
-    </select>
-   
 </div>
-
 <div class="dash-component-content">
-    <!--<div>
+    <div>
         <span (click)="onClickFilters('day')">Day</span>
         <span (click)="onClickFilters('week')">Week</span>
         <span (click)="onClickFilters('month')">Month</span>
         <span (click)="onClickFilters('year')">year</span>
-    </div>-->
+    </div>
     <chart [options]="options"
            (load)="saveInstance($event.context)">
     </chart>
