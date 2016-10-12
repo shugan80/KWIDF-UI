@@ -79,6 +79,7 @@ body{font-family: 'Roboto', sans-serif !important;}
 .list-icons span.pdf{ background:url(../images/pdf.png) left 50% no-repeat;width:18px;height:18px;}
 .list-icons span.excel{ background:url(../images/excel.png) left 50% no-repeat;width:18px;height:18px;}
 .list-icons span.table{ background:url(../images/table.png) left 50% no-repeat;width:18px;height:18px; margin-bottom:0;}
+.list-icons span.pie-chart{ background:url(../images/pie-chart.png) left 50% no-repeat;width:19px;height:17px; margin-bottom:0;}
 
 
 
@@ -115,6 +116,7 @@ ul.tab-links li.icon {display: none;}
 .over-view .content-area-left{ padding-right:10px; padding-left:0;}
 .over-view .content-area-right{ padding-left:10px; padding-right:0;}
 .dash-component-head{background:#f5f5f5;padding:10px;border-bottom:1px solid #d4d4d4}
+.dash-component-head:after {clear: both;content: "";display: table;}
 .dash-component-head h3{ font-size:16px;color:#666666; padding:0; margin:0; font-weight:bold; display:inline-block}
 .dash-component-content{ position:relative; min-height:140px;}
 .over-view .well-map{ min-height:400px}
@@ -187,7 +189,7 @@ filed-loss{}
 
 /*Highcharts*/
 .highcart-pie{height:264px;display:block; padding-bottom:5px}
-.highcart-column{height:203px; padding-bottom:5px; padding-top:10px; display:block}
+.highcart-column{height:196px; padding-bottom:5px; padding-top:10px; display:block}
 .highcart-column .highcharts-series-group rect{fill:#5b9bd5}
  .highcharts-background{background:none}
  .highcart-column  .highcharts-grid path { stroke:none}
@@ -202,5 +204,4 @@ tspan{text-decoration:none;text-shadow:none !important;font-size:13px;}
 
 @media (min-width: 992px){
 .col-md-8 {width: 69.66666667% !important;}
-.col-md-4 {width: 30.33333333% !important;}
-}
+.col-md-4 {width: 30.33333333% !important;}}
