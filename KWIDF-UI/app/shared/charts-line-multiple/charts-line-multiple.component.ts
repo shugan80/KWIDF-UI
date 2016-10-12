@@ -16,6 +16,9 @@ import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
+import { DateFilter } from '../model/filter';
+import { DateFilters } from '../data/mock-datefilter';
+
 @Component({
     moduleId: module.id,
     selector: 'chart-line-multiple',
@@ -36,7 +39,7 @@ export class ChartComponent_LineMultiple {
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueDataArrayObject;
-
+    dateFilterObj: any;
     @Input() currentControlId: string;
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
@@ -44,7 +47,7 @@ export class ChartComponent_LineMultiple {
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private _configService: ConfigDataService, private dataService: StaticDataService) {
-
+        this.dateFilterObj = DateFilters;
     }
 
     ngOnInit() {

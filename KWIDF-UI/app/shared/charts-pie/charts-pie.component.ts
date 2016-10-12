@@ -39,6 +39,10 @@ export class ChartComponent_Pie {
    
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
+    tableVisible: any = false;
+    htmlTable: any;
+    htmlContent: any;
+
     ObjFilter: Filter;
     title = '';
     //chartid: string = '';
@@ -221,6 +225,17 @@ export class ChartComponent_Pie {
                     //let htmlString = tempChartInstance.getTable();
                     //let htmlString = tempChartInstance.getCSV();
                     let htmlString = tempChartInstance.getDataRows();
+                    this.htmlTable = "";
+                    this.htmlTable = "<table class='table'><tr><input type='button' (click)='close()' value='close' />";
+                    for (var i = 0; i < htmlString.length; i++) {
+                        this.htmlTable = this.htmlTable + "</tr><tr>"
+                        for (var j = 0; j < htmlString[i].length; j++) {
+                            this.htmlTable = this.htmlTable + "<td>";
+                            this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
+                        }
+                    }
+                    this.tableVisible = true;
+                    this.htmlTable = this.htmlTable + "</tr></table>";
                     this._logger.log(htmlString);
                 }
                 else {

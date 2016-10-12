@@ -13,10 +13,14 @@ import { SPS_OverView_Historic_Production_Month_DATA } from '../data/mock-data-s
 import { SPS_OverView_Historic_Production_Year_DATA } from '../data/mock-data-sps-overview';
 import { SPS_LossGain_Production_DATA } from '../data/mock-data-sps-lossgain';
 
-
+import { DateFilter } from '../model/filter';
+import { DateFilters } from '../data/mock-datefilter';
 
 @Injectable()
 export class StaticDataService {
+
+    private dateFilterObj: DateFilter;
+    finalDateFilters: Array<DateFilter>;
 
     get_columnChart_Data(componentType: string, id: number): Promise<KeyValueObject> {
         if (componentType === "sps-overview-wellEvents") {
@@ -74,6 +78,10 @@ export class StaticDataService {
             let resultData = SPS_OverView_Historic_Production_Day_DATA.filter(data => data.id == id);
             return Promise.resolve(resultData.length > 0 ? resultData[0] : null);
         }
+    }
+
+    getDateFilters(): Promise<DateFilter[]> {
+        return Promise.resolve(DateFilters);
     }
 
 }

@@ -73,6 +73,7 @@
     <Content Include="app\shared\charts-column-spline\charts-column-spline.component.html" />
     <Content Include="app\shared\charts-line-multiple\charts-line-multiple.component.html" />
     <Content Include="app\shared\content-area\content-area.component.html" />
+    <Content Include="app\shared\filter-listview\filter-listview.component.html" />
     <Content Include="app\shared\tab-menu\tab-menu.component.html" />
     <Content Include="app\shared\maps\maps.component.html" />
     <Content Include="app\shared\charts-column\charts-column.component.html" />
@@ -153,8 +154,12 @@
     <TypeScriptCompile Include="app\shared\content-area\content-area.component.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-lossgain.ts" />
     <TypeScriptCompile Include="app\shared\data\mock-data-sps-overview.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-datefilter.ts" />
+    <TypeScriptCompile Include="app\shared\data\mock-listview.ts" />
+    <TypeScriptCompile Include="app\shared\filter-listview\filter-listview.component.ts" />
     <TypeScriptCompile Include="app\shared\model\key-value.ts" />
     <TypeScriptCompile Include="app\shared\services\globaldata.service.ts" />
+    <TypeScriptCompile Include="app\shared\services\listviewdata.service.ts" />
     <TypeScriptCompile Include="app\shared\services\staticdata.service.ts" />
     <TypeScriptCompile Include="app\shared\tab-menu\tab-menu.component.ts" />
     <TypeScriptCompile Include="app\shared\maps\maps.component.ts" />
