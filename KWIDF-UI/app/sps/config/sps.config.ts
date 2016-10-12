@@ -1,5 +1,24 @@
 ﻿import { DateFilter } from '../../shared/model/filter';
 
+export const SPS_HistoricProd_DateFilters: DateFilter[] = [
+    {
+        text: "Day",
+        value: "day"
+    },
+    {
+        text: "Week",
+        value: "week"
+    },
+    {
+        text: "Month",
+        value: "month"
+    },
+    {
+        text: "Year",
+        value: "year"
+    }
+]
+
 export const SPS_Config_Items = {
     "title": "SPS",
     "contentmenuItems": [
@@ -69,7 +88,9 @@ export const SPS_Config_Items = {
         "isLegendEnabled": true,
         "yAxisTitle": "Stb/d(1000s)",
         "xAxisTickInterval": 2,
-        "yAxisTickInterval": 20
+        "yAxisTickInterval": 20,
+        "customFilterEnabled": true,
+        "customFilters": SPS_HistoricProd_DateFilters
 
     },
     "lossGain_Production_Config": {
@@ -92,22 +113,3 @@ export const SPS_Config_Items = {
 
     }
 }
-
-export const SPS_HistoricProd_DateFilters: DateFilter[] = [
-    {
-        text: "Day",
-        value: "day"
-    },
-    {
-        text: "Week",
-        value: "week"
-    },
-    {
-        text: "Month",
-        value: "month"
-    },
-    {
-        text: "Year",
-        value: "year"
-    }
-]

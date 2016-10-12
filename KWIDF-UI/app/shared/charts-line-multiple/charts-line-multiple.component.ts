@@ -16,7 +16,7 @@ import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
 import { DateFilter } from '../model/filter';
-import { SPS_HistoricProd_DateFilters } from '../../sps/config/sps.config';
+//import { SPS_HistoricProd_DateFilters } from '../../sps/config/sps.config';
 
 
 @Component({
@@ -53,14 +53,14 @@ export class ChartComponent_LineMultiple {
     }
 
     ngOnInit() {
-        if (this.component_context === "sps-overview-historicProduction") {
-            if (SPS_HistoricProd_DateFilters.length > 0) {
-                this.chartFilterObject = SPS_HistoricProd_DateFilters;
-                this.chartFilterDefaultSelection = SPS_HistoricProd_DateFilters[0].value;
-            }
-        }
         this.chartConfigItems = this._globalDataService.getModuleConfigItems();
         this.loadConfigItems();
+        if (this.component_context === "sps-overview-historicProduction") {
+            if (this.chartConfigItems.customFilterEnabled) {
+                this.chartFilterObject = this.chartConfigItems.customFilters;
+                this.chartFilterDefaultSelection = this.chartConfigItems.customFilters[0].value;
+            }
+        }
     }
 
     ngAfterViewInit() {
