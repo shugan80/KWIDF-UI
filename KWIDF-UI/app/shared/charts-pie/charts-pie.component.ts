@@ -1,4 +1,4 @@
-﻿import { Component, Input, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Logger } from "angular2-logger/core";
@@ -35,10 +35,14 @@ import { FilterDataService } from '../services/filterdata.service';
 export class ChartComponent_Pie {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
-
+    @Input() currentControlId: string;
+   
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
     ObjFilter: Filter;
     title = '';
+    //chartid: string = '';
+    //expandStatus: string = 'collapse';
     public chartConfigItems: any;
     chartContextData: KeyValueObject;
 
@@ -222,6 +226,19 @@ export class ChartComponent_Pie {
     }
 
     //Chart functionality - End
+
+
+    onExpandCollapse() {
+        //alert(this.currentId);
+        //alert(this.currentTabId);
+        //this.chartid = 'ov-production';
+        //if (this.expandStatus == 'collapse')
+        //    this.expandStatus = 'expand';
+        //else
+        //    this.expandStatus == 'collapse';
+
+        this.notify.emit(this.currentControlId);
+    }
 
 
 

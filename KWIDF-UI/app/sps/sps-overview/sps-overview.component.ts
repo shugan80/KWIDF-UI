@@ -8,6 +8,7 @@ import { Filter } from '../../shared/model/filter';
 import { TreeViewFilter } from '../../shared/model/filter';
 import { FilterDataService } from '../../shared/services/filterdata.service';
 
+declare var $: any;
 
 @Component({
     selector: 'sps-overview',
@@ -20,6 +21,15 @@ export class SPSOverviewComponent {
     ObjFilter: TreeViewFilter;
     subscription: Subscription;
 
+    ids: string[];
+    chartWellStatusId: string = 'ov-production';
+    chartHistProdId: string = 'ov-his-prod';
+    isExpendClass: boolean = false;
+    isExpend: boolean = false;
+    tempOldClass: string = '';
+    tempParentOldClass: string = '';
+    maximizeClass: string;
+    expendClass: string;
 
     constructor(
         private _logger: Logger, private router: Router,
@@ -34,6 +44,9 @@ export class SPSOverviewComponent {
                 this.item = item;
                 this.ObjFilter = this.filterDataService.getCurrentFilters();
             });
+
+        this.maximizeClass = "col-md-12";
+        this.expendClass = "col-md-4";
     }
 
 
@@ -42,7 +55,53 @@ export class SPSOverviewComponent {
         this.subscription.unsubscribe();
     }
 
+    onNotify(controlId: string): void {
+
+        let controlIds = ["ov-well-map", "ov-lat-prod", "ov-his-prod", "ov-production", "ov-well-event", "ov-well-summary"];
+
+        if (this.isExpendClass === false) {
+            this.isExpend = true;
+            this.tempOldClass = this.expendClass;
+            $("#" + controlId).removeClass(this.expendClass).addClass(this.maximizeClass);
+            this.isExpendClass = true;
+
+            var parent_id = $("#" + controlId).parents('.col-md-4');
+            if (parent_id.length > 0) {
+                this.tempParentOldClass = "col-md-4";
+                $(parent_id).removeClass("col-md-4").addClass("col-md-12");
+            } else {
+                parent_id = $("#" + controlId).parents('.col-md-8');
+                this.tempParentOldClass = "col-md-8";
+                $(parent_id).removeClass("col-md-8").addClass("col-md-12");
+            }
+
+        } else {
+            this.isExpend = false;
+            $("#" + controlId).removeClass(this.maximizeClass);
+            this.isExpendClass = false;
+
+            var parent_id = $("#" + controlId).parents('.col-md-12');
+            if (parent_id.length > 0) {
+                $(parent_id).removeClass("col-md-12").addClass(this.tempParentOldClass);
+            } 
+        };
+
+        for (let value of controlIds) {
+            if (this.isExpendClass === true) {
+                if (value !== controlId) {
+                    $("#" + value).hide();
+                };
+            } else {
+                $("#" + value).show();
+            }
+        }
+
+       
+
+        //alert($(window).height());
+
+        //alert($('#fixed-ht').height($(window).height() - 200));
 
 
-
+    }
 }

@@ -1,4 +1,4 @@
-﻿import { Component, Input, SimpleChange } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Logger } from "angular2-logger/core";
@@ -36,6 +36,10 @@ export class ChartComponent_LineMultiple {
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueDataArrayObject;
+
+    @Input() currentControlId: string;
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+
 
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
@@ -227,6 +231,10 @@ export class ChartComponent_LineMultiple {
 
     //Chart functionality - End
 
+
+    onExpandCollapse() {
+        this.notify.emit(this.currentControlId);
+    }
 }
 
 
