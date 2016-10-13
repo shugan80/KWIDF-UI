@@ -9,9 +9,12 @@
             <li><span class="table" (click)="onClickIcons('image/png')"></span></li>
         </ul>
     </div>
-    <select [hidden]="!this.chartConfigItems.customFilterEnabled" (change)="onClickFilters($event.target.value)" style="visibility:">
-        <option *ngFor="let filter of chartFilterObject" value={{filter.value}}>{{filter.text}}</option>
-    </select>
+  
+    <div  class="pull-right"><span [hidden]="!this.chartConfigItems.customFilterEnabled">View by</span>
+        <select [hidden]="!this.chartConfigItems.customFilterEnabled" (change)="onClickFilters($event.target.value)" >
+            <option *ngFor="let filter of chartFilterObject" value={{filter.value}} >{{filter.text}}</option>
+        </select>
+    </div>
 </div>
 <div class="dash-component-content">
     <chart [options]="options"

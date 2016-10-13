@@ -511,7 +511,7 @@ body {
     .list-icons span.pie-chart {
         background: url(../images/pie-chart.png) left 50% no-repeat;
         width: 18px;
-        height: 17px;
+        height: 18px;
         margin-bottom: 0;
     }
 
@@ -984,7 +984,9 @@ tspan {
 .lat-prod .dash-component-content {
     height: auto;
 }
-
+.productionComponent  label{ padding:0px 10px}
+.productionComponent  span{ margin-left:10px;}
+.productionComponent > div{ margin-top:10px;}
 .productionComponent > chart {
     max-height: 140px;
     height: 140px;

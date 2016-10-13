@@ -12,6 +12,14 @@
 </div>
 <div class="dash-component-content">
     <div class="row productionComponent">
+        <div class="col-xs-12">
+            <span>Display:</span>
+            <label *ngFor="let item of radioItems">
+                <input type="radio" name="options" (click)="selectedOption(item)"
+                       [checked]="item === model.options">
+                {{item}}
+            </label>
+        </div>
         <chart  [options]="chartOptions_Green"
                (load)="saveInstance($event.context, 'chartComp_Green')" class="col-md-6 col-xs-12">
         </chart>
