@@ -1,0 +1,20 @@
+﻿<div class="dash-component-head">
+    <h3>{{title}}</h3>
+    <div class="pull-right">
+        <ul class="list-icons">
+            <li><span class="expand" (click)="onExpandCollapse()"></span></li>
+            <li><span class="pdf" (click)="onClickIcons('application/pdf')"></span></li>
+            <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')"></span></li>
+            <li><span class="table" (click)="onClickIcons()"></span></li>
+            <li><span class="table" (click)="onClickIcons('image/png')"></span></li>
+        </ul>
+    </div>
+    <select [hidden]="!this.chartConfigItems.customFilterEnabled" (change)="onClickFilters($event.target.value)" style="visibility:">
+        <option *ngFor="let filter of chartFilterObject" value={{filter.value}}>{{filter.text}}</option>
+    </select>
+</div>
+<div class="dash-component-content">
+    <chart [options]="options"
+           (load)="saveInstance($event.context)">
+    </chart>
+</div>

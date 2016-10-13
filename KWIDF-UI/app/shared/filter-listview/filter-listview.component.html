@@ -1,0 +1,16 @@
+<div class="top-search">
+    <form role="search" class="navbar-form">
+        <div class="input-group add-on">
+            <input type="text" id="srch-term" name="srch-term" placeholder="Search" class="form-control">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+    </div>
+    <ul class="main" *ngIf="filters">
+        <li *ngFor="let filter of filters | paginate: { itemsPerPage: 10, currentPage: page }">
+            {{ filter.wellName }}
+        </li>
+    </ul>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>

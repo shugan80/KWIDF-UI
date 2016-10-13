@@ -22,7 +22,7 @@ export class FilterDataService {
     navItem$ = this._navItemSource.asObservable();
 
     // service command
-    changeNav(number:number) {
+    changeNav(number: number) {
         this._navItemSource.next(number);
     }
 
@@ -51,6 +51,7 @@ export class FilterDataService {
             obj.id = dir.id;
             obj.parentId = dir.parentId;
             obj.name = dir.name;
+            obj.level = dir.level;
             obj.expanded = dir.expanded;
             obj.checked = dir.checked;
             let child = this.Traverse(dir.children);

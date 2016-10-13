@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { Logger } from "angular2-logger/core";
 
 @Component({
     selector: 'app-top-bar',
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/filter';
 export class TopBarComponent {
     breadcrumbs: any;
     title: string;
-    constructor(private router: Router, private route: ActivatedRoute) { }
+    constructor(private _logger: Logger, private router: Router, private route: ActivatedRoute) { }
     ngOnInit() {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
@@ -24,7 +25,7 @@ export class TopBarComponent {
                     childrenRoutes.forEach(route => {
                         if (route.outlet === 'primary') {
                             let routeSnapshot = route.snapshot;
-                            //console.log('snapshot:', routeSnapshot);
+                            //this._logger.log('snapshot:', routeSnapshot);
                             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
                             var breadCrumData: any = route.snapshot.data;
                             this.breadcrumbs.push({

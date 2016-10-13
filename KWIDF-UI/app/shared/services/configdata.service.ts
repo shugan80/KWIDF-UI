@@ -18,12 +18,16 @@ import {Injectable} from '@angular/core';
 import {HttpModule, Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/Rx'; 
-import {HelperService} from './helper.service';
+import { Logger } from "angular2-logger/core";
+
+import { HelperService } from './helper.service';
+import { KOC_APP_Config_Items } from '../../config/app.config';
+import { SPS_Config_Items } from '../../sps/config/sps.config';
 
 @Injectable()
 export class ConfigDataService { 
     public configJsonPath: string;
-    constructor(private http: Http, public _helperService: HelperService) {
+    constructor(private _logger: Logger, private http: Http, public _helperService: HelperService) {
         
     }
 
@@ -40,11 +44,11 @@ export class ConfigDataService {
                         },
                         //Error
                         (err:any) => {
-                            console.error(err);
+                            this._logger.error(err);
                         },
                         //Success
                         () => {
-                            console.log(' LeftNavMenuComponent getConfigItems - done');
+                            this._logger.log(' LeftNavMenuComponent getConfigItems - done');
                             this.initComponent();
                         }
                     );
@@ -53,7 +57,7 @@ export class ConfigDataService {
     * 
     * @throws error message (Using HelperService handleError)
     */
-    getConfigItems() {
+    getConfigItemsFromJsonFile() {
         return Observable.forkJoin(
             this.http.get(this.configJsonPath)
                 .map((res: Response) => res.json())
@@ -61,6 +65,22 @@ export class ConfigDataService {
         );
     }
 
+    getConfigItemsFromJsonPath(configJSONPath:string) {
+        return Observable.forkJoin(
+            this.http.get(configJSONPath)
+                .map((res: Response) => res.json())
+                .catch(this._helperService.handleError)
+        );
+    }
 
+    getAppConfigItems() {
+        return KOC_APP_Config_Items;
+    }
+
+    getModuleConfigItems(moduleName: string) {
+        if (moduleName == "sps") {
+            return SPS_Config_Items;
+        }
+    }
    
 }

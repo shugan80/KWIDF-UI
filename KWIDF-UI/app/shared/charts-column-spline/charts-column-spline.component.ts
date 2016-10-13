@@ -8,33 +8,34 @@ require('highcharts/modules/export-csv.js')(Highcharts);
 
 import { Filter } from '../model/filter';
 import { TreeViewFilter } from '../model/filter';
-import { KeyValueData } from '../model/key-value';
 import { KeyValueObject } from '../model/key-value';
+import { KeyValueDataArray } from '../model/key-value';
+import { KeyValueDataArrayObject } from '../model/key-value';
+import { KeyValueData } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
-
-
 @Component({
     moduleId: module.id,
-    selector: 'chart-column-area',
+    selector: 'chart-column-spline-area',
     styles: [`
       chart {
-       
-        
+        display: block;
+        height:280px;
       }
     `],
-    templateUrl: `./charts-column.component.html`,
+    templateUrl: `./charts-column-spline.component.html`,
     providers: [StaticDataService, GlobalDataService]
 })
-export class ChartComponent_Column {
+export class ChartComponent_ColumnSpline {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
     ObjFilter: Filter;
 
     chartConfigItems: any;
     title = '';
-    chartContextData: KeyValueObject;
+    chartContextData: KeyValueDataArrayObject;
+
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private dataService: StaticDataService) {
@@ -42,6 +43,7 @@ export class ChartComponent_Column {
     }
 
     ngOnInit() {
+        this.chartConfigItems = this._globalDataService.getModuleConfigItems();
         this.loadConfigItems();
     }
 
@@ -68,40 +70,38 @@ export class ChartComponent_Column {
 
     }
 
-
     loadConfigItems() {
         let configItems: any = this._globalDataService.getModuleConfigItems();
-        if (this.component_context === "sps-overview-wellEvents") {
-            this.chartConfigItems = configItems.overview_WellEvents_Config;
+        if (this.component_context === "sps-overview-downtime-prodloss") {
+            this.chartConfigItems = configItems.overview_DownTime_ProdLoss_Config;
         }
-        else {
-            this.chartConfigItems = configItems.lossGain_FieldLossGain_Config;
-        }
+        //else {
+        //    this.chartConfigItems = configItems.lossGain_FieldLossGain_Config;
+        //}
         this.title = this.chartConfigItems.title;
     }
 
+    //Chart functionality - Start
     getDataAndRenderChart(filterId: number) {
-        this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
+        this.dataService.get_columnSplineChart_Data(this.component_context, filterId).then(resultData => {
             this.chartContextData = resultData;
             this.renderChart();
         });
     }
 
-    //Chart functionality - Start
     renderChart() {
-        this._logger.log('renderChart renderChart renderChart');
-        let data: Array<KeyValueData>;
-        if (this.chartContextData != null) {
-            data = this.chartContextData.data;
-        }
-        else {
-            data = [];
-        }
 
-        let maxYAxisData = this.getMaxData(data);
+        let seriesData: any = [];
+        if (this.chartContextData != null) {
+            seriesData = this.chartContextData.collection.map(function (point: any) {
+                return [];
+            })
+        }
+        
+
         this.options = {
             chart: {
-                type: 'column'
+                zoomType: 'xy'
             },
             title: {
                 text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
@@ -110,38 +110,27 @@ export class ChartComponent_Column {
                 text: this.chartConfigItems.subTitle
             },
             xAxis: {
-                type: 'category',
-                title: {
-                    text: this.chartConfigItems.xAxisTitle
-                },
-                crosshair: true
+                tickInterval: this.chartConfigItems.xAxisTickInterval
             },
-            yAxis: {
-                min: 0,
-                max: (maxYAxisData == null) ? null : maxYAxisData.value,
+            yAxis: [{ // Primary yAxis
+                lineWidth: 1,
                 title: {
-                    text: this.chartConfigItems.yAxisTitle
+                    text: this.chartConfigItems.yAxisPrimaryTitle
+                },
+                min: 0,
+                tickInterval: this.chartConfigItems.yAxisPrimaryTickInterval
+
+            }, { // Secondary yAxis
+                title: {
+                    text: this.chartConfigItems.yAxisSecondaryTitle
                 },
                 lineWidth: 1,
-                tickInterval: this.chartConfigItems.yAxisTickInterval,
-            },
-            legend: {
-                enabled: this.chartConfigItems.isLegendEnabled
-            },
+                opposite: true,
+                min: 0,
+                tickInterval: this.chartConfigItems.yAxisSecondaryTickInterval
+            }],
             tooltip: {
-
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 1,
-                    dataLabels: {
-                        enabled: this.chartConfigItems.isDataLabelsEnabled,
-                        formatter: function () {
-                            return this.y;
-                        }
-                    }
-                }
+                shared: true
             },
             exporting: {
                 enabled: false,
@@ -156,14 +145,39 @@ export class ChartComponent_Column {
                     }
                 }
             },
-            series: [{
-                name: this.chartConfigItems.yAxisTitle,
-                data: data.map(function (point) {
-                    return [point.key, point.value]
-                })
-            }]
-        }
+            series: seriesData
+            
 
+        };
+
+        if (this.chartContextData != null) {
+            var index: number = 0;
+            for (let object of this.chartContextData.collection) {
+                let cData: any = this.chartContextData.collection[index];
+                let tempOptions: any = this.options;
+                tempOptions.series[index] = ({
+                    name: cData.properties.seriesName,
+                    type: cData.properties.chartType,
+                    yAxis: cData.properties.yAxis,
+                    color: cData.properties.color,
+                    tooltip: {
+                        valueSuffix: ' ' + cData.properties.displayUnit
+                    },
+                    data: cData.data.map(function (point: any) {
+                        return [point.key, point.value]
+                    })
+                });
+                //this._logger.log(tempOptions.series[index]);
+                index++;
+            }
+        }
+        else {
+            let tempOptions: any = this.options;
+            tempOptions.series[0] = ({
+                name: "No data available",
+                data: []
+            });
+        }
     }
 
     options: Object;
