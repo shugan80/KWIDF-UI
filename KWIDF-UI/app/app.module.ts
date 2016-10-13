@@ -93,8 +93,8 @@ let loggingOptions = {
         SPSWellTestComponent,
         SPSAlarmsEventsComponent,
         jQueryComponent,
-        fixedHeight,
-        MapsComponent
+        fixedHeight
+        
     ],
     bootstrap: [AppComponent],
     providers: [
