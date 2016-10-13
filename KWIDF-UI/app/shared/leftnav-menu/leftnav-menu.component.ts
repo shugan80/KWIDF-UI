@@ -3,7 +3,6 @@ import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Logger } from "angular2-logger/core";
 
-import { ConfigDataService } from '../services/configdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
 @Component({

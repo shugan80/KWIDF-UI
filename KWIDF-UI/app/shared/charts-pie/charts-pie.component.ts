@@ -39,7 +39,6 @@ export class ChartComponent_Pie {
     @Input() currentControlId: string;
    
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
 
     tableVisible: any = false;
@@ -258,14 +257,6 @@ export class ChartComponent_Pie {
 
 
     onExpandCollapse() {
-        //alert(this.currentId);
-        //alert(this.currentTabId);
-        //this.chartid = 'ov-production';
-        //if (this.expandStatus == 'collapse')
-        //    this.expandStatus = 'expand';
-        //else
-        //    this.expandStatus == 'collapse';
-
         this.notify.emit(this.currentControlId);
     }
 

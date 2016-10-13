@@ -30,17 +30,19 @@ import { GlobalDataService } from '../services/globaldata.service';
 export class ChartComponent_ColumnSpline {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
-    ObjFilter: Filter;
+    @Input() currentControlId: string;
 
+    ObjFilter: Filter;
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueDataArrayObject;
-
-    @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
-
     tableVisible: any = false;
     htmlTable: any;
     htmlContent: any;
+
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+    @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
+
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private dataService: StaticDataService) {

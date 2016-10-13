@@ -46,10 +46,10 @@ export class ChartComponent_Gauge {
 
     ObjFilter: Filter;
     title = '';
-    //chartid: string = '';
-    //expandStatus: string = 'collapse';
     public chartConfigItems: any;
     chartContextData: KeyValueObject;
+
+    isChartDisplay: boolean = true;
 
     radioItems = ['Real-time', 'PGOR'];
     model = { options: 'Real-time' };
@@ -99,7 +99,7 @@ export class ChartComponent_Gauge {
         else {
             this.chartConfigItems = configItems.lossGain_Production_Config;
         }
-        this.title = this.chartConfigItems.title;
+        this.title = "Latest Production";
     }
 
     //Chart functionality - Start

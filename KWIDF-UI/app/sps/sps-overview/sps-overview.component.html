@@ -3,32 +3,40 @@
         <div class="" id="fixed-ht">
             <div class="over-view">
                 <div class="col-md-8 content-area-left">
-                    <div class="well-map border">
-                 <map-area></map-area>
+                    <div class="well-map border" id="sps-ov-well-map">
+                        <map-area 
+                                  [currentControlId]="sps_overview_wellMap_ID" (notify)='onNotify($event)' 
+                                  component_context="sps-overview-wellMap"></map-area>
                     </div>
                     <div class="clearfix"></div>
                     <div class="content-area-left-btm">
                         <div class="col-md-4 left">
-                            <div class="lat-prod border" id="ov-lat-prod">
-                                <chart-gauge-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-gauge-area>
+                            <div class="lat-prod border" id="sps-ov-lat-prod">
+                                <chart-gauge-area [currentFilters]="ObjFilter" [currentControlId]="sps_overview_latProd_ID" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-gauge-area>
                             </div>
                         </div>
                         <div class="col-md-8 right">
-                            <div class="his-prod border" id="ov-his-prod">
-                                <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="chartHistProdId"  (notify)='onNotify($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
+                            <div class="his-prod border" id="sps-ov-hist-prod">
+                                <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="sps_overview_histProd_ID" (notify)='onNotify($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 content-area-right">
-                    <div class="production border " id="ov-production">
-                        <chart-pie-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' (notifyPopup)='onNotifyPopup($event)' component_context="sps-overview-wellStatus"></chart-pie-area>
+                    <div class="production border " id="sps-ov-well-status">
+                        <chart-pie-area [currentFilters]="ObjFilter"
+                                        [currentControlId]="sps_overview_wellStatus_ID" (notify)='onNotify($event)'
+                                        (notifyPopup)='onNotifyPopup($event)' component_context="sps-overview-wellStatus"></chart-pie-area>
                     </div>
-                    <div class="well-event border margin-top20" id="ov-well-event">
-                        <chart-column-area [currentFilters]="ObjFilter" component_context="sps-overview-wellEvents" (notifyPopup)='onNotifyPopup($event)'></chart-column-area>
+                    <div class="well-event border margin-top20" id="sps-ov-well-events">
+                        <chart-column-area [currentFilters]="ObjFilter"
+                                           [currentControlId]="sps_overview_wellEvents_ID" (notify)='onNotify($event)'
+                                           component_context="sps-overview-wellEvents" (notifyPopup)='onNotifyPopup($event)'></chart-column-area>
                     </div>
-                    <div class="well-summary border" id="ov-well-summary">
-                        <chart-column-spline-area [currentFilters]="ObjFilter" component_context="sps-overview-downtime-prodloss" (notifyPopup)='onNotifyPopup($event)'></chart-column-spline-area>
+                    <div class="well-summary border" id="sps-ov-downtime-prodLoss">
+                        <chart-column-spline-area [currentFilters]="ObjFilter" 
+                                                  [currentControlId]="sps_overview_downTime_ProdLoss_ID" (notify)='onNotify($event)'
+                                                  component_context="sps-overview-downtime-prodloss" (notifyPopup)='onNotifyPopup($event)'></chart-column-spline-area>
                     </div>
                 </div>
             </div>

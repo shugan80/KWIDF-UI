@@ -30,15 +30,16 @@ import { GlobalDataService } from '../services/globaldata.service';
 export class ChartComponent_Column {
     @Input() currentFilters: TreeViewFilter;
     @Input() component_context: string;
-    ObjFilter: Filter;
+    @Input() currentControlId: string;
 
+    ObjFilter: Filter;
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueObject;
-
     htmlTable: any;
     tableVisible: any = false;
 
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
@@ -228,6 +229,10 @@ export class ChartComponent_Column {
                 }
             }
         }
+    }
+
+    onExpandCollapse() {
+        this.notify.emit(this.currentControlId);
     }
 
     //Chart functionality - End

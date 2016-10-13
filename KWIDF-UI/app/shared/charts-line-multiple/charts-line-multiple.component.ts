@@ -43,6 +43,7 @@ export class ChartComponent_LineMultiple {
     chartContextData: KeyValueDataArrayObject;
     chartFilterObject: any;
     chartFilterDefaultSelection: Object;
+    chartFilterCurrentSelection: Object;
     
 
 
@@ -59,12 +60,13 @@ export class ChartComponent_LineMultiple {
             if (this.chartConfigItems.customFilterEnabled) {
                 this.chartFilterObject = this.chartConfigItems.customFilters;
                 this.chartFilterDefaultSelection = this.chartConfigItems.customFilters[0].value;
+                this.chartFilterCurrentSelection = this.chartFilterDefaultSelection;
             }
         }
     }
 
     ngAfterViewInit() {
-        this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterDefaultSelection);
+        this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterCurrentSelection);
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -75,7 +77,7 @@ export class ChartComponent_LineMultiple {
                 let changedProp = changes[propName];
                 this.ObjFilter = changedProp.currentValue;
                 if (!isFirstTime) {
-                    this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterDefaultSelection);
+                    this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterCurrentSelection);
                 }
             }
             else {
@@ -114,10 +116,11 @@ export class ChartComponent_LineMultiple {
             })
         }
 
+        console.log(this.chartFilterDefaultSelection);
 
         this.options = {
             global: {
-                useUTC: false
+                useUTC: true
             },
             chart: {
                 zoomType: 'xy'
@@ -128,17 +131,14 @@ export class ChartComponent_LineMultiple {
             subtitle: {
                 text: this.chartConfigItems.subTitle
             },
-            xAxis: {
+            xAxis: {  
                 //type: 'datetime',
                 //labels: {
-                //    //format: '{value:%m-%d-%Y}',
-                //    rotation: 45,
+                //    format: '{value:%d-%b-%y}',
+                //    rotation: 90,
                 //    align: 'left'
-                //}
+                //},
                 tickInterval: this.chartConfigItems.xAxisTickInterval,
-                labels: {
-                    rotation: 1
-                },
             },
             yAxis: {
                 title: {
@@ -172,6 +172,12 @@ export class ChartComponent_LineMultiple {
             for (let object of this.chartContextData.collection) {
                 let cData: any = this.chartContextData.collection[index];
                 let tempOptions: any = this.options;
+
+                //var index1: number = 0;
+                //for (let object1 of cData.data) {
+                //    tempOptions.xAxis.categories.push(object1.key);
+                //}
+
                 tempOptions.series[index] = ({
                     name: cData.properties.seriesName,
                     color: cData.properties.color,
@@ -239,7 +245,8 @@ export class ChartComponent_LineMultiple {
     onClickFilters(filterType: Object): void {
         //this._logger.log(this.chartInstance);
         if (filterType) {
-            this.getDataAndRenderChart(this.ObjFilter.id, filterType);
+            this.chartFilterCurrentSelection = filterType;
+            this.getDataAndRenderChart(this.ObjFilter.id, this.chartFilterCurrentSelection);
         }
     }
 

@@ -508,7 +508,7 @@ body {
         margin-bottom: 0;
     }
 
-    .list-icons span.pie-chart {
+    .list-icons span.exportPng {
         background: url(../images/pie-chart.png) left 50% no-repeat;
         width: 18px;
         height: 18px;

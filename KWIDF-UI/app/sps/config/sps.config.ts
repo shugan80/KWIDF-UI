@@ -66,7 +66,7 @@ export const SPS_Config_Items = {
 
     },
     "overview_DownTime_ProdLoss_Config": {
-        "title": "Downtime Vs Prod Loss",
+        "title": "Downtime Vs Production Loss",
         "isTitleVisible": false,
         "subTitle": "",
         "isDataLabelsEnabled": true,
@@ -87,7 +87,7 @@ export const SPS_Config_Items = {
         "dataLablesColor": "white",
         "isLegendEnabled": true,
         "yAxisTitle": "Stb/d(1000s)",
-        "xAxisTickInterval": 2,
+        "xAxisTickInterval": 1,
         "yAxisTickInterval": 20,
         "customFilterEnabled": true,
         "customFilters": SPS_HistoricProd_DateFilters

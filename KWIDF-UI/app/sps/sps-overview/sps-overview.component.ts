@@ -23,8 +23,13 @@ export class SPSOverviewComponent {
     subscription: Subscription;
 
     ids: string[];
-    chartWellStatusId: string = 'ov-production';
-    chartHistProdId: string = 'ov-his-prod';
+    sps_overview_wellMap_ID: string = 'sps-ov-well-map';
+    sps_overview_latProd_ID: string = 'sps-ov-lat-prod';
+    sps_overview_histProd_ID: string = 'sps-ov-hist-prod';
+    sps_overview_wellStatus_ID: string = 'sps-ov-well-status';
+    sps_overview_wellEvents_ID: string = 'sps-ov-well-events';
+    sps_overview_downTime_ProdLoss_ID: string = 'sps-ov-downtime-prodLoss';
+
     isExpendClass: boolean = false;
     isExpend: boolean = false;
     tempOldClass: string = '';
@@ -61,7 +66,10 @@ export class SPSOverviewComponent {
 
     onNotify(controlId: string): void {
 
-        let controlIds = ["ov-well-map", "ov-lat-prod", "ov-his-prod", "ov-production", "ov-well-event", "ov-well-summary"];
+        let controlIds = ['sps-ov-well-map', 'sps-ov-lat-prod',
+            'sps-ov-hist-prod', 'sps-ov-well-status',
+            'sps-ov-well-events', 'sps-ov-downtime-prodLoss'];
+
 
         if (this.isExpendClass === false) {
             this.isExpend = true;

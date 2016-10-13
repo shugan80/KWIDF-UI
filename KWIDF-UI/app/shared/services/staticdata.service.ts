@@ -51,6 +51,9 @@ export class StaticDataService {
     }
 
     get_lineMultipleChart_Data(componentType: string, id: number, filterType: Object): Promise<KeyValueDataArrayObject> {
+        if (id == 500) {
+            id = 200;
+        }
         if (componentType === "sps-overview-historicProduction") {
             if (filterType == 'year') {
                 let resultData = SPS_OverView_Historic_Production_Year_DATA.filter(data => data.id == id);
