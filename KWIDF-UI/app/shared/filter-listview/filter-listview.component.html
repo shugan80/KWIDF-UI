@@ -8,9 +8,16 @@
         </div>
     </form>
     </div>
-    <ul class="main" *ngIf="filters">
+<div class="list-view-name">
+    <ul *ngIf="filters">
         <li *ngFor="let filter of filters | paginate: { itemsPerPage: 10, currentPage: page }">
+            <label class="control control--checkbox">
+                <input type="checkbox" /> <span class="themeicon"></span><div class="control__indicator"></div>
+            </label>
             {{ filter.wellName }}
         </li>
     </ul>
+</div>  
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+
