@@ -113,7 +113,7 @@ export class MapsComponent {
                         style: { color: "white" }
                     },
                     marker: {
-                        radius: 13
+                        radius: 10
                     },
                     data: [
                         {
@@ -145,7 +145,7 @@ export class MapsComponent {
                         style: { color: "white" }
                     },
                     marker: {
-                        radius: 13,
+                        radius: 10,
                         symbol: 'circle'
                     },
                     data: [{
