@@ -15,6 +15,12 @@ import { Logger, Options } from "angular2-logger/core";
 
 import {Ng2PaginationModule} from 'ng2-pagination';
 
+import {ModalModule} from "ng2-modal";
+
+
+//import { ModalModule } from 'angular2-modal';
+//import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { LeftNavMenuComponent } from './shared/leftnav-menu/leftnav-menu.component';
@@ -66,7 +72,10 @@ let loggingOptions = {
         HttpModule,
         routing,
         ChartModule,
-        Ng2PaginationModule
+        Ng2PaginationModule,
+        ModalModule
+        //ModalModule.forRoot(),
+        //BootstrapModalModule
     ],
     declarations: [
         AppComponent,

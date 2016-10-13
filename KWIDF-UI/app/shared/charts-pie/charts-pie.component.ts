@@ -15,6 +15,8 @@ import { KeyValueObject } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { FilterDataService } from '../services/filterdata.service';
 
+import {ModalModule} from "ng2-modal";
+
 //declare var jQuery: any;
 
 
@@ -38,6 +40,8 @@ export class ChartComponent_Pie {
    
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
+    @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
+
     tableVisible: any = false;
     htmlTable: any;
     htmlContent: any;
@@ -49,9 +53,11 @@ export class ChartComponent_Pie {
     public chartConfigItems: any;
     chartContextData: KeyValueObject;
 
+    firstModal: ModalModule;
+
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private _filterService: FilterDataService,
-        private dataService: StaticDataService) {
+        private dataService: StaticDataService,private _element: ElementRef,private modal:ModalModule) {
     }
 
     ngOnInit() {
@@ -237,6 +243,9 @@ export class ChartComponent_Pie {
                     this.tableVisible = true;
                     this.htmlTable = this.htmlTable + "</tr></table>";
                     this._logger.log(htmlString);
+                  
+                    this.notifyPopup.emit(this.htmlTable);
+                   
                 }
                 else {
                     this.chartInstance.exportChart(exportOptions);

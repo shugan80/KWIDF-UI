@@ -51,6 +51,12 @@ export class ChartComponent_Gauge {
     public chartConfigItems: any;
     chartContextData: KeyValueObject;
 
+    radioItems = ['Real-time', 'PGOR'];
+    model = { options: 'Real-time' };
+    selectedOption(str: any) {
+        console.log(str);
+    }
+
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private _filterService: FilterDataService,
         private dataService: StaticDataService) {

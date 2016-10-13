@@ -22,13 +22,13 @@
                 </div>
                 <div class="col-md-4 content-area-right">
                     <div class="production border " id="ov-production">
-                        <chart-pie-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-pie-area>
+                        <chart-pie-area [currentFilters]="ObjFilter" [currentControlId]="chartWellStatusId" (notify)='onNotify($event)' (notifyPopup)='onNotifyPopup($event)' component_context="sps-overview-wellStatus"></chart-pie-area>
                     </div>
                     <div class="well-event border margin-top20" id="ov-well-event">
-                        <chart-column-area [currentFilters]="ObjFilter" component_context="sps-overview-wellEvents"></chart-column-area>
+                        <chart-column-area [currentFilters]="ObjFilter" component_context="sps-overview-wellEvents" (notifyPopup)='onNotifyPopup($event)'></chart-column-area>
                     </div>
                     <div class="well-summary border" id="ov-well-summary">
-                        <chart-column-spline-area [currentFilters]="ObjFilter" component_context="sps-overview-downtime-prodloss"></chart-column-spline-area>
+                        <chart-column-spline-area [currentFilters]="ObjFilter" component_context="sps-overview-downtime-prodloss" (notifyPopup)='onNotifyPopup($event)'></chart-column-spline-area>
                     </div>
                 </div>
             </div>
@@ -36,4 +36,17 @@
     </div>
 </div>
 
+<modal #firstModal>
+    <modal-header>
+        <h1>Overall Well Status</h1>
+    </modal-header>
+    <modal-content>
+        <div [innerHTML]="popupStr" class="table">
+
+        </div>
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="firstModal.close()">okay!</button>
+    </modal-footer>
+</modal>
 <fixed-ht></fixed-ht>

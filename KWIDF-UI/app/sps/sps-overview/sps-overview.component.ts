@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Logger } from "angular2-logger/core";
@@ -7,6 +7,7 @@ import { TabMenuComponent } from '../../shared/tab-menu/tab-menu.component';
 import { Filter } from '../../shared/model/filter';
 import { TreeViewFilter } from '../../shared/model/filter';
 import { FilterDataService } from '../../shared/services/filterdata.service';
+import { Modal } from 'ng2-modal';
 
 declare var $: any;
 
@@ -31,6 +32,9 @@ export class SPSOverviewComponent {
     maximizeClass: string;
     expendClass: string;
 
+    @ViewChild('firstModal') refObj: Modal;
+
+    popupStr: string;
     constructor(
         private _logger: Logger, private router: Router,
         private filterDataService: FilterDataService) {
@@ -103,5 +107,19 @@ export class SPSOverviewComponent {
         //alert($('#fixed-ht').height($(window).height() - 200));
 
 
+    }
+    onNotifyPopup(htmlTable: string): void {
+        this.popupStr = htmlTable;
+        this.refObj.open();
+        //this.modal.alert()
+        //    .size('lg')
+        //    .showClose(true)
+        //    .title('A simple Alert style modal window')
+        //    .body(`
+        //    <h4>Alert is a classic (title/body/footer) 1 button modal window that 
+        //    does not block.</h4>
+        //    <b>Configuration:</b>
+        //    <div>`+ htmlTable + `</div>`)
+        //    .open();
     }
 }

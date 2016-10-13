@@ -36,6 +36,9 @@
             'angular-2-local-storage': 'npm:angular-2-local-storage',
             'angular2-logger': 'npm:angular2-logger',
             'ng2-pagination': 'npm:ng2-pagination',
+            "ng2-modal": "node_modules/ng2-modal",
+            //'angular2-modal': 'npm:angular2-modal',
+            //'angular2-modal/plugins/bootstrap': 'npm:angular2-modal/plugins/bootstrap'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -74,6 +77,8 @@
                 format: 'cjs',
                 defaultExtension: 'js'
             },
+            "ng2-modal": { "main": "index.js", "defaultExtension": "js" },
+            //'angular2-modal': { defaultExtension: 'js', main: 'bundles/angular2-modal.umd' }
         }
     });
 })(this);

@@ -45,9 +45,11 @@ export class FilterListViewComponent {
         if (newItem != "") {
             this.filters = this.localFilters.filter(
                 x => x.wellName.toLowerCase().indexOf(newItem.toLowerCase()) != -1);
+            this.page = 1;
         }
         else {
             this.filters = this.localFilters;
+            this.page = 1;
         }
 
     }
@@ -55,9 +57,11 @@ export class FilterListViewComponent {
         if (event.target.value != "") {
             this.filters = this.localFilters.filter(
                 x => x.wellName.toLowerCase().indexOf(event.target.value.toLowerCase()) != -1);
+            this.page = 1;
         }
         else {
             this.filters = this.localFilters;
+            this.page = 1;
         }
     }
 

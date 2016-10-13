@@ -1,4 +1,4 @@
-﻿import { Component, Input, SimpleChange } from '@angular/core';
+﻿import { Component, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Logger } from "angular2-logger/core";
@@ -36,6 +36,11 @@ export class ChartComponent_ColumnSpline {
     title = '';
     chartContextData: KeyValueDataArrayObject;
 
+    @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
+
+    tableVisible: any = false;
+    htmlTable: any;
+    htmlContent: any;
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private dataService: StaticDataService) {
@@ -208,6 +213,29 @@ export class ChartComponent_ColumnSpline {
                 if (exportType == 'application/vnd.ms-excel') {
                     let tempChartInstance: any = this.chartInstance;
                     tempChartInstance.downloadXLS(exportOptions);
+                }
+                else if (exportType == 'viewDataTable') {
+                    let tempChartInstance: any = this.chartInstance;
+                    //let htmlString = tempChartInstance.getTable();
+                    //let htmlString = tempChartInstance.getCSV();
+                    let htmlString = tempChartInstance.getDataRows();
+                    this.htmlTable = "";
+                    this.htmlTable = "<table class='table'><tr><input type='button' (click)='close()' value='close' />";
+                    for (var i = 0; i < htmlString.length; i++) {
+                        this.htmlTable = this.htmlTable + "</tr><tr>"
+                        for (var j = 0; j < htmlString[i].length; j++) {
+                            this.htmlTable = this.htmlTable + "<td>";
+                            this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
+                        }
+                    }
+                    this.tableVisible = true;
+                    this.htmlTable = this.htmlTable + "</tr></table>";
+                    this._logger.log(htmlString);
+                    // this.firstModal.open();
+                    this.notifyPopup.emit(this.htmlTable);
+                    // this.firstModal.open();
+                    //var el = this._element.nativeElement;
+                    //console.log(el);
                 }
                 else {
                     this.chartInstance.exportChart(exportOptions);
