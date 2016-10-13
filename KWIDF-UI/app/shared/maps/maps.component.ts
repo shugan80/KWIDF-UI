@@ -101,8 +101,9 @@ export class MapsComponent {
             }, {
                     // Specify points using lat/lon
                     type: 'mappoint',
-                    name: 'Shut-in',
-                    color: '#ff0000',
+                    name: 'Producing',
+                    color: '#008000',
+                 
                     dataLabels: {
                         enabled: true,
                         x: 0,
@@ -133,8 +134,8 @@ export class MapsComponent {
                 }, {
                     // Specify points using lat/lon
                     type: 'mappoint',
-                    name: 'Producing',
-                    color: '#00ff00',
+                    name: 'Shut-in',
+                    color: '#ff0000',
                     dataLabels: {
                         enabled: true,
                         x: 0,
@@ -161,7 +162,104 @@ export class MapsComponent {
                             lat: 29.266666,
                             lon: 47.933334
                         }                    ]
-                }]
+            },
+
+
+                {
+
+                    type: 'mappoint',
+                    name: 'Workerover',
+                    color: '#A9A9A9',
+                    dataLabels: {
+                        enabled: true,
+                        x: 0,
+                        y: 15,
+                        formatter: function () {
+                            return this.point.name.substring(0, 2);
+                        },
+                        style: { color: "white" }
+                    },
+                    marker: {
+                        radius: 10,
+                        symbol: 'circle'
+                    },
+                    data: [{
+                        name: 'ESP',
+                        // name: 'GL',
+                        lat: 29.3366,
+                        lon: 47.6755
+                    }
+                        ,
+
+                        {
+                            name: 'GL',
+                            //   name: 'Jeleeb',
+                            lat: 29.2734,
+                            lon: 47.9400
+                        }
+                    ]
+
+                },
+                {
+
+                    type: 'mappoint',
+                    name: 'Equipment issues',
+                    color: '#800080',
+                    dataLabels: {
+                        enabled: true,
+                        x: 0,
+                        y: 15,
+                        formatter: function () {
+                            return this.point.name.substring(0, 2);
+                        },
+                        style: { color: "white" }
+                    },
+                    marker: {
+                        radius: 10,
+                        symbol: 'circle'
+                    },
+                    data: [
+                        {
+                            name: 'GL',
+                            //   name: 'Jeleeb',
+                            lat: 29.2734,
+                            lon: 47.9400
+                        }
+                    ]
+
+                },
+
+                {
+
+                    type: 'mappoint',
+                    name: 'water injucting',
+                    color: '#483D8B',
+                    dataLabels: {
+                        enabled: true,
+                        x: 0,
+                        y: 15,
+                        formatter: function () {
+                            return this.point.name.substring(0, 2);
+                        },
+                        style: { color: "white" }
+                    },
+                    marker: {
+                        radius: 10,
+                        symbol: 'circle'
+                    },
+                    data: [
+                        {
+                            name: 'GL',
+                            //   name: 'Jeleeb',
+                            lat: 29.3333,
+                            lon: 48.0159
+                        }
+                    ]
+
+                },
+
+            
+            ]
 
 
         }
