@@ -101,10 +101,10 @@ export class ChartComponent_Gauge {
     getDataAndRenderChart(filterId: number) {
         //this.dataService.get_pieChart_Data(this.component_context, filterId).then(resultData => {
         //this.chartContextData = {};
-        this.chartOptions_Green = this.renderChart(this.chartOptions_Green, { maxValue: 1600, currentvalue: 1190 }, "green", "Oil Rate(stb/d)");
-        this.chartOptions_Blue = this.renderChart(this.chartOptions_Blue, { maxValue: 1090, currentvalue: 667 }, "blue", "Water Rate(stb/d)");
-        this.chartOptions_Red = this.renderChart(this.chartOptions_Red, { maxValue: 1000, currentvalue: 610 }, "red", "GOR (scf/stb)");
-        this.chartOptions_Yellow = this.renderChart(this.chartOptions_Yellow, { maxValue: 100, currentvalue: 39 }, "yellow", "Water Cut (%)");
+        this.chartOptions_Green = this.renderChart(this.chartOptions_Green, { maxValue: 1600, currentvalue: 1190 }, "#00b050", "Oil Rate(stb/d)");
+        this.chartOptions_Blue = this.renderChart(this.chartOptions_Blue, { maxValue: 1090, currentvalue: 667 }, "#5b9bd5", "Water Rate(stb/d)");
+        this.chartOptions_Red = this.renderChart(this.chartOptions_Red, { maxValue: 1000, currentvalue: 610 }, "#ff0000", "GOR (scf/stb)");
+        this.chartOptions_Yellow = this.renderChart(this.chartOptions_Yellow, { maxValue: 100, currentvalue: 39 }, "#ff9900", "Water Cut (%)");
         //});
     }
 
@@ -128,7 +128,7 @@ export class ChartComponent_Gauge {
                 startAngle: -90,
                 endAngle: 90,
                 background: {
-                    backgroundColor: 'grey',
+                    backgroundColor: '#d9d9d9',
                     innerRadius: '60%',
                     outerRadius: '100%',
                     shape: 'arc'
@@ -151,8 +151,12 @@ export class ChartComponent_Gauge {
                 min: 0,
                 max: dummydata.maxValue,
                 title: {
-                    text: seriesName
-                }
+                    text: seriesName,
+					y:-30
+                },
+				 labels: {
+					y: 20
+				}
             },
             plotOptions: {
                 solidgauge: {

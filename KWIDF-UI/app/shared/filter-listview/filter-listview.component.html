@@ -1,18 +1,25 @@
-<div class="top-search">
-    <form role="search" class="navbar-form">
-        <div class="input-group add-on">
-            <input type="text" #newItem id="srch-term" name="srch-term" placeholder="Search" class="form-control" (keyup.enter)="OnSearch(newItem.value)" (keyup)="eventHandler($event)">
-            <div class="input-group-btn">
-                <button type="submit" (click)="OnSearch(newItem.value)" class="btn btn-default"><i class="fa fa-search"></i></button>
-            </div>
-        </div>
-    </form>
-</div>
+
 <div class="well-name">
-    <ul *ngIf="filters">
-        <li *ngFor="let filter of filters | paginate: { itemsPerPage: 10, currentPage: page }">
-            {{ filter.wellName }}
-        </li>
-    </ul>
+    <div class="top-search">
+        <form role="search" class="navbar-form">
+            <div class="input-group add-on">
+                <input type="text" #newItem id="srch-term" name="srch-term" placeholder="Search" class="form-control" (keyup.enter)="OnSearch(newItem.value)" (keyup)="eventHandler($event)">
+                <div class="input-group-btn">
+                    <button type="submit" (click)="OnSearch(newItem.value)" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="clearfix"></div>
+    <div ps class="well-scroll">
+        <ul *ngIf="filters">
+            <li *ngFor="let filter of filters | paginate: { itemsPerPage: 10, currentPage: page }">
+                {{ filter.wellName }}
+            </li>
+        </ul>
+    </div>
+    <div class="well-pagination">
+        <pagination-controls (pageChange)="page = $event" directionLinks="false"
+                             autoHide="false" maxSize="9"></pagination-controls>
+    </div>
 </div>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
