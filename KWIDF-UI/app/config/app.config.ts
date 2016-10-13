@@ -27,5 +27,5 @@
             "imgStyle": "fa fa-sitemap"
         }
     ],
-    "sps_config_path": "/app/sps/config/sps.config.json"
+    "sps_config_path": "/app/sps/config/sps.config.ts"
 }

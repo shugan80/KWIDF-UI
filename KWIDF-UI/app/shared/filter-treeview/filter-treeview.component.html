@@ -4,13 +4,13 @@
         <span class="themeicon"></span>
         <span>{{ root.name }}</span>
         <div *ngIf="root.expanded">
-            <!-- First Level End-->
+            <!-- First Level Start-->
             <div>
                 <ul class="list-child">
                     <li *ngFor="let filter_l1 of root.children">
                         <div class="{{treeViewGetIcon(filter_l1)}}" (click)="treeViewToggle(filter_l1)"></div>
                         <label class="control control--checkbox">
-                            <span class="themeicon"></span><input type="checkbox" [checked]="filter_l1.checked" (click)="onTreeViewChecked(filter_l1)" />{{filter_l1.name }}
+                            <span class="themeicon"></span><input type="checkbox" [checked]="filter_l1.checked" (click)="onTreeViewChecked(filter_l1, false)" />{{filter_l1.name }}
                             <div class="control__indicator"></div>
                         </label>
                         <div *ngIf="filter_l1.expanded">
@@ -20,7 +20,7 @@
                                     <li *ngFor="let filter_l2 of filter_l1.children">
                                         <span class="iconButton line"></span>
                                         <label class="control control--checkbox">
-                                            <input type="checkbox" [checked]="filter_l2.checked" (click)="onTreeViewChecked(filter_l2)" /> <span class="themeicon"></span><span class="{{filter_l2.style}}" (click)="onTreeViewChildSelected(filter_l2)">{{filter_l2.name }}</span><div class="control__indicator"></div>
+                                            <input type="checkbox" [checked]="filter_l2.checked" (click)="onTreeViewChecked(filter_l2, true)" /> <span class="themeicon"></span><span class="{{filter_l2.style}}" (click)="onTreeViewChildSelected(filter_l2)">{{filter_l2.name }}</span><div class="control__indicator"></div>
 </label>
                                         <div *ngIf="filter_l2.expanded">
                                             <div>
