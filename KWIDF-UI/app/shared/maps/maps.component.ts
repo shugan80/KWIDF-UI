@@ -2,7 +2,7 @@
 import { HttpModule } from '@angular/http';
 
 import { TreeViewFilter } from '../model/filter';
-import { CHART_DIRECTIVES, Highcharts} from 'angular2-highcharts';
+import { Highcharts} from 'angular2-highcharts';
 //import {Highchmap}       from 'highcharts/modules/map';
 require('highcharts/modules/map.js')(Highcharts);
 require('highcharts/modules/exporting.js')(Highcharts);
