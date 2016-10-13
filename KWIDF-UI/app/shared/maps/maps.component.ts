@@ -18,7 +18,8 @@ require('highcharts/modules/exporting.js')(Highcharts);
 
       chart {
         display: block;
-height: 500px; width: 365px; max-width: 600px; margin: 0 auto;
+height: 500px; 
+
       }
     `],
 //    template: `<chart type="Map" [options]="options" (load) = "saveInstance($event.context)" class="highcart-pie"></chart>`
@@ -48,18 +49,15 @@ export class MapsComponent {
          
             legend: {
                 align: 'left',
-                backgroundColor: 'white',
-                floating: true,
+              
+                floating: false,
                 layout: 'vertical',
                 verticalAlign: 'top',
-                x: 25,
-                y: -25
             },
 
 
-            title: {
-                text: 'Well Map'
-
+            title: {              
+                text: ''
             },
 
             mapNavigation: {
