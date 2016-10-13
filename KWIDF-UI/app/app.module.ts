@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 //Import High charts
 import { ChartModule } from 'angular2-highcharts';
 
+
 import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
 
 //Import - Angular2 Log Services
@@ -92,7 +93,8 @@ let loggingOptions = {
         SPSWellTestComponent,
         SPSAlarmsEventsComponent,
         jQueryComponent,
-        fixedHeight
+        fixedHeight,
+        MapsComponent
     ],
     bootstrap: [AppComponent],
     providers: [

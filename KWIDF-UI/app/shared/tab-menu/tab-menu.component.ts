@@ -26,7 +26,7 @@ export class TabMenuComponent {
     }
 
     private getConfigItems() {
-        this.appContentMenuItems = this._globalDataService.getAppConfigItems();
+        this.appContentMenuItems = this._globalDataService.getModuleConfigItems();
     }
 
 }
