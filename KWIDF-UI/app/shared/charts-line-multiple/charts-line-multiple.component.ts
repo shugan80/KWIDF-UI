@@ -116,8 +116,6 @@ export class ChartComponent_LineMultiple {
             })
         }
 
-        console.log(this.chartFilterDefaultSelection);
-
         this.options = {
             global: {
                 useUTC: true
@@ -132,13 +130,11 @@ export class ChartComponent_LineMultiple {
                 text: this.chartConfigItems.subTitle
             },
             xAxis: {  
-                //type: 'datetime',
-                //labels: {
-                //    format: '{value:%d-%b-%y}',
-                //    rotation: 90,
-                //    align: 'left'
-                //},
-                tickInterval: this.chartConfigItems.xAxisTickInterval,
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    day: '%e. %b %Y'
+                },
+                tickInterval: this.get_XAxis_TickerInterval(),
             },
             yAxis: {
                 title: {
@@ -172,11 +168,6 @@ export class ChartComponent_LineMultiple {
             for (let object of this.chartContextData.collection) {
                 let cData: any = this.chartContextData.collection[index];
                 let tempOptions: any = this.options;
-
-                //var index1: number = 0;
-                //for (let object1 of cData.data) {
-                //    tempOptions.xAxis.categories.push(object1.key);
-                //}
 
                 tempOptions.series[index] = ({
                     name: cData.properties.seriesName,
@@ -213,6 +204,27 @@ export class ChartComponent_LineMultiple {
         this.chartInstance = chartInstance;
     }
 
+    get_XAxis_TickerInterval() {
+        if (this.component_context === "sps-overview-historicProduction") {
+            if (this.chartConfigItems.customFilterEnabled) {
+                if (this.chartFilterCurrentSelection == 'day') {
+                    return 24 * 60 * 1000;
+                }
+                else if (this.chartFilterCurrentSelection == 'month') {
+                    return 24 * 3600 * 7 * 1000;
+                }
+                else if (this.chartFilterCurrentSelection == 'year') {
+                    return 24 * 3600 * 30 * 1000;
+                }
+                else {
+                    return 24 * 3600 * 1000;
+                }
+            }
+        }
+        else {
+            return this.chartConfigItems.xAxisTickInterval;
+        }
+    }
 
     getMaxData(dataArray: any) {
         if (dataArray != null && dataArray.length > 0) {
