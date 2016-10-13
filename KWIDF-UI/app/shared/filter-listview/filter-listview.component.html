@@ -1,23 +1,18 @@
 <div class="top-search">
     <form role="search" class="navbar-form">
         <div class="input-group add-on">
-            <input type="text" id="srch-term" name="srch-term" placeholder="Search" class="form-control">
+            <input type="text" #newItem id="srch-term" name="srch-term" placeholder="Search" class="form-control" (keyup.enter)="OnSearch(newItem.value)" (keyup)="eventHandler($event)">
             <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                <button type="submit" (click)="OnSearch(newItem.value)" class="btn btn-default"><i class="fa fa-search"></i></button>
             </div>
         </div>
     </form>
-    </div>
-<div class="list-view-name">
+</div>
+<div class="well-name">
     <ul *ngIf="filters">
         <li *ngFor="let filter of filters | paginate: { itemsPerPage: 10, currentPage: page }">
-            <label class="control control--checkbox">
-                <input type="checkbox" /> <span class="themeicon"></span><div class="control__indicator"></div>
-            </label>
             {{ filter.wellName }}
         </li>
     </ul>
-</div>  
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
-
-
+</div>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>

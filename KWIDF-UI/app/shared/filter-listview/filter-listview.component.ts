@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChange } fr
 import { HttpModule } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TreeViewFilter,ListViewFilter } from '../model/filter';
+import { TreeViewFilter, ListViewFilter } from '../model/filter';
 
 import { ListViewDataService } from '../services/listviewdata.service';
 import { FilterDataService } from '../../shared/services/filterdata.service';
@@ -19,14 +19,15 @@ export class FilterListViewComponent {
     subscription: Subscription;
     ObjFilter: TreeViewFilter;
     page: number = 1;
-
-    constructor(private filterListviewDataService: ListViewDataService,private filterDataService: FilterDataService) { }
+    localFilters: ListViewFilter[];
+    constructor(private filterListviewDataService: ListViewDataService, private filterDataService: FilterDataService) { }
 
     getListviewFilters(cFilters: Array<number>) {
         this.filters = this.filterListviewDataService.getListviewFilters(cFilters);
+        this.localFilters = this.filterListviewDataService.getListviewFilters(cFilters);
     }
 
-    ngOnInit(): void {      
+    ngOnInit(): void {
         this.subscription = this.filterDataService.navItem$.subscribe(
             item => {
                 this.item = item;
@@ -40,5 +41,24 @@ export class FilterListViewComponent {
                 this.page = 1;
             });
     }
-    
+    OnSearch(newItem: string) {
+        if (newItem != "") {
+            this.filters = this.localFilters.filter(
+                x => x.wellName.toLowerCase().indexOf(newItem.toLowerCase()) != -1);
+        }
+        else {
+            this.filters = this.localFilters;
+        }
+
+    }
+    eventHandler(event: any) {
+        if (event.target.value != "") {
+            this.filters = this.localFilters.filter(
+                x => x.wellName.toLowerCase().indexOf(event.target.value.toLowerCase()) != -1);
+        }
+        else {
+            this.filters = this.localFilters;
+        }
+    }
+
 }
