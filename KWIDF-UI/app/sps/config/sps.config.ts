@@ -43,6 +43,11 @@ export const SPS_Config_Items = {
             "imgStyle": "fa fa-sitemap"
         }
     ],
+    "overview_WellMaps_Config": {
+        "title": "Well Map"
+        
+
+    },
     "overview_WellEvents_Config": {
         "title": "Well Events",
         "isTitleVisible": false,

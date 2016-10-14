@@ -106,7 +106,7 @@ export class ChartComponent_ColumnSpline {
                 return [];
             })
         }
-        
+
 
         this.options = {
             chart: {
@@ -155,7 +155,7 @@ export class ChartComponent_ColumnSpline {
                 }
             },
             series: seriesData
-            
+
 
         };
 
@@ -220,7 +220,7 @@ export class ChartComponent_ColumnSpline {
                 }
                 else if (exportType == 'viewDataTable') {
                     let tempChartInstance: any = this.chartInstance;
-                  
+
                     let htmlString = tempChartInstance.getDataRows();
                     this.htmlTable = "";
                     this.htmlTable = this.chartConfigItems.tableString[0];
@@ -246,13 +246,17 @@ export class ChartComponent_ColumnSpline {
 
                     this.tableVisible = true;
                     this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[4];
-                    this._logger.log(htmlString);                  
+                    this._logger.log(htmlString);
                 }
                 else {
                     this.chartInstance.exportChart(exportOptions);
                 }
             }
         }
+    }
+
+    onExpandCollapse() {
+
     }
 
     //Chart functionality - End

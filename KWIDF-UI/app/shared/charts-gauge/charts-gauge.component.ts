@@ -239,52 +239,13 @@ export class ChartComponent_Gauge {
 
 
     onClickIcons(exportType: string): void {
-        //this._logger.log(this.chartInstance);
-        //if (exportType) {
-        //    if (this.chartContextData != null) {
-        //        this.renderChart();
-        //        var exportOptions = { type: exportType, filename: this.title };
-        //        if (exportType == 'application/vnd.ms-excel') {
-        //            let tempChartInstance: any = this.chartInstance;
-        //            tempChartInstance.downloadXLS(exportOptions);
-        //        }
-        //        else if (exportType == 'viewDataTable') {
-        //            let tempChartInstance: any = this.chartInstance;
-        //            //let htmlString = tempChartInstance.getTable();
-        //            //let htmlString = tempChartInstance.getCSV();
-        //            let htmlString = tempChartInstance.getDataRows();
-        //            this.htmlTable = "";
-        //            this.htmlTable = "<table class='table'><tr><input type='button' (click)='close()' value='close' />";
-        //            for (var i = 0; i < htmlString.length; i++) {
-        //                this.htmlTable = this.htmlTable + "</tr><tr>"
-        //                for (var j = 0; j < htmlString[i].length; j++) {
-        //                    this.htmlTable = this.htmlTable + "<td>";
-        //                    this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
-        //                }
-        //            }
-        //            this.tableVisible = true;
-        //            this.htmlTable = this.htmlTable + "</tr></table>";
-        //            this._logger.log(htmlString);
-        //        }
-        //        else {
-        //            this.chartInstance.exportChart(exportOptions);
-        //        }
-        //    }
-        //}
+        
     }
 
     //Chart functionality - End
 
 
     onExpandCollapse() {
-        //alert(this.currentId);
-        //alert(this.currentTabId);
-        //this.chartid = 'ov-production';
-        //if (this.expandStatus == 'collapse')
-        //    this.expandStatus = 'expand';
-        //else
-        //    this.expandStatus == 'collapse';
-
         this.notify.emit(this.currentControlId);
     }
 

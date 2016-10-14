@@ -108,6 +108,7 @@
     <Content Include="images\table.png" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\koc.custom.js" />
+    <Content Include="scripts\proj4.js" />
     <Content Include="temp\temp.html" />
     <Content Include="welcome.html" />
     <Content Include="index.html" />

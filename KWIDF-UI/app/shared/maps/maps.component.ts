@@ -1,9 +1,11 @@
 ﻿import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { Logger } from "angular2-logger/core";
 
+import { GlobalDataService } from '../services/globaldata.service';
 import { TreeViewFilter } from '../model/filter';
-import { Highcharts} from 'angular2-highcharts';
-//import {Highchmap}       from 'highcharts/modules/map';
+import { Highcharts } from 'angular2-highcharts';
+
 require('highcharts/modules/map.js')(Highcharts);
 require('highcharts/modules/exporting.js')(Highcharts);
 
@@ -22,29 +24,39 @@ height: 100%;
 
       }
     `],
-    //    template: `<chart type="Map" [options]="options" (load) = "saveInstance($event.context)" class="highcart-pie"></chart>`
+    providers: [GlobalDataService]
 })
 
-//export class MapsComponent {
-//    @Input() currentFilters: TreeViewFilter;
-    
-    
-//    //ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-//    //    let log: string[] = [];
-//    //    for (let propName in changes) {
-//    //        let changedProp = changes[propName];
-//    //        let from = JSON.stringify(changedProp.previousValue);
-//    //        let to = JSON.stringify(changedProp.currentValue);
-//    //        log.push(`${propName} changed from ${from} to ${to}`);
-//    //    }
-      
-//    //}
-   
-//}
-
-
 export class MapsComponent {
-    constructor() {
+
+    @Input() component_context: string;
+    title = '';
+    chartConfigItems: any;
+
+    constructor(private _logger: Logger, private _globalDataService: GlobalDataService) {
+
+    }
+
+    ngOnInit() {
+        this.loadConfigItems();
+    }
+
+    ngAfterViewInit() {
+        this.renderMap();
+    }
+
+    loadConfigItems() {
+        let configItems: any = this._globalDataService.getModuleConfigItems();
+        if (this.component_context === "sps-overview-wellMap") {
+            this.chartConfigItems = configItems.overview_WellMaps_Config;
+        }
+        //else {
+        //    this.chartConfigItems = configItems.lossGain_FieldLossGain_Config;
+        //}
+        this.title = this.chartConfigItems.title;
+    }
+
+    renderMap() {
         this.options = {
 
             legend: {
@@ -99,172 +111,159 @@ export class MapsComponent {
                 nullColor: 'rgba(200, 200, 200, 0.3)',
                 showInLegend: false
             }, {
-                    // Specify points using lat/lon
-                    type: 'mappoint',
-                    name: 'Producing',
-                    color: '#008000',
+                // Specify points using lat/lon
+                type: 'mappoint',
+                name: 'Producing',
+                color: '#008000',
 
-                    dataLabels: {
-                        enabled: true,
-                        x: 0,
-                        y: 15,
-                        formatter: function () {
-                            return this.point.name.substring(0, 3);
-                        },
-                        style: { color: "white" }
+                dataLabels: {
+                    enabled: true,
+                    x: 0,
+                    y: 15,
+                    formatter: function () {
+                        return this.point.name.substring(0, 3);
                     },
-                    marker: {
-                        radius: 10
-                    },
-                    data: [
-                        {
-                            name: 'ESP',
-                            // name: 'jahar',
-                            lat: 29.336573,
-                            lon: 47.675529
-                        },
-                        {
-                            name: 'ESP',
-                            //name: 'Kuwait',
-                            lat: 29.378586,
-                            lon: 47.990341
-                        }
-
-                    ]
-                }, {
-                    // Specify points using lat/lon
-                    type: 'mappoint',
-                    name: 'Shut-in',
-                    color: '#ff0000',
-                    dataLabels: {
-                        enabled: true,
-                        x: 0,
-                        y: 15,
-                        formatter: function () {
-                            return this.point.name.substring(0, 2);
-                        },
-                        style: { color: "white" }
-                    },
-                    marker: {
-                        radius: 10,
-                        symbol: 'circle'
-                    },
-                    data: [{
-                        name: 'ESP',
-                        // name: 'GL',
-                        lat: 29.092777,
-                        lon: 48.081322
-                    },
-
-                        {
-                            name: 'GL',
-                            //   name: 'Jeleeb',
-                            lat: 29.266666,
-                            lon: 47.933334
-                        }]
+                    style: { color: "white" }
                 },
-
-
-                {
-
-                    type: 'mappoint',
-                    name: 'Workerover',
-                    color: '#A9A9A9',
-                    dataLabels: {
-                        enabled: true,
-                        x: 0,
-                        y: 15,
-                        formatter: function () {
-                            return this.point.name.substring(0, 2);
-                        },
-                        style: { color: "white" }
-                    },
-                    marker: {
-                        radius: 10,
-                        symbol: 'circle'
-                    },
-                    data: [{
+                marker: {
+                    radius: 10
+                },
+                data: [
+                    {
                         name: 'ESP',
-                        // name: 'GL',
-                        lat: 29.3366,
-                        lon: 47.6755
+                        lat: 29.336573,
+                        lon: 47.675529
+                    },
+                    {
+                        name: 'ESP',
+                        lat: 29.378586,
+                        lon: 47.990341
                     }
-                        ,
 
-                        {
-                            name: 'GL',
-                            //   name: 'Jeleeb',
-                            lat: 29.2734,
-                            lon: 47.9400
-                        }
-                    ]
-
+                ]
+            }, {
+                // Specify points using lat/lon
+                type: 'mappoint',
+                name: 'Shut-in',
+                color: '#ff0000',
+                dataLabels: {
+                    enabled: true,
+                    x: 0,
+                    y: 15,
+                    formatter: function () {
+                        return this.point.name.substring(0, 2);
+                    },
+                    style: { color: "white" }
                 },
-                {
-
-                    type: 'mappoint',
-                    name: 'Equipment issues',
-                    color: '#800080',
-                    dataLabels: {
-                        enabled: true,
-                        x: 0,
-                        y: 15,
-                        formatter: function () {
-                            return this.point.name.substring(0, 2);
-                        },
-                        style: { color: "white" }
-                    },
-                    marker: {
-                        radius: 10,
-                        symbol: 'circle'
-                    },
-                    data: [
-                        {
-                            name: 'GL',
-                            //   name: 'Jeleeb',
-                            lat: 29.2734,
-                            lon: 47.9400
-                        }
-                    ]
-
+                marker: {
+                    radius: 10,
+                    symbol: 'circle'
+                },
+                data: [{
+                    name: 'ESP',
+                    lat: 29.092777,
+                    lon: 48.081322
                 },
 
                 {
+                    name: 'GL',
+                    lat: 29.266666,
+                    lon: 47.933334
+                }]
+            },
 
-                    type: 'mappoint',
-                    name: 'water injucting',
-                    color: '#483D8B',
-                    dataLabels: {
-                        enabled: true,
-                        x: 0,
-                        y: 15,
-                        formatter: function () {
-                            return this.point.name.substring(0, 2);
-                        },
-                        style: { color: "white" }
-                    },
-                    marker: {
-                        radius: 10,
-                        symbol: 'circle'
-                    },
-                    data: [
-                        {
-                            name: 'GL',
-                            //   name: 'Jeleeb',
-                            lat: 29.3333,
-                            lon: 48.0159
-                        }
-                    ]
 
+            {
+
+                type: 'mappoint',
+                name: 'Workerover',
+                color: '#A9A9A9',
+                dataLabels: {
+                    enabled: true,
+                    x: 0,
+                    y: 15,
+                    formatter: function () {
+                        return this.point.name.substring(0, 2);
+                    },
+                    style: { color: "white" }
                 },
+                marker: {
+                    radius: 10,
+                    symbol: 'circle'
+                },
+                data: [{
+                    name: 'ESP',
+                    lat: 29.3366,
+                    lon: 47.6755
+                }
+                    ,
 
+                {
+                    name: 'GL',
+                    lat: 29.2734,
+                    lon: 47.9400
+                }
+                ]
 
+            },
+            {
+
+                type: 'mappoint',
+                name: 'Equipment issues',
+                color: '#800080',
+                dataLabels: {
+                    enabled: true,
+                    x: 0,
+                    y: 15,
+                    formatter: function () {
+                        return this.point.name.substring(0, 2);
+                    },
+                    style: { color: "white" }
+                },
+                marker: {
+                    radius: 10,
+                    symbol: 'circle'
+                },
+                data: [
+                    {
+                        name: 'GL',
+                        lat: 29.2734,
+                        lon: 47.9400
+                    }
+                ]
+
+            },
+
+            {
+
+                type: 'mappoint',
+                name: 'water injucting',
+                color: '#483D8B',
+                dataLabels: {
+                    enabled: true,
+                    x: 0,
+                    y: 15,
+                    formatter: function () {
+                        return this.point.name.substring(0, 2);
+                    },
+                    style: { color: "white" }
+                },
+                marker: {
+                    radius: 10,
+                    symbol: 'circle'
+                },
+                data: [
+                    {
+                        name: 'GL',
+                        lat: 29.3333,
+                        lon: 48.0159
+                    }
+                ]
+            },
             ]
-
-
         }
-
     }
+
     options: Object;
     chartInstance: HighchartsChartObject;
 
@@ -273,9 +272,15 @@ export class MapsComponent {
     }
 
     onClickIcons(exportType: string): void {
-        debugger;
-        var exportOptions = { type: exportType, filename: 'well map' };
-        this.chartInstance.exportChart(exportOptions);
+        if (exportType) {
+            this.renderMap();
+            var exportOptions = { type: exportType, filename: this.title };
+            this.chartInstance.exportChart(exportOptions);
+        }
+    }
+
+    onExpandCollapse() {
+
     }
 }
 

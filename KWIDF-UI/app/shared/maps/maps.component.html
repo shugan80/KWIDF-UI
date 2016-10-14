@@ -3,11 +3,11 @@
     <div class="dash-component-head">
         <ul class="header">
             <li>
-                <h3>Well Map </h3>
+                <h3>{{title}}</h3>
             </li>
             <li class="pull-right toolGroup">
                 <ul class="list-icons">
-                    <li><span class="expand" (click)="onClickIcons()"></span></li>
+                    <li><span class="expand" (click)="onExpandCollapse()"></span></li>
                     <li><span class="pdf" (click)="onClickIcons('application/pdf')"></span></li>
                     <li><span class="exportPng" (click)="onClickIcons('image/png')"></span></li>
                 </ul>
