@@ -39,6 +39,8 @@ export class ChartComponent_ColumnSpline {
     tableVisible: any = false;
     htmlTable: any;
     htmlContent: any;
+    displayClass: any = "table";
+    tableHidden: any = true;
 
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
@@ -230,11 +232,22 @@ export class ChartComponent_ColumnSpline {
                             this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
                         }
                     }
+                    if (this.displayClass == "excel") {
+                        this.displayClass = "table";
+                        this.tableHidden = false;
+                    }
+                    else {
+                        this.displayClass = "excel";
+                        this.tableHidden = true;
+                     
+
+                    }
+                 
                     this.tableVisible = true;
                     this.htmlTable = this.htmlTable + "</tr></table>";
                     this._logger.log(htmlString);
                     // this.firstModal.open();
-                    this.notifyPopup.emit(this.htmlTable);
+                   // this.notifyPopup.emit(this.htmlTable);
                     // this.firstModal.open();
                     //var el = this._element.nativeElement;
                     //console.log(el);
