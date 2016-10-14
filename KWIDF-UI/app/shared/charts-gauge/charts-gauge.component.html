@@ -20,18 +20,10 @@
                 {{item}}
             </label>
         </div>
-        <chart [options]="chartOptions_Green"
-               (load)="saveInstance($event.context, 'chartComp_Green')" class="col-md-6 col-xs-12">
-        </chart>
-        <chart  [options]="chartOptions_Blue"
-               (load)="saveInstance($event.context, 'chartComp_Blue')" class="col-md-6 col-xs-12">
-        </chart>
-        <chart  [options]="chartOptions_Red"
-               (load)="saveInstance($event.context, 'chartComp_Red')" class="col-md-6 col-xs-12">
-        </chart>
-        <chart  [options]="chartOptions_Yellow"
-               (load)="saveInstance($event.context, 'chartComp_Yellow')" class="col-md-6 col-xs-12">
-        </chart>
+        <chart [options]="chartOptions_Green" (load)="saveInstance($event.context, 'chartComp_Green')" class="col-md-6 col-xs-12"></chart>
+        <chart [options]="chartOptions_Blue" (load)="saveInstance($event.context, 'chartComp_Blue')" class="col-md-6 col-xs-12"></chart>
+        <chart [options]="chartOptions_Red" (load)="saveInstance($event.context, 'chartComp_Red')" class="col-md-6 col-xs-12"></chart>
+        <chart [options]="chartOptions_Yellow" (load)="saveInstance($event.context, 'chartComp_Yellow')" class="col-md-6 col-xs-12"></chart>
     </div>
 </div>
 

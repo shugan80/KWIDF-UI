@@ -55,14 +55,14 @@ export class fixedHeight implements OnInit {
         //    });
 
         //Dashboard fixedht Height
-        $('#fixed-ht').height($(window).height() - 200);
+        $('#fixed-ht').height($(window).height() - 147);
         $(document).ready(fixedht);
         $(window).resize(fixedht);
         $(window).load(fixedht);
         customResize();
 
         function fixedht() {
-            return $('#fixed-ht').height($(window).height() - 200);
+            return $('#fixed-ht').height($(window).height() - 147);
         }
 
 
