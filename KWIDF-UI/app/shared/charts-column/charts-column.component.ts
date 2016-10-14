@@ -13,7 +13,7 @@ import { KeyValueObject } from '../model/key-value';
 import { StaticDataService } from '../services/staticdata.service';
 import { GlobalDataService } from '../services/globaldata.service';
 
-
+declare var $: any;
 
 @Component({
     moduleId: module.id,
@@ -32,7 +32,18 @@ export class ChartComponent_Column {
     @Input() component_context: string;
     @Input() currentControlId: string;
 
+    @Input() spsWellEventHeight: number;
+
     ObjFilter: Filter;
+
+    newFilterObj: TreeViewFilter;
+    collapseFiltersObj: any;
+    isExpendClass: boolean = false;
+    isExpend: boolean = false;
+    tempOldClass: string = '';
+    tempParentOldClass: string = '';
+    maximizeClass: string;
+    expendClass: string;
     chartConfigItems: any;
     title = '';
     chartContextData: KeyValueObject;
@@ -89,6 +100,12 @@ export class ChartComponent_Column {
     getDataAndRenderChart(filterId: number) {
         this.dataService.get_columnChart_Data(this.component_context, filterId).then(resultData => {
             this.chartContextData = resultData;
+            if (this.isExpend === false) {
+                this.chartConfigItems.height = this.spsWellEventHeight;
+            }
+            else {
+                this.chartConfigItems.height = ($(window).height() - 200);
+            }
             this.renderChart();
         });
     }
@@ -107,7 +124,8 @@ export class ChartComponent_Column {
         let maxYAxisData = this.getMaxData(data);
         this.options = {
             chart: {
-                type: 'column'
+                type: 'column',
+                 height: this.chartConfigItems.height
             },
             title: {
                 text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
@@ -232,10 +250,37 @@ export class ChartComponent_Column {
     }
 
     onExpandCollapse() {
-        this.notify.emit(this.currentControlId);
+        let controlIds = ["sps_overview_wellMap_ID", "sps_overview_latProd_ID", "sps_overview_histProd_ID", "sps_overview_wellStatus_ID", "sps_overview_wellEvents_ID", "sps_overview_downTime_ProdLoss_ID"];
+
+        if (this.isExpendClass === false) {
+            this.isExpend = true;
+            this.isExpendClass = true;
+            $(".overlayPanel").show();
+            $(".body-container").removeClass("menuCollapsed");
+            $("#" + this.currentControlId).addClass('inlinePopup');
+            $(".handle").hide();
+
+            $("#" + this.currentControlId).height($(window).height() - 200);
+            this.chartInstance.setSize(null, ($(window).height() - 200), false);
+        } else {
+            this.isExpend = false;
+           
+            this.isExpendClass = false;
+
+            $("#" + this.currentControlId).removeClass('inlinePopup');
+           
+            $(".overlayPanel").hide();
+            $(".handle").show();
+          
+            $("#" + this.currentControlId).height(this.spsWellEventHeight);
+            $("#" + this.currentControlId).removeAttr("style");
+            this.chartInstance.setSize(null, this.spsWellEventHeight, false);
+        };
+
+     
     }
 
-    //Chart functionality - End
+  
 
 }
 

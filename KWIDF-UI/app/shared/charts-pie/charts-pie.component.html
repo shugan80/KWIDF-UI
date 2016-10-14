@@ -1,14 +1,19 @@
 ﻿<div class="dash-component-head">
-    <h3>{{title}}</h3>
-    <div class="pull-right">
-        <ul class="list-icons">
-            <li><span class="expand" (click)="onExpandCollapse()" title="Expand"></span></li>            
+    <ul class="header">
+        <li>
+            <h3>{{title}}</h3>
+        </li>
+        <li class="pull-right toolGroup">
+
+            <ul class="list-icons">
+            <!--<li><span class="expand" (click)="onExpandCollapse()" title="Expand"></span></li>-->
             <li><span class="pdf" (click)="onClickIcons('application/pdf')" title="PDF"></span></li>
             <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')" title="Excel"></span></li>
             <li><span class="table" (click)="onClickIcons('viewDataTable')" title="Table"></span></li>
             <li><span class="exportPng" (click)="onClickIcons('image/png')" title="PNG"></span></li>
-        </ul>
-    </div>
+            </ul>
+        </li>
+    </ul>
 </div>
 <div class="dash-component-content">
     <chart [options]="options"

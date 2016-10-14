@@ -39,15 +39,19 @@ export class FilterTreeViewComponent {
         return 'icondown';
     }
 
-    onTreeViewChecked(cFilter: TreeViewFilter) {
+    onTreeViewChecked(cFilter: TreeViewFilter, isChild: boolean) {
+        if (!cFilter.checked && !cFilter.expanded)
+            this.treeViewToggle(cFilter);
+
         cFilter.checked = !cFilter.checked;
-        this.clearSelectedCheckbox(cFilter);
+        this.clearSelectedCheckbox(cFilter, isChild);
         this.checkRecursiveFilters(cFilter, cFilter.checked);
         cFilter.style = 'list-selected';
 
         this.filterDataService.publishFilterData(cFilter);
         this.filterDataService.changeNav(this.item);
     }
+    
 
     onTreeViewChildSelected(cFilter: TreeViewFilter) {
         this.isFromNodeSelection = true;
@@ -75,7 +79,7 @@ export class FilterTreeViewComponent {
         this.isFromNodeSelection = false;
     }
 
-    clearSelectedCheckbox(cFilter: TreeViewFilter) {
+    clearSelectedCheckbox(cFilter: TreeViewFilter, isChild: boolean) {
         this.filters.forEach(c => {
             //Root
             if (c.id != cFilter.id) {
@@ -87,12 +91,16 @@ export class FilterTreeViewComponent {
 
                 if (l.id != cFilter.id) {
                     l.checked = false;
+                    if (!isChild)
+                        l.expanded = false;
                 } 
 
                 //Level 2
                 l.children.forEach(s => {
                     if (s.id != cFilter.id) {
                         s.checked = false;
+                        if (!isChild)
+                            s.expanded = false;
                         s.style = "list-unselected";
                     }
                 });

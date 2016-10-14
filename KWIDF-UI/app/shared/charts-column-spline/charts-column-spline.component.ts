@@ -40,7 +40,7 @@ export class ChartComponent_ColumnSpline {
     htmlTable: any;
     htmlContent: any;
     displayClass: any = "table";
-    tableHidden: any = true;
+    tableHidden: any = false;
     iconTitle: any = 'Table';
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();

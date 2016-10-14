@@ -256,9 +256,9 @@ export class ChartComponent_Pie {
     //Chart functionality - End
 
 
-    onExpandCollapse() {
-        this.notify.emit(this.currentControlId);
-    }
+    //onExpandCollapse() {
+    //    this.notify.emit(this.currentControlId);
+    //}
 
 
 

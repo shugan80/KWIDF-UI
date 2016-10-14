@@ -18,6 +18,7 @@ import { GlobalDataService } from '../services/globaldata.service';
 import { DateFilter } from '../model/filter';
 //import { SPS_HistoricProd_DateFilters } from '../../sps/config/sps.config';
 
+declare var $: any;
 
 @Component({
     moduleId: module.id,
@@ -36,6 +37,7 @@ export class ChartComponent_LineMultiple {
     @Input() component_context: string;
     @Input() currentControlId: string;
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+    @Input() spsHisProductionHeight: number;  
 
     ObjFilter: Filter;
     chartConfigItems: any;
@@ -44,19 +46,27 @@ export class ChartComponent_LineMultiple {
     chartFilterObject: any;
     chartFilterDefaultSelection: Object;
     chartFilterCurrentSelection: Object;
-    
+
+    isExpendClass: boolean = false;
+    isExpend: boolean = false;
+    tempOldClass: string = '';
+    tempParentOldClass: string = '';
+    maximizeClass: string;
+
     htmlTable: any;
     tableVisible: any = false;
     iconTitle: any = 'Table';
 
     displayClass: any = "table";
-    tableHidden: any = true;
+    tableHidden: any = false;
+
+   
 
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private dataService: StaticDataService) {
-        
+
     }
 
     ngOnInit() {
@@ -106,9 +116,15 @@ export class ChartComponent_LineMultiple {
     }
 
     //Chart functionality - Start
-    getDataAndRenderChart(filterId: number, filterType:Object) {
+    getDataAndRenderChart(filterId: number, filterType: Object) {
         this.dataService.get_lineMultipleChart_Data(this.component_context, filterId, filterType).then(resultData => {
             this.chartContextData = resultData;
+            if (this.isExpend === false) {
+                this.chartConfigItems.height = this.spsHisProductionHeight;
+            }
+            else {
+                this.chartConfigItems.height = ($(window).height() - 200);
+            }
             this.renderChart();
         });
     }
@@ -127,7 +143,8 @@ export class ChartComponent_LineMultiple {
                 useUTC: true
             },
             chart: {
-                zoomType: 'xy'
+                zoomType: 'xy',
+                height: this.chartConfigItems.height
             },
             title: {
                 text: (this.chartConfigItems.isTitleVisible) ? this.chartConfigItems.title : null,
@@ -135,7 +152,7 @@ export class ChartComponent_LineMultiple {
             subtitle: {
                 text: this.chartConfigItems.subTitle
             },
-            xAxis: {  
+            xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: { // don't display the dummy year
                     day: '%e. %b %Y'
@@ -254,35 +271,35 @@ export class ChartComponent_LineMultiple {
                     tempChartInstance.downloadXLS(exportOptions);
                 }
                 else if (exportType == 'viewDataTable') {
-                let tempChartInstance: any = this.chartInstance;
+                    let tempChartInstance: any = this.chartInstance;
 
-                let htmlString = tempChartInstance.getDataRows();
-                this.htmlTable = "";
-                this.htmlTable = this.chartConfigItems.tableString[0];
-                for (var i = 0; i < htmlString.length; i++) {
-                    this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[1];
-                    for (var j = 0; j < htmlString[i].length; j++) {
-                        this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[2];
-                        this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
+                    let htmlString = tempChartInstance.getDataRows();
+                    this.htmlTable = "";
+                    this.htmlTable = this.chartConfigItems.tableString[0];
+                    for (var i = 0; i < htmlString.length; i++) {
+                        this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[1];
+                        for (var j = 0; j < htmlString[i].length; j++) {
+                            this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[2];
+                            this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
+                        }
                     }
-                }
-                if (this.displayClass == "chartIcon") {
-                    this.displayClass = "table";
-                    this.tableHidden = false;
-                    this.iconTitle = 'Table';
-                }
-                else {
-                    this.displayClass = "chartIcon";
-                    this.tableHidden = true;
-                    this.iconTitle = 'Chart';
+                    if (this.displayClass == "chartIcon") {
+                        this.displayClass = "table";
+                        this.tableHidden = false;
+                        this.iconTitle = 'Table';
+                    }
+                    else {
+                        this.displayClass = "chartIcon";
+                        this.tableHidden = true;
+                        this.iconTitle = 'Chart';
 
 
-                }
+                    }
 
-                this.tableVisible = true;
-                this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[3];
-                this._logger.log(htmlString);
-            }     
+                    this.tableVisible = true;
+                    this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[3];
+                    this._logger.log(htmlString);
+                }
                 else {
                     this.chartInstance.exportChart(exportOptions);
                 }
@@ -302,7 +319,40 @@ export class ChartComponent_LineMultiple {
 
 
     onExpandCollapse() {
-        this.notify.emit(this.currentControlId);
+        let controlIds = ["sps_overview_wellMap_ID", "sps_overview_latProd_ID", "sps_overview_histProd_ID", "sps_overview_wellStatus_ID", "sps_overview_wellEvents_ID", "sps_overview_downTime_ProdLoss_ID"];
+
+        this.displayClass = "table";
+        this.tableHidden = false;
+        this.iconTitle = 'Table';
+
+        if (this.isExpendClass === false) {
+            this.isExpend = true;
+            this.isExpendClass = true;
+            $(".overlayPanel").show();
+            $(".body-container").removeClass("menuCollapsed");
+            $("#" + this.currentControlId).addClass('inlinePopup');
+            $(".handle").hide();
+
+            $("#" + this.currentControlId).height($(window).height() - 200);
+            this.chartInstance.setSize(null, ($(window).height() - 200), false);
+        } else {
+            this.isExpend = false;
+
+            this.isExpendClass = false;
+
+            $("#" + this.currentControlId).removeClass('inlinePopup');
+
+            $(".overlayPanel").hide();
+            $(".handle").show();
+
+            $("#" + this.currentControlId).height(this.spsHisProductionHeight);
+            $("#" + this.currentControlId).removeAttr("style");
+                      
+
+            this.chartInstance.setSize(null, this.spsHisProductionHeight, false);
+        };
+
+
     }
 }
 

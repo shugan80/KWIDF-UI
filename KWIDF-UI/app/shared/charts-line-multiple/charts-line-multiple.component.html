@@ -1,21 +1,27 @@
 ﻿<div class="dash-component-head">
-    <h3>{{title}}</h3>
-    <div class="pull-right">
-        <ul class="list-icons">
-
-            <li><span class="expand" (click)="onExpandCollapse()" title="Expand"></span></li>
-            <li><span class="pdf" (click)="onClickIcons('application/pdf')" title="PDF"></span></li>
-            <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')" title="Excel"></span></li>
-            <li><span class="table" [ngClass]="displayClass" (click)="onClickIcons('viewDataTable')" title={{iconTitle}}></span></li>
-            <li><span class="exportPng" (click)="onClickIcons('image/png')" title="PNG"></span></li>
-        </ul>
-    </div>
-  
-    <div  class="pull-right"><span [hidden]="!this.chartConfigItems.customFilterEnabled">View by</span>
-        <select [hidden]="!this.chartConfigItems.customFilterEnabled" (change)="onClickFilters($event.target.value)" >
-            <option *ngFor="let filter of chartFilterObject" value={{filter.value}} >{{filter.text}}</option>
-        </select>
-    </div>
+    <ul class="header">
+        <li>
+            <h3>{{title}}</h3>
+        </li>
+        <li class="pull-right toolGroup">
+            <ul class="list-icons">
+                <li><span class="expand" (click)="onExpandCollapse()" title="Expand"></span></li>
+                <li><span class="pdf" (click)="onClickIcons('application/pdf')" title="PDF"></span></li>
+                <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')" title="Excel"></span></li>
+                <li><span class="table" [ngClass]="displayClass" (click)="onClickIcons('viewDataTable')" title={{iconTitle}}></span></li>
+                <li><span class="exportPng" (click)="onClickIcons('image/png')" title="PNG"></span></li>
+            </ul>
+        </li>
+        <li class="pull-right">
+            <span class="">
+                <span [hidden]="!this.chartConfigItems.customFilterEnabled">View by</span>
+                <select [hidden]="!this.chartConfigItems.customFilterEnabled" (change)="onClickFilters($event.target.value)">
+                    <option *ngFor="let filter of chartFilterObject" value={{filter.value}}>{{filter.text}}</option>
+                </select>
+            </span>
+        </li>
+    </ul>
+   
 </div>
 <div class="dash-component-content">
     <chart [options]="options"
