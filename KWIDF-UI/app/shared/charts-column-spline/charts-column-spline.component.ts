@@ -224,12 +224,12 @@ export class ChartComponent_ColumnSpline {
                     //let htmlString = tempChartInstance.getCSV();
                     let htmlString = tempChartInstance.getDataRows();
                     this.htmlTable = "";
-                    this.htmlTable = this.chartConfigItems.tableString[0];
+                    this.htmlTable = "<table class='table'><tr><input type='button' (click)='close()' value='close' />";
                     for (var i = 0; i < htmlString.length; i++) {
-                        this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[1];
+                        this.htmlTable = this.htmlTable + "</tr><tr>"
                         for (var j = 0; j < htmlString[i].length; j++) {
-                            this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[2];
-                            this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
+                            this.htmlTable = this.htmlTable + "<td>";
+                            this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
                         }
                     }
                     if (this.displayClass == "excel") {

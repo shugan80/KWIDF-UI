@@ -18,7 +18,7 @@ export const SPS_HistoricProd_DateFilters: DateFilter[] = [
         value: "year"
     }
 ]
-export const SPS_Downtime_TableStr: string[] = ["<table class='table'><tr>","</tr><tr>","<td>","</td>"]
+
 export const SPS_Config_Items = {
     "title": "SPS",
     "contentmenuItems": [
@@ -76,11 +76,7 @@ export const SPS_Config_Items = {
         "yAxisSecondaryTitle": "Stb/d(1000s)",
         "xAxisTickInterval": 1,
         "yAxisPrimaryTickInterval": 50,
-        "yAxisSecondaryTickInterval": 0.2,
-        "tableString": SPS_Downtime_TableStr
-        
-
-
+        "yAxisSecondaryTickInterval": 0.2
 
     },
     "overview_Historic_Production_Config": {
