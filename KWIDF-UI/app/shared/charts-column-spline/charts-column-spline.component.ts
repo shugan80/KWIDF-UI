@@ -220,16 +220,15 @@ export class ChartComponent_ColumnSpline {
                 }
                 else if (exportType == 'viewDataTable') {
                     let tempChartInstance: any = this.chartInstance;
-                    //let htmlString = tempChartInstance.getTable();
-                    //let htmlString = tempChartInstance.getCSV();
+                  
                     let htmlString = tempChartInstance.getDataRows();
                     this.htmlTable = "";
-                    this.htmlTable = "<table class='table'><tr><input type='button' (click)='close()' value='close' />";
+                    this.htmlTable = this.chartConfigItems.tableString[0];
                     for (var i = 0; i < htmlString.length; i++) {
-                        this.htmlTable = this.htmlTable + "</tr><tr>"
+                        this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[1];
                         for (var j = 0; j < htmlString[i].length; j++) {
-                            this.htmlTable = this.htmlTable + "<td>";
-                            this.htmlTable = this.htmlTable + htmlString[i][j] + "</td>";
+                            this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[2];
+                            this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
                         }
                     }
                     if (this.displayClass == "excel") {
@@ -239,18 +238,13 @@ export class ChartComponent_ColumnSpline {
                     else {
                         this.displayClass = "excel";
                         this.tableHidden = true;
-                     
+
 
                     }
-                 
+
                     this.tableVisible = true;
                     this.htmlTable = this.htmlTable + "</tr></table>";
-                    this._logger.log(htmlString);
-                    // this.firstModal.open();
-                   // this.notifyPopup.emit(this.htmlTable);
-                    // this.firstModal.open();
-                    //var el = this._element.nativeElement;
-                    //console.log(el);
+                    this._logger.log(htmlString);                  
                 }
                 else {
                     this.chartInstance.exportChart(exportOptions);
