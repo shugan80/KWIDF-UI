@@ -13,8 +13,8 @@
 <div class="dash-component-content">
     <chart [options]="options"
            (load)="saveInstance($event.context)">
+        
     </chart>
+    <div [innerHTML]="htmlTable" [hidden]="!tableHidden" class="table downtime-data"></div>
 </div>
-<div [innerHTML]="htmlTable"  [hidden]="!tableHidden" class="table" style="position:absolute;left:0px;width:100%;top:41px;z-index:1000">
 
-</div>

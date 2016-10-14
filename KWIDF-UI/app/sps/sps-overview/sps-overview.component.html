@@ -10,12 +10,12 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="content-area-left-btm">
-                        <div class="col-md-4 left">
+                        <div class="col-md-5 left">
                             <div class="lat-prod border" id="sps-ov-lat-prod">
                                 <chart-gauge-area [currentFilters]="ObjFilter" [currentControlId]="sps_overview_latProd_ID" (notify)='onNotify($event)' component_context="sps-overview-wellStatus"></chart-gauge-area>
                             </div>
                         </div>
-                        <div class="col-md-8 right">
+                        <div class="col-md-7 right">
                             <div class="his-prod border" id="sps-ov-hist-prod">
                                 <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="sps_overview_histProd_ID" (notify)='onNotify($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
                             </div>
