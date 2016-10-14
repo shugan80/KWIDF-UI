@@ -265,12 +265,12 @@ export class ChartComponent_LineMultiple {
                         this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
                     }
                 }
-                if (this.displayClass == "excel") {
+                if (this.displayClass == "chartIcon") {
                     this.displayClass = "table";
                     this.tableHidden = false;
                 }
                 else {
-                    this.displayClass = "excel";
+                    this.displayClass = "chartIcon";
                     this.tableHidden = true;
 
 
