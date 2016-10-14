@@ -277,7 +277,7 @@ export class ChartComponent_LineMultiple {
                 }
 
                 this.tableVisible = true;
-                this.htmlTable = this.htmlTable + "</tr></table>";
+                this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[3];
                 this._logger.log(htmlString);
             }     
                 else {

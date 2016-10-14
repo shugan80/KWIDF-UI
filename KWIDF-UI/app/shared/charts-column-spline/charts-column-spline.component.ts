@@ -243,7 +243,7 @@ export class ChartComponent_ColumnSpline {
                     }
 
                     this.tableVisible = true;
-                    this.htmlTable = this.htmlTable + "</tr></table>";
+                    this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[4];
                     this._logger.log(htmlString);                  
                 }
                 else {
