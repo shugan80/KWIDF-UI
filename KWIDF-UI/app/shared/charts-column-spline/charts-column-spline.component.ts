@@ -231,19 +231,19 @@ export class ChartComponent_ColumnSpline {
                             this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
                         }
                     }
-                    if (this.displayClass == "excel") {
+                    if (this.displayClass == "chartIcon") {
                         this.displayClass = "table";
                         this.tableHidden = false;
                     }
                     else {
-                        this.displayClass = "excel";
+                        this.displayClass = "chartIcon";
                         this.tableHidden = true;
 
 
                     }
 
                     this.tableVisible = true;
-                    this.htmlTable = this.htmlTable + "</tr></table>";
+                    this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[4];
                     this._logger.log(htmlString);                  
                 }
                 else {

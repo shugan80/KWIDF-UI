@@ -45,8 +45,13 @@ export class ChartComponent_LineMultiple {
     chartFilterDefaultSelection: Object;
     chartFilterCurrentSelection: Object;
     
+    htmlTable: any;
+    tableVisible: any = false;
 
+    displayClass: any = "table";
+    tableHidden: any = true;
 
+    @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private _logger: Logger, private _globalDataService: GlobalDataService,
         private dataService: StaticDataService) {
@@ -247,6 +252,34 @@ export class ChartComponent_LineMultiple {
                     let tempChartInstance: any = this.chartInstance;
                     tempChartInstance.downloadXLS(exportOptions);
                 }
+                else if (exportType == 'viewDataTable') {
+                let tempChartInstance: any = this.chartInstance;
+
+                let htmlString = tempChartInstance.getDataRows();
+                this.htmlTable = "";
+                this.htmlTable = this.chartConfigItems.tableString[0];
+                for (var i = 0; i < htmlString.length; i++) {
+                    this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[1];
+                    for (var j = 0; j < htmlString[i].length; j++) {
+                        this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[2];
+                        this.htmlTable = this.htmlTable + htmlString[i][j] + this.chartConfigItems.tableString[3];
+                    }
+                }
+                if (this.displayClass == "chartIcon") {
+                    this.displayClass = "table";
+                    this.tableHidden = false;
+                }
+                else {
+                    this.displayClass = "chartIcon";
+                    this.tableHidden = true;
+
+
+                }
+
+                this.tableVisible = true;
+                this.htmlTable = this.htmlTable + this.chartConfigItems.tableString[3];
+                this._logger.log(htmlString);
+            }     
                 else {
                     this.chartInstance.exportChart(exportOptions);
                 }

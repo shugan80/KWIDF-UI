@@ -4,9 +4,10 @@
             <div class="over-view">
                 <div class="col-md-8 content-area-left">
                     <div class="well-map border" id="sps-ov-well-map">
-                        <map-area 
+                        <!--<map-area 
                                   [currentControlId]="sps_overview_wellMap_ID" (notify)='onNotify($event)' 
-                                  component_context="sps-overview-wellMap"></map-area>
+                                  component_context="sps-overview-wellMap"></map-area>-->
+                        <map-area></map-area>
                     </div>
                     <div class="clearfix"></div>
                     <div class="content-area-left-btm">
@@ -17,7 +18,7 @@
                         </div>
                         <div class="col-md-7 right">
                             <div class="his-prod border" id="sps-ov-hist-prod">
-                                <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="sps_overview_histProd_ID" (notify)='onNotify($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
+                                <chart-line-multiple [currentFilters]="ObjFilter" [currentControlId]="sps_overview_histProd_ID" (notify)='onNotify($event)' (notifyPopup)='onNotifyPopup($event)' component_context="sps-overview-historicProduction"></chart-line-multiple>
                             </div>
                         </div>
                     </div>
