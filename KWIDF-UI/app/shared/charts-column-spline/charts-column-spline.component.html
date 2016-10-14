@@ -5,7 +5,7 @@
             <li><span class="expand" (click)="onClickIcons()"></span></li>
             <li><span class="pdf" (click)="onClickIcons('application/pdf')"></span></li>
             <li><span class="excel" (click)="onClickIcons('application/vnd.ms-excel')"></span></li>
-            <li><span class="table" (click)="onClickIcons('viewDataTable')"></span></li>
+            <li><span [ngClass]="displayClass" (click)="onClickIcons('viewDataTable')" ></span></li>
             <li><span class="exportPng" (click)="onClickIcons('image/png')"></span></li>
         </ul>
     </div>
@@ -14,4 +14,7 @@
     <chart [options]="options"
            (load)="saveInstance($event.context)">
     </chart>
+</div>
+<div [innerHTML]="htmlTable"  [hidden]="!tableHidden" class="table" style="position:absolute;left:0px;width:100%;top:41px;z-index:1000">
+
 </div>
