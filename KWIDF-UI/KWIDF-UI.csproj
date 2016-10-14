@@ -98,6 +98,7 @@
     <Content Include="e2e\app.e2e-spec.js" />
     <Content Include="favicon.ico" />
     <Content Include="images\32px.png" />
+    <Content Include="images\bar-chart.jpg" />
     <Content Include="images\excel.png" />
     <Content Include="images\expand.png" />
     <Content Include="images\Logo.jpg" />

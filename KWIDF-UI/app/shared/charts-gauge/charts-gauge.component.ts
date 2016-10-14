@@ -128,18 +128,30 @@ export class ChartComponent_Gauge {
                 type: 'solidgauge'
             },
             title: null,
+            //pane: {
+            //    center: ['50%', '20%'],
+            //    size: '70%',
+            //    startAngle: -90,
+            //    endAngle: 90,
+            //    background: {
+            //        backgroundColor: '#d9d9d9',
+            //        innerRadius: '60%',
+            //        outerRadius: '100%',
+            //        shape: 'arc'
+            //    }
+            //},
             pane: {
-                center: ['50%', '20%'],
-                size: '70%',
-                startAngle: -90,
-                endAngle: 90,
-                background: {
-                    backgroundColor: '#d9d9d9',
-                    innerRadius: '60%',
-                    outerRadius: '100%',
-                    shape: 'arc'
-                }
-            },
+                center: ['50%', '60%'],
+                size: '100%',
+                startAngle: -140,
+                endAngle: 140,
+                background: {
+                    backgroundColor: 'grey',
+                    innerRadius: '60%',
+                    outerRadius: '100%',
+                    shape: 'arc'
+                }
+            }, 
             tooltip: {
                 enabled: false
             },

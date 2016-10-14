@@ -18,7 +18,7 @@ require('highcharts/modules/exporting.js')(Highcharts);
 
       chart {
         display: block;
-height: 500px; 
+height: 100%; 
 
       }
     `],

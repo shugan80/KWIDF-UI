@@ -41,7 +41,7 @@ export class ChartComponent_ColumnSpline {
     htmlContent: any;
     displayClass: any = "table";
     tableHidden: any = true;
-
+    iconTitle: any = 'Table';
     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
     @Output() notifyPopup: EventEmitter<string> = new EventEmitter<string>();
 
@@ -234,10 +234,12 @@ export class ChartComponent_ColumnSpline {
                     if (this.displayClass == "chartIcon") {
                         this.displayClass = "table";
                         this.tableHidden = false;
+                        this.iconTitle = 'Table';
                     }
                     else {
                         this.displayClass = "chartIcon";
                         this.tableHidden = true;
+                        this.iconTitle = 'Chart';
 
 
                     }

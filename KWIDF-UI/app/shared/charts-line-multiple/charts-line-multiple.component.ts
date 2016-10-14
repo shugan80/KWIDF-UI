@@ -47,6 +47,7 @@ export class ChartComponent_LineMultiple {
     
     htmlTable: any;
     tableVisible: any = false;
+    iconTitle: any = 'Table';
 
     displayClass: any = "table";
     tableHidden: any = true;
@@ -268,10 +269,12 @@ export class ChartComponent_LineMultiple {
                 if (this.displayClass == "chartIcon") {
                     this.displayClass = "table";
                     this.tableHidden = false;
+                    this.iconTitle = 'Table';
                 }
                 else {
                     this.displayClass = "chartIcon";
                     this.tableHidden = true;
+                    this.iconTitle = 'Chart';
 
 
                 }
